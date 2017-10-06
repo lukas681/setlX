@@ -3,6 +3,7 @@ package org.randoom.setlx.soundManager;
 import org.randoom.setlx.exceptions.SetlException;
 
 import javax.sound.midi.*;
+import javax.swing.*;
 
 public class SoundManagerImpl {
     Synthesizer synthesizer;
@@ -67,12 +68,31 @@ public class SoundManagerImpl {
      * @param duration The duration of the playback
      */
     public void playTone(int noteNumber, int velocity, int duration){
-        midiChannels[0].noteOn(noteNumber, velocity);
-        try {//TODO THREAD.SLEEP SCHÖN? TRY/CATCH WEG
-            Thread.sleep(duration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            midiChannels[0].noteOn(noteNumber, velocity);
+            try {//TODO THREAD.SLEEP SCHÖN? TRY/CATCH WEG
+                Thread.sleep(duration);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            midiChannels[0].noteOff(noteNumber);
+    }
+    public void playTone(int noteNumber, int velocity, int duration, int instrument) {
+            midiChannels[0].programChange(0, instrument);
+            playTone(noteNumber, velocity, duration);
+    }
+
+    /**
+     * A simple function in order to show all available Instruments and its belonging ID
+     * @return
+     */
+    public String listInstruments(){
+        Instrument[] orchestra = synthesizer.getAvailableInstruments();
+        final StringBuilder sb = new StringBuilder();
+        sb.append("The orchestra has "+ orchestra.length  +"instruments.\n");
+        for (Instrument instrument : orchestra) {
+            sb.append(instrument.toString()+"\n");
         }
-        midiChannels[0].noteOff(noteNumber);
+        synthesizer.close();
+        return sb.toString();
     }
 }

@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class PD_playTone extends PreDefinedProcedure {
 
-
+    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
     private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO);
     private final static ParameterDefinition VELOCITY = createOptionalParameter("velocity", SetlDouble.ZERO);
     private final static ParameterDefinition VOLUME = createOptionalParameter("volume", SetlDouble.ZERO);
@@ -24,6 +24,7 @@ public class PD_playTone extends PreDefinedProcedure {
         addParameter(NOTE);
         addParameter(VELOCITY);
         addParameter(VOLUME);
+        addParameter(INSTRUMENT);
     }
 
     @Override
@@ -31,8 +32,8 @@ public class PD_playTone extends PreDefinedProcedure {
         final Value note = args.get(NOTE);
         final Value velocity = args.get(VELOCITY);
         final Value volume = args.get(VOLUME);
-
-        SoundManagerImpl.getInstance().playTone(note.toJIntValue(state),velocity.toJIntValue(state),volume.toJIntValue(state));
+        final Value instrument = args.get(INSTRUMENT);
+        SoundManagerImpl.getInstance().playTone(note.toJIntValue(state),velocity.toJIntValue(state),volume.toJIntValue(state), instrument.toJIntValue(state));
 
         return SetlBoolean.TRUE;
     }

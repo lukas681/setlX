@@ -23,6 +23,7 @@ public class PD_listAvailableInstruments extends PreDefinedProcedure {
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         state.prompt(SoundManagerImpl.getInstance().listInstruments());
+        state.outWrite(SoundManagerImpl.getInstance().listInstruments());
         return SetlBoolean.TRUE;
     }
 

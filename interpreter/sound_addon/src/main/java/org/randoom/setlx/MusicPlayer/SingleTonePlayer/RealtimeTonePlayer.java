@@ -7,63 +7,67 @@ import org.randoom.setlx.MusicPlayer.SingleTonePlayer.instrumentSets.RTPluckInst
 
 import java.util.ArrayList;
 
-import static jm.constants.Articulations.LEGATO;
-import static jm.constants.Durations.CROTCHET;
-import static jm.constants.Panning.PAN_CENTRE;
-import static jm.constants.Pitches.C4;
-import static jm.constants.Pitches.REST;
-import static jm.constants.Pitches.c7;
-import static jm.constants.Volumes.MF;
+import static jm.constants.Durations.*;
+import static jm.music.data.Note.*;
 
-public class test extends RTLine {
+public class RealtimeTonePlayer extends RTLine {
 
     ArrayList<Note> noteQueue = new ArrayList<>();
-    private final double intervall = 0;
+    private boolean isPaused = false;
 
-    public test(Instrument[] inst) {
+    public RealtimeTonePlayer(Instrument[] inst) {
         super(inst);
     }
 
+    /**
+     * Adds a new note into the queue.
+     * If it is
+     * @param n
+     */
     public void addNote(Note n){
         noteQueue.add(n);
+        isPaused = false;
         this.unPause(); //There is at least on Note in the queue
     }
 
-    // required method to override
+    @Override
+    /**
+     * Takes the next note, that is stored in the noteQueue. If it is empty, the System will be paused.
+     */
     public Note getNextNote() {
-        System.out.println("START");
         if(noteQueue.isEmpty()) {
-            System.out.println("Empty");
             Note n = new Note(REST, CROTCHET, -1, 0);
-            n.setDuration(0.1d); //We manually set the duration of a break.
+            n.setDuration(0.1d);
+            n.setRhythmValue(0.1d); //We manually set the duration of a break.
             this.pause(); //As the queue is empty, we will pause the system. As soon, as the length of the queu is greater than 0 again, it will be unpaused
+            isPaused = true;
             return n;
-                 //   n.setRhythmValue(0.5d);
-                   // return n; //empty note
         }
         Note tmp = noteQueue.get(0);
-        System.out.println(tmp);
         noteQueue.remove(0);
         return tmp;
     }
 
+    /**
+     *  not used yet TODO examine, wether this method is needed
+     * @param ob
+     * @param i
+     */
+
     public void externalAction(Object ob, int i) {
         // do filter change here
-
         // ob will be slider - get value
-
         // set filter value in instrument to slider value
-
         // in the instrumnet implement setController over ride method
-
         // in filter use the setCutOff method to change coefficients
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         int sampleRate = 44100;
         Instrument inst = new RTPluckInst(sampleRate);
         Instrument[] insts = new Instrument[] {inst};
-        test t = new test(insts);
+        RealtimeTonePlayer t = new RealtimeTonePlayer(insts);
         RTLine[] rtlines = {t};
         final RTMixer rtm = new     RTMixer(rtlines);
         System.out.println("GO");

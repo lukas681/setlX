@@ -70,6 +70,14 @@
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
             </dependency>
+            <dependency>
+                <groupId>com.explodingart</groupId>
+                <artifactId>jmusic</artifactId>
+                <version>1.6.4.1</version>
+            </dependency>
+
+
+
 
             <dependency>
                 <groupId>org.apache.maven</groupId>

@@ -2,7 +2,6 @@ package org.randoom.setlx.functions;
 
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
-import org.randoom.setlx.soundManager.SoundManagerImpl;
 import org.randoom.setlx.types.SetlBoolean;
 import org.randoom.setlx.types.SetlDouble;
 import org.randoom.setlx.types.Value;
@@ -33,7 +32,7 @@ public class PD_playTone extends PreDefinedProcedure {
         final Value velocity = args.get(VELOCITY);
         final Value volume = args.get(VOLUME);
         final Value instrument = args.get(INSTRUMENT);
-        SoundManagerImpl.getInstance().playTone(note.toJIntValue(state),velocity.toJIntValue(state),volume.toJIntValue(state), instrument.toJIntValue(state));
+        //SoundManagerImpl.getInstance().playTone(note.toJIntValue(state),velocity.toJIntValue(state),volume.toJIntValue(state), instrument.toJIntValue(state));
 
         return SetlBoolean.TRUE;
     }

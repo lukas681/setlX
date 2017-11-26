@@ -2,7 +2,7 @@ package org.randoom.setlx.MusicPlayer.Factories;
 
 import jm.music.data.Note;
 
-public class InstrumentsFacImpl implements InstrumentsFacIntf{
+public class NoteFacImpl implements NoteFacIntf{
 
 
     private final int defaultPan = 0;

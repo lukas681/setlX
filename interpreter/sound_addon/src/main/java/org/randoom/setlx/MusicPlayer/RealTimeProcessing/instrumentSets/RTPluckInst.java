@@ -1,9 +1,6 @@
-package org.randoom.setlx.MusicPlayer.SingleTonePlayer.instrumentSets;
+package org.randoom.setlx.MusicPlayer.RealTimeProcessing.instrumentSets;
 
-import jm.audio.io.*;
 import jm.audio.synth.*;
-import jm.music.data.Note;
-import jm.audio.AudioObject;
 
 
 public final class RTPluckInst extends jm.audio.Instrument{

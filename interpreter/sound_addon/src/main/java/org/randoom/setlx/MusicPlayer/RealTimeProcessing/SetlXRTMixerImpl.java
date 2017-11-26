@@ -1,27 +1,29 @@
-package org.randoom.setlx.MusicPlayer.SingleTonePlayer;
+package org.randoom.setlx.MusicPlayer.RealTimeProcessing;
 
 import jm.audio.Instrument;
 import jm.audio.RTMixer;
 import jm.music.data.Note;
 import jm.music.rt.RTLine;
-import org.randoom.setlx.MusicPlayer.SingleTonePlayer.instrumentSets.RTPluckInst;
+import org.randoom.setlx.MusicPlayer.RealTimeProcessing.instrumentSets.RTPluckInst;
 
 public class SetlXRTMixerImpl extends RTMixer implements SetlXRTMixerIntf {
 
     //Sample Rate in hz
     private final int sampleRate = 44100;
+    public SetlXRTMixerImpl(){
+        super(null); //not tested.
+    }
 
     public SetlXRTMixerImpl(SetlXRTLineIntf[] rtlines) {
         super((RTLine[]) rtlines);
     }
 
-    public SetlXRTMixerImpl(SetlXRTLineIntf rtline) {
-        super(rtlineeee);
-        SetlXRTLineIntf[] lines = {rtline};
+    public SetlXRTMixerImpl(SetlXRTLineIntf rtline){
+        this(new SetlXRTLineIntf[]{rtline});
     }
 
     @Override
-    public void addNewSetlXRTLine(SetlXRTLineIntf[] lines) {
+    public void addNewSetlXRTLines(SetlXRTLineIntf[] lines) {
 
     }
 
@@ -30,14 +32,9 @@ public class SetlXRTMixerImpl extends RTMixer implements SetlXRTMixerIntf {
      *
      * @param line
      */
-    public void addNewSetlXRTLine(SetlXRTLineIntf line) {
+    public void addNewSetlXRTLines(SetlXRTLineIntf line) {
         SetlXRTLineIntf[] lines = {line};
-        this.addNewSetlXRTLine(lines);
-    }
-
-    @Override
-    public void removeSetlXRTLine() {
-
+        this.addNewSetlXRTLines(lines);
     }
 
 

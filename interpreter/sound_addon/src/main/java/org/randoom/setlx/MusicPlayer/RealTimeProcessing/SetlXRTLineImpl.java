@@ -1,9 +1,8 @@
-package org.randoom.setlx.MusicPlayer.SingleTonePlayer;
+package org.randoom.setlx.MusicPlayer.RealTimeProcessing;
 
 import jm.music.rt.*;
 import jm.audio.*;
 import jm.music.data.*;
-import org.randoom.setlx.MusicPlayer.SingleTonePlayer.instrumentSets.RTPluckInst;
 
 import java.util.ArrayList;
 

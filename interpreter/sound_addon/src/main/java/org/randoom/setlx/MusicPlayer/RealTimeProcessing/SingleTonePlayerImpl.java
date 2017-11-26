@@ -1,4 +1,4 @@
-package org.randoom.setlx.MusicPlayer.SingleTonePlayer;
+package org.randoom.setlx.MusicPlayer.RealTimeProcessing;
 
 import jm.music.data.Note;
 

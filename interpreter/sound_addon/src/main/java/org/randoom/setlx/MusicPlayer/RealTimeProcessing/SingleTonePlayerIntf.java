@@ -1,6 +1,5 @@
-package org.randoom.setlx.MusicPlayer.SingleTonePlayer;
+package org.randoom.setlx.MusicPlayer.RealTimeProcessing;
 
-import jm.music.data.Note;
 import org.randoom.setlx.setlSoundIntf;
 
 public interface SingleTonePlayerIntf extends setlSoundIntf {

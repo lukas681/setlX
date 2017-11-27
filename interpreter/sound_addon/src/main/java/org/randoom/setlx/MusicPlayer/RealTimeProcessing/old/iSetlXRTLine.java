@@ -1,6 +1,7 @@
 package org.randoom.setlx.MusicPlayer.RealTimeProcessing;
 
 import jm.music.data.Note;
+import jm.music.rt.RTLine;
 
 import java.util.ArrayList;
 
@@ -11,14 +12,8 @@ import java.util.ArrayList;
  * It should be implemented as a queue, that takes new notes via the @addNote method.
  *
  */
-public interface SetlXRTLineIntf  {
+public interface iSetlXRTLine extends RTLine {
 
-
-    /**
-     * Adds a new note to the real time processing line.
-     * Normally implemented by an FIFO queue.
-     * @param n
-     */
     void addNote(Note n);
 
     /**

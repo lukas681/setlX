@@ -1,6 +1,6 @@
 package org.randoom.setlx.MusicPlayer.RealTimeProcessing;
 
-public interface SetlXRTMixerIntf {
+public interface ISetlXRTMixer {
 
 
     void pause();
@@ -11,5 +11,7 @@ public interface SetlXRTMixerIntf {
 
     void stop();
 
-    void addNewSetlXRTLines(SetlXRTLineIntf[] lines);
+    void addNewSetlXRTLines(SetlXRTLine[] lines);
+
+    void addNewSetlXRTLines(SetlXRTLine lines);
 }

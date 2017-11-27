@@ -9,34 +9,50 @@ import java.util.ArrayList;
 import static jm.constants.Durations.*;
 import static jm.music.data.Note.*;
 
-public class SetlXRTLineImpl extends RTLine implements SetlXRTLineIntf {
+/**
+ * Created by Lukas on 24.11.2017.
+ *
+ * A Class, that generates a line of Notes, that can be processed by a mixer in Real Time.
+ * It should be implemented as a queue, that takes new notes via the @addNote method.
+ *
+ */
+public class SetlXRTLine extends RTLine {
 
 
     ArrayList<Note> noteQueue = new ArrayList<>();
     private boolean isPaused = false;
 
 
-    public SetlXRTLineImpl(Instrument[] inst) {
+    public SetlXRTLine(Instrument[] inst) {
         super(inst);
     }
 
 
-    @Override
+    /**
+     * Add a new {@link Note} to this Line, that can be consumed by a {@link SetlXRTMixerImpl}
+     * @param n
+     */
     public void addNote(Note n){
         noteQueue.add(n);
         isPaused = false;
         this.unPause(); //There is at least on Note in the queue
     }
 
-    @Override
+    /**
+     * Returns an array of all notes that will be played in the future.
+     * @return
+     */
     public ArrayList<Note> getNotes() {
         return noteQueue;
     }
 
-    @Override
+    /**
+     * Clears all cached and future played notes.
+     */
     public void clearQueue() {
         noteQueue.clear();
     }
+
 
     @Override
     /**
@@ -55,19 +71,4 @@ public class SetlXRTLineImpl extends RTLine implements SetlXRTLineIntf {
         noteQueue.remove(0);
         return tmp;
     }
-
-    /**
-     *  not used yet TODO examine, wether this method is needed
-     * @param ob
-     * @param i
-     */
-
-    public void externalAction(Object ob, int i) {
-        // do filter change here
-        // ob will be slider - get value
-        // set filter value in instrument to slider value
-        // in the instrumnet implement setController over ride method
-        // in filter use the setCutOff method to change coefficients
-    }
-
 }

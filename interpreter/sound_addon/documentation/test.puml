@@ -100,7 +100,7 @@ package  org.jfugue{
     class Pattern
 }
 
-PD_play <|-- PredefinedProcedure
+SetlXFunctions <|-- PredefinedProcedure
 SetlXRealTimePlayer -- NoteFactory
 SetlXRealTimePlayer --o PD_play
 SetlXRealTimePlayer --o PD_changeInstrument

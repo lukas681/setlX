@@ -1,0 +1,106 @@
+@startuml
+
+package Soundplugin {
+    class setlXRealTimePlayer{
+    +startPlayer(): void
+    +stopPlayer(): void
+    +addNote(pattern: String): void
+    +addNote(note: Note): void
+    +changeInstrument(inst: Instrument): void
+    +setNoteDuration
+
+    -boolean isRunning
+
+    }
+    class NoteFactory <<(S,#FF7700) Singleton>>{
+    -defaultValue: int
+    -defaultDuration: double
+    -defaultVelocity: int
+
+    +createNote(value: int):Note
+    +createNote(): Note
+    +createNote(value: int, duration: double):void
+
+    }
+        interface Playable{
+        -boolean isPlaying
+        play(): void
+        }
+    class setlXMusicManager {
+
+    -patterns: Arraylist<name: String, pattern: Pattern>
+    -player: Player
+    +assemble(): void
+    +addPattern(name: String, pattern: Pattern): void
+    +addToPattern(name: String, notes: String)
+    +modifyPatternPropertie(param: PatternParameters, int value): void
+    }
+
+    enum PatternParameters{
+    INSTRUMENT
+    TEMPO
+    VOICE
+    }
+
+package  setlXFunctions {
+    class PD_play {
+    {abstract} velocity: ParameterDefinition
+    {abstract} duration: ParameterDefinition
+    {abstract} volume: ParameterDefinition
+    {abstract} note: ParameterDefinition
+    -player: setlXRealTimePlayer
+    }
+    class PD_setTempo{
+    {abstract} patterName: ParameterDefinition
+    {abstract} tempo: ParameterDefinition
+    }
+    class PD_changeInstrument{
+    {abstract} patterName: ParameterDefinition
+    {abstract} tempo: ParameterDefinition
+    }
+    class PD_showPatterns{
+    {abstract} patterName: ParameterDefinition
+    {abstract} tempo: ParameterDefinition
+    }
+    class PD_changeVoice{
+    {abstract} patterName: ParameterDefinition
+    {abstract} tempo: ParameterDefinition
+    }
+    class PD_addPattern{
+    {abstract} patterName: ParameterDefinition
+    {abstract} Notes: ParameterDefinition
+    }
+}
+}
+
+package  org.randoom.setlx.functions {
+
+class PredefinedProcedure {
++execute(state:State, args: HashMap<ParameterDefinition, Value>):void
+}
+
+}
+
+package  org.jfugue{
+    class RealTimePlayer{
+    }
+    class Player{
+    }
+}
+
+PD_play <|-- PredefinedProcedure
+setlXRealTimePlayer -- NoteFactory
+setlXRealTimePlayer --o PD_play
+setlXRealTimePlayer --o PD_changeInstrument
+setlXRealTimePlayer --o PD_showPatterns
+setlXRealTimePlayer --o PD_changeVoice
+setlXRealTimePlayer --o PD_setTempo
+setlXRealTimePlayer <|-- Playable
+setlXMusicManager <|-- Playable
+setlXMusicManager -- PatternParameters
+setlXMusicManager o-- Player
+setlXRealTimePlayer  o-- RealTimePlayer
+
+
+
+@enduml

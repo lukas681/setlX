@@ -1,9 +1,11 @@
 package org.randoom.setlx.functions;
 
+import org.jfugue.player.Player;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
 import org.randoom.setlx.types.SetlDouble;
+import org.randoom.setlx.types.SetlString;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
@@ -32,6 +34,8 @@ public class PD_playTone extends PreDefinedProcedure {
         final Value velocity = args.get(VELOCITY);
         final Value volume = args.get(VOLUME);
         final Value instrument = args.get(INSTRUMENT);
+        Player p = new Player();
+        p.play(note.toString());
         //SoundManagerImpl.getInstance().playTone(note.toJIntValue(state),velocity.toJIntValue(state),volume.toJIntValue(state), instrument.toJIntValue(state));
 
         return SetlBoolean.TRUE;

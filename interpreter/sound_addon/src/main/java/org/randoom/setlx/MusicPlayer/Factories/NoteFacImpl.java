@@ -26,7 +26,7 @@ public class NoteFacImpl implements NoteFacIntf{
         return createNote(pitch,defaultRhythmValue,defaultDynamic,defaultPan);
     }
     public Note createNote(){
-        Player p = new Player()
+        Player p = new Player();
         return createNote(defaultPitch,defaultRhythmValue,defaultDynamic,defaultPan);
     }
 }

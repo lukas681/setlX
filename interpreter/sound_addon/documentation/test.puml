@@ -1,15 +1,17 @@
 @startuml
 
 package Soundplugin {
-    class setlXRealTimePlayer{
+    class SetlXRealTimePlayer{
+    -boolean isRunning
+
     +startPlayer(): void
     +stopPlayer(): void
-    +addNote(pattern: String): void
-    +addNote(note: Note): void
+    +addNote(Pattern: String): void
+    +addNote(Note: Note): void
     +changeInstrument(inst: Instrument): void
-    +setNoteDuration
+    +setNoteDuration(duration: double): void
 
-    -boolean isRunning
+
 
     }
     class NoteFactory <<(S,#FF7700) Singleton>>{
@@ -26,14 +28,21 @@ package Soundplugin {
         -boolean isPlaying
         play(): void
         }
-    class setlXMusicManager {
-
-    -patterns: Arraylist<name: String, pattern: Pattern>
+    class SetlXMusicManager {
+    -patterns: PatternStorage
     -player: Player
-    +assemble(): void
-    +addPattern(name: String, pattern: Pattern): void
-    +addToPattern(name: String, notes: String)
-    +modifyPatternPropertie(param: PatternParameters, int value): void
+    -addPattern(patternName: String, pattern: Pattern): void
+    +addToPattern(patterName: String, notes: String)
+    +modifyPatternProperty(patternName: String, param: PatternParameters, int value): void
+    +removePattern(patternName: String): void
+
+    }
+    class PatternStorage{
+    -patterns: HashMap<name: String, pattern: Pattern>
+    +addPattern: void
+    +checkExisting: boolean
+    +getPattern: Pattern
+    +deletePatternByName: void
     }
 
     enum PatternParameters{
@@ -42,13 +51,13 @@ package Soundplugin {
     VOICE
     }
 
-package  setlXFunctions {
+package  SetlXFunctions {
     class PD_play {
     {abstract} velocity: ParameterDefinition
     {abstract} duration: ParameterDefinition
     {abstract} volume: ParameterDefinition
     {abstract} note: ParameterDefinition
-    -player: setlXRealTimePlayer
+    -player: SetlXRealTimePlayer
     }
     class PD_setTempo{
     {abstract} patterName: ParameterDefinition
@@ -71,6 +80,8 @@ package  setlXFunctions {
     {abstract} Notes: ParameterDefinition
     }
 }
+package SoundExceptions{
+}
 }
 
 package  org.randoom.setlx.functions {
@@ -86,20 +97,22 @@ package  org.jfugue{
     }
     class Player{
     }
+    class Pattern
 }
 
 PD_play <|-- PredefinedProcedure
-setlXRealTimePlayer -- NoteFactory
-setlXRealTimePlayer --o PD_play
-setlXRealTimePlayer --o PD_changeInstrument
-setlXRealTimePlayer --o PD_showPatterns
-setlXRealTimePlayer --o PD_changeVoice
-setlXRealTimePlayer --o PD_setTempo
-setlXRealTimePlayer <|-- Playable
-setlXMusicManager <|-- Playable
-setlXMusicManager -- PatternParameters
-setlXMusicManager o-- Player
-setlXRealTimePlayer  o-- RealTimePlayer
+SetlXRealTimePlayer -- NoteFactory
+SetlXRealTimePlayer --o PD_play
+SetlXRealTimePlayer --o PD_changeInstrument
+SetlXRealTimePlayer --o PD_showPatterns
+SetlXRealTimePlayer --o PD_changeVoice
+SetlXRealTimePlayer --o PD_setTempo
+SetlXRealTimePlayer <|-- Playable
+SetlXMusicManager <|-- Playable
+SetlXMusicManager -- PatternParameters
+SetlXMusicManager o-- Player
+SetlXRealTimePlayer  o-- RealTimePlayer
+SetlXMusicManager  o-- PatternStorage
 
 
 

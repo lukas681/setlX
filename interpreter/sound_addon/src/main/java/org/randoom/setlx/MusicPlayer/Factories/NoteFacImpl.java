@@ -2,6 +2,8 @@ package org.randoom.setlx.MusicPlayer.Factories;
 
 import jm.music.data.Note;
 
+import org.jfugue.player.Player;
+
 public class NoteFacImpl implements NoteFacIntf{
 
 
@@ -24,6 +26,7 @@ public class NoteFacImpl implements NoteFacIntf{
         return createNote(pitch,defaultRhythmValue,defaultDynamic,defaultPan);
     }
     public Note createNote(){
+        Player p = new Player()
         return createNote(defaultPitch,defaultRhythmValue,defaultDynamic,defaultPan);
     }
 }

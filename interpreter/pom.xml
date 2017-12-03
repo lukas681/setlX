@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <setlX.java.version>1.7</setlX.java.version>
+        <setlX.java.version>1.8</setlX.java.version>
         <setlX.antlr.version>4.5.3</setlX.antlr.version>
     </properties>
 

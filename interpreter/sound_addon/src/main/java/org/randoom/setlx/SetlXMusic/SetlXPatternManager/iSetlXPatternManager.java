@@ -1,7 +1,7 @@
-package org.randoom.setlx.SetlXMusicManager;
+package org.randoom.setlx.SetlXMusic.SetlXMusicManager;
 
 import org.jfugue.pattern.Pattern;
-import org.randoom.setlx.SetlXMusicManager.Patterns.PatternParameters;
+import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
 
 /**
  * This Manager holds and manages patterns, that can be created by setlx.
@@ -46,5 +46,11 @@ public interface iSetlXMusicManager {
      */
     void removePattern(String patternName);
 
+    /**
+     * Returns a specific pattern from the storage
+     * @param patternName
+     * @return
+     */
+    Pattern getPattern(String patternName);
 
 }

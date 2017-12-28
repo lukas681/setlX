@@ -3,7 +3,6 @@ package org.randoom.setlx.SetlXRealTimePlayer;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
-import org.randoom.setlx.exceptions.SetlException;
 
 import javax.sound.midi.MidiUnavailableException;
 
@@ -13,7 +12,7 @@ import javax.sound.midi.MidiUnavailableException;
 public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
 
     RealtimePlayer rtplayer;
-    int noteDuration = 200;
+    int noteDuration = 1;
 
     public SetlXRealTimePlayer() {
         try {

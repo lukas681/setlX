@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.SetlXMusicManager;
+package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
@@ -9,13 +9,16 @@ import org.randoom.setlx.SetlXMusic.Patterns.iSetlXPatternStorage;
 /**
  * Created by Lukas on 28.12.2017.
  */
-public class SetlXMusicManager implements iSetlXMusicManager{
+public class SetlXPatternManager implements iSetlXPatternManager {
 
     iSetlXPatternStorage patternStorage;
     Player player;
 
-    public SetlXMusicManager(){
-        patternStorage = new SetlXSetlXPatternStorage();
+    /**
+     * Default constructor for {@link SetlXPatternManager}. Creates a new P
+     */
+    public SetlXPatternManager(){
+        patternStorage = new SetlXSetlXPatternStorage(); //Creates a new Pattern Storage for future music patterns
         player = new Player();
     }
 

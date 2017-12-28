@@ -1,7 +1,44 @@
 package org.randoom.setlx.functions;
 
-/**
- * Created by Lukas on 28.12.2017.
- */
-public class PD_addPattern {
+import org.randoom.setlx.SetlXRealTimePlayer.SetlXRealTimePlayer;
+import org.randoom.setlx.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.exceptions.SetlException;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
+import org.randoom.setlx.parameters.ParameterDefinition;
+import org.randoom.setlx.types.SetlBoolean;
+import org.randoom.setlx.types.SetlDouble;
+import org.randoom.setlx.types.Value;
+import org.randoom.setlx.utilities.State;
+
+import java.util.HashMap;
+
+public class PD_addPattern extends PreDefinedProcedure {
+
+    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
+    private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO);
+    private final static ParameterDefinition DURATION = createOptionalParameter("duration", SetlDouble.ZERO);
+
+    public  final static PreDefinedProcedure DEFINITION = new PD_playTone();
+
+    private iSetlXRealTimePlayer rtplayer = new SetlXRealTimePlayer();
+
+    protected PD_addPattern() {
+        super();
+        addParameter(NOTE);
+        addParameter(DURATION);
+        addParameter(INSTRUMENT);
+    }
+
+    @Override
+    protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
+        final Value note = args.get(NOTE);
+        final Value duration = args.get(DURATION);
+        final Value instrument = args.get(INSTRUMENT); //TODO resolve instrument enum
+
+        rtplayer.changeInstrument(instrument.jIntValue());
+        rtplayer.play(NoteFactory.getInstance().createNote(note.jIntValue(), duration.jDoubleValue())); //TODO Make instrument optional
+
+        return SetlBoolean.TRUE;
+    }
+
 }

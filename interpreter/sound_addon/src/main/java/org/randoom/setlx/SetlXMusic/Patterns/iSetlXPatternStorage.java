@@ -5,7 +5,7 @@ import org.jfugue.pattern.Pattern;
 /**
  * Created by Lukas on 28.12.2017.
  */
-public interface iPatternStorage {
+public interface iSetlXPatternStorage {
 
 
 

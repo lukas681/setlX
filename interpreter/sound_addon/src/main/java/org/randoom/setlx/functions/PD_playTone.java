@@ -1,14 +1,12 @@
 package org.randoom.setlx.functions;
 
-import org.jfugue.player.Player;
 import org.randoom.setlx.SetlXRealTimePlayer.SetlXRealTimePlayer;
 import org.randoom.setlx.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 import org.randoom.setlx.exceptions.SetlException;
-import org.randoom.setlx.factories.NoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
 import org.randoom.setlx.types.SetlDouble;
-import org.randoom.setlx.types.SetlString;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 

@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusicManager.Patterns;
+package org.randoom.setlx.SetlXMusic.Patterns;
 
 /**
  * Created by Lukas on 28.12.2017.

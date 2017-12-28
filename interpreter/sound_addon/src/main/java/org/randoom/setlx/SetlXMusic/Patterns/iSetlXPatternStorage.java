@@ -1,14 +1,12 @@
-package org.randoom.setlx.SetlXMusicManager.Patterns;
+package org.randoom.setlx.SetlXMusic.Patterns;
 
 import org.jfugue.pattern.Pattern;
-
-import java.util.HashMap;
 
 /**
  * Created by Lukas on 28.12.2017.
  */
 public interface iPatternStorage {
-    HashMap<String, Pattern> patternStorage = new HashMap<>();
+
 
 
     /**

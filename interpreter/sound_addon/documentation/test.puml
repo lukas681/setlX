@@ -10,9 +10,6 @@ package Soundplugin {
     +addNote(Note: Note): void
     +changeInstrument(inst: Instrument): void
     +setNoteDuration(duration: double): void
-
-
-
     }
     class NoteFactory <<(S,#FF7700) Singleton>>{
     -defaultValue: int

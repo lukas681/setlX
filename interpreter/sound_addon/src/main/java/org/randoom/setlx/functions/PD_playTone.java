@@ -1,7 +1,10 @@
 package org.randoom.setlx.functions;
 
 import org.jfugue.player.Player;
+import org.randoom.setlx.SetlXRealTimePlayer.SetlXRealTimePlayer;
+import org.randoom.setlx.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 import org.randoom.setlx.exceptions.SetlException;
+import org.randoom.setlx.factories.NoteFactory;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
 import org.randoom.setlx.types.SetlDouble;
@@ -15,28 +18,27 @@ public class PD_playTone extends PreDefinedProcedure {
 
     private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
     private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO);
-    private final static ParameterDefinition VELOCITY = createOptionalParameter("velocity", SetlDouble.ZERO);
-    private final static ParameterDefinition VOLUME = createOptionalParameter("volume", SetlDouble.ZERO);
+    private final static ParameterDefinition DURATION = createOptionalParameter("duration", SetlDouble.ZERO);
 
     public  final static PreDefinedProcedure DEFINITION = new PD_playTone();
+
+    private iSetlXRealTimePlayer rtplayer = new SetlXRealTimePlayer();
 
     protected PD_playTone() {
         super();
         addParameter(NOTE);
-        addParameter(VELOCITY);
-        addParameter(VOLUME);
+        addParameter(DURATION);
         addParameter(INSTRUMENT);
     }
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value note = args.get(NOTE);
-        final Value velocity = args.get(VELOCITY);
-        final Value volume = args.get(VOLUME);
-        final Value instrument = args.get(INSTRUMENT);
-        Player p = new Player();
-        p.play(note.toString());
-        //SoundManagerImpl.getInstance().playTone(note.toJIntValue(state),velocity.toJIntValue(state),volume.toJIntValue(state), instrument.toJIntValue(state));
+        final Value duration = args.get(DURATION);
+        final Value instrument = args.get(INSTRUMENT); //TODO resolve instrument enum
+
+        rtplayer.changeInstrument(instrument.jIntValue());
+        rtplayer.play(NoteFactory.getInstance().createNote(note.jIntValue(), duration.jDoubleValue())); //TODO Make instrument optional
 
         return SetlBoolean.TRUE;
     }

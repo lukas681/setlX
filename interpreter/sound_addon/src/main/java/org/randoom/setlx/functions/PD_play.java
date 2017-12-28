@@ -26,8 +26,8 @@ public class PD_addPattern extends PreDefinedProcedure {
 
     protected PD_addPattern() {
         super();
-        addParameter(PATTERN_NAME);
         addParameter(PATTERN);
+        addParameter(PATTERN_NAME);
         addParameter(TEMPO);
         addParameter(INSTRUMENT);
         addParameter(VOICE);
@@ -35,18 +35,20 @@ public class PD_addPattern extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
+        System.out.println("Calle!");
         final Value patternName = args.get(PATTERN_NAME);
         final Value pattern = args.get(PATTERN);
         final Value tempo = args.get(TEMPO);
         final Value instrument = args.get(INSTRUMENT);
         final Value voice = args.get(VOICE);
 
-        Pattern patt = new Pattern(pattern.toString())
-                .setVoice(voice.jIntValue())
-                .setInstrument(instrument.jIntValue())
-                .setTempo(tempo.jIntValue());
+        Pattern patt = new Pattern(pattern.toString());
+        patt = patt.setVoice(voice.jIntValue());
+        patt = patt.setInstrument(instrument.jIntValue());
+        patt = patt.setTempo(tempo.jIntValue());
 
         root.getSetlXPatternManager().addPattern(patternName.toString(), patt);
+
         return SetlBoolean.TRUE;
     }
 

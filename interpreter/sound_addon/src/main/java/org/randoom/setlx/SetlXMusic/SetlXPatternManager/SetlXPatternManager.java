@@ -6,6 +6,8 @@ import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
 import org.randoom.setlx.SetlXMusic.Patterns.SetlXSetlXPatternStorage;
 import org.randoom.setlx.SetlXMusic.Patterns.iSetlXPatternStorage;
 
+import java.util.HashMap;
+
 /**
  * Created by Lukas on 28.12.2017.
  */
@@ -63,5 +65,10 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     @Override
     public Pattern getPattern(String name){
     return patternStorage.getPattern(name);
+    }
+
+    @Override
+    public HashMap<String, Pattern> getAllPatterns() {
+        return patternStorage.getAllPatterns();
     }
 }

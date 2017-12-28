@@ -1,13 +1,15 @@
-package org.randoom.setlx.SetlXMusic.SetlXMusicManager;
+package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
+
+import java.util.HashMap;
 
 /**
  * This Manager holds and manages patterns, that can be created by setlx.
  * It is also possible to modify an edit the patterns.
  */
-public interface iSetlXMusicManager {
+public interface iSetlXPatternManager {
 
     /**
      * Adds a new pattern to this Music Manager. It can then me used to build a song.
@@ -53,4 +55,5 @@ public interface iSetlXMusicManager {
      */
     Pattern getPattern(String patternName);
 
+    HashMap<String, Pattern> getAllPatterns();
 }

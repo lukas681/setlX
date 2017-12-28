@@ -1,22 +1,22 @@
-package org.randoom.setlx;
+package org.randoom.setlx.SetlXMusic;
 
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.SetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.SetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 
-import org.randoom.setlx.SetlXRealTimePlayer.SetlXRealTimePlayer;
-import org.randoom.setlx.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 
-public class SetlXMusic implements iSetlXMusic {
+public class SetlXSoundPlugin implements iSetlXSoundPlugin {
 
-    private static SetlXMusic setlxMusic;
+    private static SetlXSoundPlugin setlxSoundPlugin;
 
     private iSetlXMusicPlayer musicPlayer;
-    private iSetlXPatternManager musicManager;
+    private iSetlXPatternManager patternManager;
     private iSetlXRealTimePlayer realTimePlayer;
 
-    private SetlXMusic(){
+    private SetlXSoundPlugin(){
         initializeComponents();
     }
 
@@ -25,13 +25,13 @@ public class SetlXMusic implements iSetlXMusic {
       */
     private void initializeComponents(){
 
-        musicManager = new SetlXPatternManager();
-        musicPlayer = new SetlXMusicPlayer(musicManager);
+        patternManager = new SetlXPatternManager();
+        musicPlayer = new SetlXMusicPlayer(patternManager);
         realTimePlayer = new SetlXRealTimePlayer();
     }
     @Override
-    public iSetlXPatternManager getSetlXMusicManager() {
-        return musicManager;
+    public iSetlXPatternManager getSetlXPatternManager() {
+        return patternManager;
     }
 
     @Override
@@ -44,10 +44,10 @@ public class SetlXMusic implements iSetlXMusic {
         return realTimePlayer;
     }
 
-    public static SetlXMusic getInstance(){
-        if(setlxMusic == null){ //Singleton
-           setlxMusic = new SetlXMusic();
+    public static SetlXSoundPlugin getInstance(){
+        if(setlxSoundPlugin == null){ //Singleton
+            setlxSoundPlugin = new SetlXSoundPlugin();
         }
-        return setlxMusic;
+        return setlxSoundPlugin;
     }
 }

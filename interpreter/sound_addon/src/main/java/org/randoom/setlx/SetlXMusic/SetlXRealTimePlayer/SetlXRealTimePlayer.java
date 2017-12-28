@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXRealTimePlayer;
+package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.realtime.RealtimePlayer;
@@ -18,7 +18,7 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
         try {
             rtplayer = new RealtimePlayer();
         }catch(MidiUnavailableException midiException){
-            System.out.println("The Midi device is not availbable");
+            System.out.println("The Midi device is not availbable"); //TODO Add Exception for this
         }
     }
 

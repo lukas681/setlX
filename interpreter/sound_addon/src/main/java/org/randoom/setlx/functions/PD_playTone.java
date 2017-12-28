@@ -1,7 +1,7 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.SetlXRealTimePlayer.SetlXRealTimePlayer;
-import org.randoom.setlx.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
 import org.randoom.setlx.parameters.ParameterDefinition;

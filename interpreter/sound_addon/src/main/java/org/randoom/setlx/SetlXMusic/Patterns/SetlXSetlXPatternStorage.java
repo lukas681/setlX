@@ -13,6 +13,7 @@ public class SetlXSetlXPatternStorage implements iSetlXPatternStorage {
 
     @Override
         public void addPattern(String name, Pattern pattern) {
+        System.out.println(this);
             patternStorage.put(name, pattern);
     }
 
@@ -30,5 +31,11 @@ public class SetlXSetlXPatternStorage implements iSetlXPatternStorage {
     public void deletePattern(String name) {
         patternStorage.remove(name);
     }
+
+    @Override
+    public HashMap<String, Pattern> getAllPatterns() {
+        return patternStorage;
+    }
+
 
 }

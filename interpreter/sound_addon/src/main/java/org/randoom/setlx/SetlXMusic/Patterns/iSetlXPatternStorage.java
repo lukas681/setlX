@@ -2,6 +2,8 @@ package org.randoom.setlx.SetlXMusic.Patterns;
 
 import org.jfugue.pattern.Pattern;
 
+import java.util.HashMap;
+
 /**
  * Created by Lukas on 28.12.2017.
  */
@@ -38,5 +40,11 @@ public interface iSetlXPatternStorage {
      * @param name
      */
     void deletePattern(String name);
+
+    /**
+     * Returns all patterns, that are stored in this storage
+     * @return
+     */
+    HashMap<String, Pattern> getAllPatterns();
 
 }

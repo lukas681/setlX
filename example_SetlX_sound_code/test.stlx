@@ -1,0 +1,4 @@
+for(x in [30..100]){
+	playTone(x, 0.02, 1);
+}
+playTone(50, 0.02, 1);

@@ -1,7 +1,9 @@
 package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
+import org.randoom.setlx.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
+import org.randoom.setlx.exceptions.SetlException;
 
 import java.util.HashMap;
 
@@ -16,7 +18,7 @@ public interface iSetlXPatternManager {
      * @param name
      * @param pattern
      */
-    void addPattern(String name, Pattern pattern);
+    void addPattern(String name, Pattern pattern) throws NullArgumentsException;
 
     /**
      * Can be used to add notes to an existing pattern
@@ -40,7 +42,7 @@ public interface iSetlXPatternManager {
      * @param param
      * @param value
      */
-    void modifyPatternProperty(String patternName, PatternParameters param, int value);
+    void modifyPatternProperty(String patternName, PatternParameters param, int value) throws SetlException;
 
     /**
      * Deletes a pattern from this music manager

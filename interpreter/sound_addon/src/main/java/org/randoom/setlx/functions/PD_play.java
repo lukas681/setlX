@@ -12,43 +12,28 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
-public class PD_addPattern extends PreDefinedProcedure {
+public class PD_play extends PreDefinedProcedure {
 
-    private final static ParameterDefinition PATTERN_NAME = createOptionalParameter("patternName", SetlString.NIL);
-    private final static ParameterDefinition PATTERN = createOptionalParameter("pattern", SetlDouble.ONE);
-    private final static ParameterDefinition TEMPO = createOptionalParameter("tempo", SetlDouble.ZERO);
-    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ZERO);
-    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ZERO);
+    private final static ParameterDefinition PATTERN_NAMES = createOptionalParameter("patternName", SetlString.NIL);
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_addPattern();
+    public  final static PreDefinedProcedure DEFINITION = new PD_play();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 
-    protected PD_addPattern() {
+    protected PD_play() {
         super();
-        addParameter(PATTERN);
-        addParameter(PATTERN_NAME);
-        addParameter(TEMPO);
-        addParameter(INSTRUMENT);
-        addParameter(VOICE);
+        addParameter(PATTERN_NAMES);
     }
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        System.out.println("Calle!");
-        final Value patternName = args.get(PATTERN_NAME);
-        final Value pattern = args.get(PATTERN);
-        final Value tempo = args.get(TEMPO);
-        final Value instrument = args.get(INSTRUMENT);
-        final Value voice = args.get(VOICE);
 
-        Pattern patt = new Pattern(pattern.toString());
-        patt = patt.setVoice(voice.jIntValue());
-        patt = patt.setInstrument(instrument.jIntValue());
-        patt = patt.setTempo(tempo.jIntValue());
-
-        root.getSetlXPatternManager().addPattern(patternName.toString(), patt);
-
+       final StringBuilder out = new StringBuilder();
+       final Value patternName = args.get(PATTERN_NAMES); //Extracts the name of the patterns
+       patternName.appendUnquotedString(state, out, 0);
+       String patternNames[] = out.toString().split("\\s+"); //We can play multiple patterns at once by seperating them
+                                                                    //with a blank
+        root.getSetlxMusicPlayer().play(patternNames); //plays the patterns simultaniously
         return SetlBoolean.TRUE;
     }
 

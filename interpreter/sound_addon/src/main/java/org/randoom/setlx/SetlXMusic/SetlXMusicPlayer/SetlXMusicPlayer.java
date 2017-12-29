@@ -2,6 +2,7 @@ package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
+import org.randoom.setlx.Exceptions.NullArgumentsException;
 import org.randoom.setlx.Exceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.SetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
@@ -39,8 +40,16 @@ public class SetlXMusicPlayer implements iSetlXMusicPlayer{
 
     public static void main(String[] args) throws InterruptedException {
             iSetlXPatternManager m = new SetlXPatternManager();
-        m.addPattern("Test1", new Pattern("A B"));
-        m.addPattern("Test2", new Pattern("B C"));
+        try {
+            m.addPattern("Test1", new Pattern("A B"));
+        } catch (NullArgumentsException e) {
+            e.printStackTrace();
+        }
+        try {
+            m.addPattern("Test2", new Pattern("B C"));
+        } catch (NullArgumentsException e) {
+            e.printStackTrace();
+        }
         iSetlXMusicPlayer pl = new SetlXMusicPlayer(m);
         try {
             pl.play("Test2", "Test1");

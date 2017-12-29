@@ -1,8 +1,8 @@
-package org.randoom.setlx;
+package org.randoom.setlx.SetlXMusic;
 
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
-import org.randoom.setlx.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 
 /**
  * provides access to every components of the sound plugin
@@ -14,7 +14,7 @@ public interface iSetlXSoundPlugin {
      * Returns the instance of the Music Manger
      * @return
      */
-    iSetlXPatternManager getSetlXMusicManager();
+    iSetlXPatternManager getSetlXPatternManager();
 
     /**
      * returns the instance of the music player

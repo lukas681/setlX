@@ -1,6 +1,7 @@
 package org.randoom.setlx.SetlXMusic.Patterns;
 
 import org.jfugue.pattern.Pattern;
+import org.randoom.setlx.Exceptions.NullArgumentsException;
 
 import java.util.HashMap;
 
@@ -17,7 +18,7 @@ public interface iSetlXPatternStorage {
      * @param name
      * @param pattern
      */
-    void addPattern(String name, Pattern pattern);
+    void addPattern(String name, Pattern pattern) throws NullArgumentsException;
 
     /**
      * Checks, if there is also a registed pattern with this name.

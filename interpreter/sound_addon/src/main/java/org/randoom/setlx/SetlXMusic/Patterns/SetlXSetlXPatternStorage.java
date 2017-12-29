@@ -1,6 +1,7 @@
 package org.randoom.setlx.SetlXMusic.Patterns;
 
 import org.jfugue.pattern.Pattern;
+import org.randoom.setlx.Exceptions.NullArgumentsException;
 
 import java.util.HashMap;
 
@@ -12,9 +13,12 @@ public class SetlXSetlXPatternStorage implements iSetlXPatternStorage {
     HashMap<String, Pattern> patternStorage = new HashMap<>();
 
     @Override
-        public void addPattern(String name, Pattern pattern) {
-        System.out.println(this);
-            patternStorage.put(name, pattern);
+        public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
+            if(name!=null&&pattern!=null) {
+                patternStorage.put(name, pattern);
+            }else{
+                throw new NullArgumentsException();
+            }
     }
 
     @Override

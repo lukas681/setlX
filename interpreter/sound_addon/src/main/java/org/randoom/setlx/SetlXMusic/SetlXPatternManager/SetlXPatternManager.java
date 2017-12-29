@@ -2,9 +2,12 @@ package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
+import org.randoom.setlx.Exceptions.NullArgumentsException;
+import org.randoom.setlx.Exceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
 import org.randoom.setlx.SetlXMusic.Patterns.SetlXSetlXPatternStorage;
 import org.randoom.setlx.SetlXMusic.Patterns.iSetlXPatternStorage;
+import org.randoom.setlx.exceptions.SetlException;
 
 import java.util.HashMap;
 
@@ -25,7 +28,7 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     }
 
     @Override
-    public void addPattern(String name, Pattern pattern) {
+    public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
         patternStorage.addPattern(name, pattern);
     }
 
@@ -39,9 +42,9 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     }
 
     @Override
-    public void modifyPatternProperty(String patternName, PatternParameters param, int value) {
+    public void modifyPatternProperty(String patternName, PatternParameters param, int value) throws SetlException{
         if(!patternStorage.checkExisting(patternName)){
-            return; //TODO Maybe method to boolean in order to cached not found exceptions? Or maybe impkement a item not found exception
+            throw new PatternNotFoundException();
         }
         switch(param){
             case TEMPO:

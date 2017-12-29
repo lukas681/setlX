@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXRealTimePlayer;
+package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.theory.Note;

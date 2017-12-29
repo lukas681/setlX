@@ -14,11 +14,11 @@ import java.util.HashMap;
 
 public class PD_addPattern extends PreDefinedProcedure {
 
-    private final static ParameterDefinition PATTERN_NAME = createOptionalParameter("patternName", SetlString.NIL);
-    private final static ParameterDefinition PATTERN = createOptionalParameter("pattern", SetlDouble.ONE);
+    private final static ParameterDefinition PATTERN_NAME = createOptionalParameter("patternName", SetlString.NIL); //TODO Autocount
+    private final static ParameterDefinition PATTERN = createParameter("pattern");
     private final static ParameterDefinition TEMPO = createOptionalParameter("tempo", SetlDouble.ZERO);
-    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ZERO);
-    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ZERO);
+    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
+    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ONE);
 
     public  final static PreDefinedProcedure DEFINITION = new PD_addPattern();
 
@@ -35,7 +35,7 @@ public class PD_addPattern extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        final Value patternName = args.get(PATTERN_NAME);
+        final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
         final Value pattern = args.get(PATTERN);
         final Value tempo = args.get(TEMPO);
         final Value instrument = args.get(INSTRUMENT);
@@ -45,8 +45,7 @@ public class PD_addPattern extends PreDefinedProcedure {
                 .setVoice(voice.jIntValue())
                 .setInstrument(instrument.jIntValue())
                 .setTempo(tempo.jIntValue());
-
-        root.getSetlXPatternManager().addPattern(patternName.toString(), patt);
+        root.getSetlXPatternManager().addPattern(patternName.toString().replaceAll("\"",""), patt);
         return SetlBoolean.TRUE;
     }
 

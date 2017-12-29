@@ -31,10 +31,11 @@ public class PD_playTone extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
+        //Extracts input values
         final Value note = args.get(NOTE);
         final Value duration = args.get(DURATION);
         final Value instrument = args.get(INSTRUMENT); //TODO resolve instrument enum
-
+    //TODO Cast Values
         rtplayer.changeInstrument(instrument.jIntValue());
         rtplayer.play(NoteFactory.getInstance().createNote(note.jIntValue(), duration.jDoubleValue())); //TODO Make instrument optional
 

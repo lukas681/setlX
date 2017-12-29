@@ -42,11 +42,18 @@ public class PD_addPattern extends PreDefinedProcedure {
         final Value voice = args.get(VOICE);
 
         Pattern patt = new Pattern(pattern.toString())
-                .setVoice(voice.jIntValue())
-                .setInstrument(instrument.jIntValue())
-                .setTempo(tempo.jIntValue());
+                .setVoice(voice.toJIntValue(state))
+                .setInstrument(instrument.toJIntValue(state))
+                .setTempo(checkTempo(tempo.toJIntValue(state)));
         root.getSetlXPatternManager().addPattern(patternName.toString().replaceAll("\"",""), patt);
         return SetlBoolean.TRUE;
+    }
+
+    /**
+     * Because optional Parameters just allow some predefined double values, we set {@link SetlDouble} ZERO to a defautl of 120 BPM
+     */
+    public int checkTempo(int tempo){
+        return tempo==0?120:tempo;
     }
 
 }

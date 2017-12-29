@@ -1,0 +1,10 @@
+
+addPattern("Test1", "|Dq Cq Cq Cq");
+play("Test1");
+addPattern("Test2", "Ch Gh fh Ch"); //whole notes: also q h ...
+play("Test2");
+modifyPatternProperty("Test2" ,"VOICE", 2);
+modifyPatternProperty("Test2" ,"INSTRUMENT", 8);
+play("Test1 Test2");
+showPatterns();
+

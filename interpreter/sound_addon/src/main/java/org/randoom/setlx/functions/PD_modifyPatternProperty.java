@@ -54,6 +54,7 @@ public class PD_modifyPatternProperty extends PreDefinedProcedure {
      * We want to convert a argument, that says, what property we want to modify into an {@link PatternParameters} value.
      * Therefore, it just parses the input string.
      * @param s
+     *
      * @return
      */
     public PatternParameters parseProperty(String s){

@@ -17,6 +17,7 @@ import java.util.HashMap;
  *      Implements the Beta distribution. x != 0, x != 1; alpha,beta > 0
  */
 
+
 public class PD_stat_beta extends PreDefinedProcedure {
 
     private final static ParameterDefinition X   = createParameter("x");

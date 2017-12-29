@@ -11,14 +11,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <setlX.java.version>1.7</setlX.java.version>
+        <setlX.java.version>1.8</setlX.java.version>
         <setlX.antlr.version>4.5.3</setlX.antlr.version>
     </properties>
 
     <modules>
         <module>core</module>
         <module>pc_ui</module>
-
+        <module>sound_addon</module>
         <module>gfx_addon</module>
         <module>plot_addon</module>
         <module>stat_addon</module>
@@ -70,6 +70,14 @@
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
             </dependency>
+            <dependency>
+                <groupId>com.explodingart</groupId>
+                <artifactId>jmusic</artifactId>
+                <version>1.6.4.1</version>
+            </dependency>
+
+
+
 
             <dependency>
                 <groupId>org.apache.maven</groupId>
@@ -169,7 +177,7 @@
                     <target>${setlX.java.version}</target>
                     <showWarnings>true</showWarnings>
                     <compilerArgs>
-                        <arg>-Werror</arg>
+                        <!--<arg>-Werror</arg>-->
                         <arg>-Xlint:all</arg>
                     </compilerArgs>
                     <debug>true</debug>

@@ -7,7 +7,7 @@ import org.jfugue.theory.Note;
  */
 public class NoteFactory implements iNoteFactory {
 
-    private static NoteFactory instance;
+    private static iNoteFactory instance;
 
     /**
      * Declaring a private Constructor, because we just need one NoteFactory

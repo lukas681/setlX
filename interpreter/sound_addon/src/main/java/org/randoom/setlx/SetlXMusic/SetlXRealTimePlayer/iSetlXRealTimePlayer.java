@@ -1,5 +1,6 @@
 package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
+import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.theory.Note;
 
@@ -9,7 +10,6 @@ import org.jfugue.theory.Note;
  */
 
 public interface iSetlXRealTimePlayer {
-    boolean isRunning = false;
 
     void startPlayer();
 
@@ -17,7 +17,7 @@ public interface iSetlXRealTimePlayer {
 
     void play(PatternProducer pattern);
 
-    void play(Note note);
+    void play(Atom musicalUnit);
 
     void changeInstrument(int instrument);
 

@@ -1,12 +1,18 @@
 package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 
 import org.jfugue.pattern.Pattern;
+import org.jfugue.pattern.PatternProducer;
+import org.jfugue.player.ManagedPlayer;
+import org.jfugue.player.ManagedPlayerListener;
 import org.jfugue.player.Player;
 import org.randoom.setlx.Exceptions.NullArgumentsException;
 import org.randoom.setlx.Exceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.SetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
+import org.randoom.setlx.exceptions.SetlException;
 
+import javax.sound.midi.Sequence;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,10 +21,43 @@ import java.util.HashMap;
  */
 public class SetlXMusicPlayer implements iSetlXMusicPlayer{
     iSetlXPatternManager musicSource;
-    Player player = new Player();
-
+    Player player;
+    Player str = new Player();
     public SetlXMusicPlayer(iSetlXPatternManager musicSource) {
         this.musicSource = musicSource;
+        player = new Player(); //Initialized the first player
+/*        player.getManagedPlayer().addManagedPlayerListener(new ManagedPlayerListener() {
+            @Override
+            public void onStarted(Sequence sequence) {
+                System.out.println("Started");
+            }
+
+            @Override
+            public void onFinished() {
+                System.out.println("Finished");
+            }
+
+            @Override
+            public void onPaused() {
+                System.out.println("Paused");
+            }
+
+            @Override
+            public void onResumed() {
+                System.out.println("Resumed");
+            }
+
+            @Override
+            public void onSeek(long l) {
+                System.out.println("Seek" + l);
+            }
+
+            @Override
+            public void onReset() {
+                System.out.println("Reset");
+            }
+        });
+*/
     }
 
     @Override
@@ -31,37 +70,71 @@ public class SetlXMusicPlayer implements iSetlXMusicPlayer{
                 throw new PatternNotFoundException();
             }
         }
-        player = new Player(); //TODO figure out, why the player is delaying. This is just a workaround.
-        //I think, we have to reinstanceiate the player on every call, because it is not designed for a Real Time purpose.
-
         player.play(temp.toArray(new Pattern[temp.size()]));
+        player = new Player(); //TODO A bug, that is delaying the start of new Patterns. Keep track of future updates of the framework
+
     }
 
+    public static void main(String[] args) throws InterruptedException, SetlException {
+        Player p = new Player();
+        p.getManagedPlayer().addManagedPlayerListener(new ManagedPlayerListener() {
+            @Override
+            public void onStarted(Sequence sequence) {
+                System.out.println("Started");
+            }
 
-    public static void main(String[] args) throws InterruptedException {
+            @Override
+            public void onFinished() {
+                System.out.println("Finished");
+            }
+
+            @Override
+            public void onPaused() {
+
+            }
+
+            @Override
+            public void onResumed() {
+
+            }
+
+            @Override
+            public void onSeek(long l) {
+
+            }
+
+            @Override
+            public void onReset() {
+
+            }
+        });
             iSetlXPatternManager m = new SetlXPatternManager();
+            Pattern p1 = new Pattern("C F G C");
+        System.out.println(p1.toString());
         try {
-            m.addPattern("Test1", new Pattern("A B"));
+            m.addPattern("Test1", p1);
         } catch (NullArgumentsException e) {
             e.printStackTrace();
         }
         try {
-            m.addPattern("Test2", new Pattern("B C"));
+            m.addPattern("Test2", new Pattern("G C D G"));
         } catch (NullArgumentsException e) {
             e.printStackTrace();
         }
         iSetlXMusicPlayer pl = new SetlXMusicPlayer(m);
+        m.modifyPatternProperty("Test2", PatternParameters.VOICE, 2);
+        m.modifyPatternProperty("Test1", PatternParameters.VOICE, 1);
+        System.out.println(m.getPattern("Test1").toString());
         try {
             pl.play("Test2", "Test1");
         } catch (PatternNotFoundException e) {
             e.printStackTrace();
         }
-        Thread.sleep(5000);
-        try {
-            pl.play("Test2");
-        } catch (PatternNotFoundException e) {
-            e.printStackTrace();
-        }
+        //      pl.play("Test2");
+        //     pl.play("Test2");
+        Thread.sleep(100);
+        System.out.println("Go");
+        //      pl.play("Test2");
         System.out.println("Tewat");
     }
 }

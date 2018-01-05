@@ -41,10 +41,11 @@ public class PD_addPattern extends PreDefinedProcedure {
         final Value instrument = args.get(INSTRUMENT);
         final Value voice = args.get(VOICE);
 
-        Pattern patt = new Pattern(pattern.toString())
-                .setVoice(voice.toJIntValue(state))
-                .setInstrument(instrument.toJIntValue(state))
-                .setTempo(checkTempo(tempo.toJIntValue(state)));
+        Pattern patt = new Pattern(pattern.getUnquotedString(state)) //Fucking 3hours of debugging... just to see, that there were "" put in...
+            .setInstrument(instrument.toJIntValue(state))
+            .setTempo(checkTempo(tempo.toJIntValue(state)))
+            .setVoice(voice.toJIntValue(state));
+
         root.getSetlXPatternManager().addPattern(patternName.toString().replaceAll("\"",""), patt);
         return SetlBoolean.TRUE;
     }

@@ -1,5 +1,6 @@
 package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
+import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
@@ -37,8 +38,8 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     }
 
     @Override
-    public void play(Note note) {
-        rtplayer.play(note);
+    public void play(Atom musicalUnit) {
+        rtplayer.play(musicalUnit);
     }
 
     @Override

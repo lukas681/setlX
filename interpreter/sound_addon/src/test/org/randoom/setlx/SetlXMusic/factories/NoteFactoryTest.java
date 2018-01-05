@@ -10,7 +10,7 @@ public class NoteFactoryTest {
     iNoteFactory fac;
     @Before
     public void setUp() throws Exception {
-        fac = NoteFactory.getInstance();
+        fac = new NoteFactory();
     }
 
     @After

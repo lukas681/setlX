@@ -16,11 +16,11 @@ import java.util.HashMap;
 
 public class PD_playTone extends PreDefinedProcedure {
 
-    private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO);
+    private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO); //TODO Also accept an String for note value
     private final static ParameterDefinition DURATION = createOptionalParameter("duration", SetlDouble.ZERO);
-    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("duration", SetlDouble.ONE);
-    private final static ParameterDefinition VOICE = createOptionalParameter("duration", SetlDouble.ONE);
-    private final static ParameterDefinition LAYER = createOptionalParameter("duration", SetlDouble.ONE);
+    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
+    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ONE);
+    private final static ParameterDefinition LAYER = createOptionalParameter("layer", SetlDouble.ONE);
 
     public  final static PreDefinedProcedure DEFINITION = new PD_playTone();
 

@@ -11,9 +11,8 @@ import org.jfugue.theory.Note;
 
 public interface iSetlXRealTimePlayer {
 
-    void startPlayer();
 
-    void stopPlayer();
+    void stopNotes();
 
     /**
      * simply plays a musical pattern. This pattern is accessing to the global properties of the

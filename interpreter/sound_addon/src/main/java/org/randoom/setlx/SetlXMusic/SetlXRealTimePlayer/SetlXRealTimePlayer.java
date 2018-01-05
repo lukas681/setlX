@@ -1,7 +1,11 @@
 package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
 import org.jfugue.pattern.Atom;
+import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.PatternProducer;
+import org.jfugue.player.SynthesizerManager;
+import org.jfugue.realtime.RealtimeInterpolator;
+import org.jfugue.realtime.RealtimeMidiParserListener;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
@@ -32,17 +36,19 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     }
 
     @Override
-    public void startPlayer() {
-    }
-
-    @Override
-    public void stopPlayer() {
-
+    public void stopNotes() {
+        rtplayer.close();
+        try {
+            //TODO Not a nice solutions, but there is no option to stop RealTime playbacks
+            rtplayer = new RealtimePlayer();
+        } catch (MidiUnavailableException e) {
+            e.printStackTrace(); //TODO Throw Execption for this
+        }
     }
 
     @Override
     public void play(PatternProducer pattern) {
-
+        rtplayer.play(pattern);
     }
 
     @Override
@@ -68,5 +74,11 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     @Override
     public void setNoteDuration(int duration) {
         this.noteDuration = duration;
+    }
+
+    public static void main(String[] args) {
+        SetlXRealTimePlayer real = new SetlXRealTimePlayer();
+        real.play(new Pattern("C D E F G A B C"));
+        real.stopNotes();
     }
 }

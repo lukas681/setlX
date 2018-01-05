@@ -18,10 +18,9 @@ public class PD_playTone extends PreDefinedProcedure {
 
     private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO);
     private final static ParameterDefinition DURATION = createOptionalParameter("duration", SetlDouble.ZERO);
-    //TODO implement
-     private final static ParameterDefinition INSTRUMENT = createOptionalParameter("duration", SetlDouble.ONE);
-    private final static ParameterDefinition VOICE = createOptionalParameter("duration", SetlDouble.ZERO);
-    private final static ParameterDefinition LAYER = createOptionalParameter("duration", SetlDouble.ZERO);
+    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("duration", SetlDouble.ONE);
+    private final static ParameterDefinition VOICE = createOptionalParameter("duration", SetlDouble.ONE);
+    private final static ParameterDefinition LAYER = createOptionalParameter("duration", SetlDouble.ONE);
 
     public  final static PreDefinedProcedure DEFINITION = new PD_playTone();
 
@@ -32,6 +31,8 @@ public class PD_playTone extends PreDefinedProcedure {
         addParameter(NOTE);
         addParameter(DURATION);
         addParameter(INSTRUMENT);
+        addParameter(VOICE);
+        addParameter(LAYER);
     }
 
     @Override
@@ -40,9 +41,12 @@ public class PD_playTone extends PreDefinedProcedure {
         final Value note = args.get(NOTE);
         final Value duration = args.get(DURATION);
         final Value instrument = args.get(INSTRUMENT);
+        final Value voice = args.get(VOICE);
+        final Value layer = args.get(LAYER);
+        //TODO check byte outer bounds
+        rtplayer.play((byte)voice.toJIntValue(state), (byte)layer.toJIntValue(state), (byte)instrument.toJIntValue(state),
+                note.toJIntValue(state), duration.toJDoubleValue(state));
 
-        rtplayer.play(new Atom((byte)1,(byte)1,(byte)instrument.toJIntValue(state),NoteFactory.getInstance().createNote(note.jIntValue(), duration.jDoubleValue()))); //TODO Make instrument optional
-        //TODO Make it more beautiful
         return SetlBoolean.TRUE;
     }
 

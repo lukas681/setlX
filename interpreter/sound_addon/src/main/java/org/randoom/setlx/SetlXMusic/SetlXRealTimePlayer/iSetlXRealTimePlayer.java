@@ -15,9 +15,19 @@ public interface iSetlXRealTimePlayer {
 
     void stopPlayer();
 
+    /**
+     * simply plays a musical pattern. This pattern is accessing to the global properties of the
+     * iSetlXRealTimePlayer
+     * @param pattern
+     */
     void play(PatternProducer pattern);
 
     void play(Atom musicalUnit);
+
+    void play(byte voice, byte layer, byte instrument, Note note);
+
+    void play(byte voice, byte layer, byte instrument, int value, double duration);
+
 
     void changeInstrument(int instrument);
 

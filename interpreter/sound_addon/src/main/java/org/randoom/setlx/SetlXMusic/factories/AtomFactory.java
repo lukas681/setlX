@@ -4,11 +4,6 @@ import org.jfugue.pattern.Atom;
 import org.jfugue.theory.Note;
 
 public class AtomFactory implements iAtomFactory{
-    private static iAtomFactory instance;
-
-    private AtomFactory(){
-
-    }
 
     @Override
     public Atom createAtom(Note note) {
@@ -30,11 +25,4 @@ public class AtomFactory implements iAtomFactory{
         return new Atom(voice, layer, instrument, note);
     }
 
-    public static iAtomFactory getInstance(){
-        if(instance == null) {
-            instance = new AtomFactory();
-
-        }
-        return instance;
-    }
 }

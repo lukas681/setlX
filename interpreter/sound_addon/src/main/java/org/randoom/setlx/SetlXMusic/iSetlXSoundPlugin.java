@@ -3,6 +3,8 @@ package org.randoom.setlx.SetlXMusic;
 import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.factories.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.iNoteFactory;
 
 /**
  * provides access to every components of the sound plugin
@@ -27,4 +29,5 @@ public interface iSetlXSoundPlugin {
      *  for playing tones in real time without preprocessing.
      */
     iSetlXRealTimePlayer getSetlXRealTimePlayer();
+
 }

@@ -7,6 +7,8 @@ import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
 
 public class SetlXSoundPlugin implements iSetlXSoundPlugin {
 
@@ -15,6 +17,9 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
     private iSetlXMusicPlayer musicPlayer;
     private iSetlXPatternManager patternManager;
     private iSetlXRealTimePlayer realTimePlayer;
+
+    private AtomFactory atomFactory;
+    public NoteFactory noteFactory;
 
     private SetlXSoundPlugin(){
         initializeComponents();
@@ -28,6 +33,8 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
         patternManager = new SetlXPatternManager();
         musicPlayer = new SetlXMusicPlayer(patternManager);
         realTimePlayer = new SetlXRealTimePlayer();
+        atomFactory = new AtomFactory();
+        noteFactory = new NoteFactory();
     }
     @Override
     public iSetlXPatternManager getSetlXPatternManager() {

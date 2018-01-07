@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
+package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;

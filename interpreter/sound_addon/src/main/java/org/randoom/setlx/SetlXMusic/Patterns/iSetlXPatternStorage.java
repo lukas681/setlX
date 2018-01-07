@@ -1,7 +1,8 @@
 package org.randoom.setlx.SetlXMusic.Patterns;
 
 import org.jfugue.pattern.Pattern;
-import org.randoom.setlx.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 
 import java.util.HashMap;
 
@@ -34,7 +35,7 @@ public interface iSetlXPatternStorage {
      * @param name
      * @return
      */
-    Pattern getPattern(String name);
+    Pattern getPattern(String name) throws PatternNotFoundException;
 
     /**
      * Allows to remove a pattern from the storage by using a symbolic name

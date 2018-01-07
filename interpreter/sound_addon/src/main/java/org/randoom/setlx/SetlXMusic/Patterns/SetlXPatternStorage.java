@@ -1,14 +1,15 @@
 package org.randoom.setlx.SetlXMusic.Patterns;
 
 import org.jfugue.pattern.Pattern;
-import org.randoom.setlx.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 
 import java.util.HashMap;
 
 /**
  *
  */
-public class SetlXSetlXPatternStorage implements iSetlXPatternStorage {
+public class SetlXPatternStorage implements iSetlXPatternStorage {
 
     HashMap<String, Pattern> patternStorage = new HashMap<>();
 
@@ -27,8 +28,12 @@ public class SetlXSetlXPatternStorage implements iSetlXPatternStorage {
     }
 
     @Override
-    public Pattern getPattern(String name) {
-        return patternStorage.get(name);
+    public Pattern getPattern(String name)throws PatternNotFoundException {
+        Pattern tmp = patternStorage.get(name);
+        if(tmp==null){
+            throw new PatternNotFoundException();
+        }
+        return tmp;
     }
 
     @Override
@@ -40,6 +45,5 @@ public class SetlXSetlXPatternStorage implements iSetlXPatternStorage {
     public HashMap<String, Pattern> getAllPatterns() {
         return patternStorage;
     }
-
 
 }

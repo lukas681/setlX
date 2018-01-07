@@ -1,7 +1,8 @@
 package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
-import org.randoom.setlx.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
 import org.randoom.setlx.exceptions.SetlException;
 
@@ -25,7 +26,7 @@ public interface iSetlXPatternManager {
      * @param patternName
      * @param notePattern
      */
-    void addToPattern(String patternName, String notePattern);
+    void addToPattern(String patternName, String notePattern) throws PatternNotFoundException;
 
     /**
      * Can be used to add notes to an existing pattern and specify, how often it should be repeated.
@@ -33,7 +34,7 @@ public interface iSetlXPatternManager {
      * @param notePattern
      * @param repetitions
      */
-    void addToPattern(String patternName, String notePattern, int repetitions);
+    void addToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException;
 
     /**
      * Modifies a porperty of a pattern.
@@ -55,7 +56,17 @@ public interface iSetlXPatternManager {
      * @param patternName
      * @return
      */
-    Pattern getPattern(String patternName);
+    Pattern getPattern(String patternName) throws PatternNotFoundException;
 
     HashMap<String, Pattern> getAllPatterns();
+
+    /**
+     * Duplicates an existing pattern.
+     * There are many usecases for this:
+     *  1) A pattern is used in different voices at the same time
+     *  2) A pattern is transposed. This is useful, when making chords or just play the melody in an
+     *  other tonality.
+     *  @param newName The name of the duplicate pattern
+     */
+    void duplicatePattern(String sourceName, String newName) throws PatternNotFoundException, NullArgumentsException;
 }

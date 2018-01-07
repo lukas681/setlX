@@ -1,17 +1,10 @@
 package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
-import org.jfugue.pattern.Atom;
-import org.jfugue.pattern.Pattern;
-import org.jfugue.pattern.PatternProducer;
-import org.jfugue.player.SynthesizerManager;
-import org.jfugue.realtime.RealtimeInterpolator;
-import org.jfugue.realtime.RealtimeMidiParserListener;
+import org.jfugue.pattern.*;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
-import org.randoom.setlx.SetlXMusic.factories.iAtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.iNoteFactory;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
+import org.randoom.setlx.SetlXMusic.factories.*;
 
 import javax.sound.midi.MidiUnavailableException;
 
@@ -25,24 +18,27 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     iNoteFactory noteFac;
     iAtomFactory atomFac;
 
-    public SetlXRealTimePlayer() {
+    public SetlXRealTimePlayer() throws SetlXMidiNotAvailableException {
         try {
             rtplayer = new RealtimePlayer();
         }catch(MidiUnavailableException midiException){
-            System.out.println("The Midi device is not availbable"); //TODO Add Exception for this
+            throw new SetlXMidiNotAvailableException();
         }
         noteFac = new NoteFactory();
         atomFac = new AtomFactory();
     }
 
+
     @Override
-    public void stopNotes() {
+    public void stopNotes() throws SetlXMidiNotAvailableException{
         rtplayer.close();
         try {
-            //TODO Not a nice solutions, but there is no option to stop RealTime playbacks
+            //We replace the current RealTime player with an new object.
+            //Maybe in a future version of jfugue it becomes possible
+            //to reset a Real Time palyer
             rtplayer = new RealtimePlayer();
         } catch (MidiUnavailableException e) {
-            e.printStackTrace(); //TODO Throw Execption for this
+            throw new SetlXMidiNotAvailableException();
         }
     }
 
@@ -77,8 +73,13 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     }
 
     public static void main(String[] args) {
-        SetlXRealTimePlayer real = new SetlXRealTimePlayer();
-        real.play(new Pattern("C D E F G A B C"));
-        real.stopNotes();
+        SetlXRealTimePlayer pl = null;
+        try {
+            pl = new SetlXRealTimePlayer();
+        } catch (SetlXMidiNotAvailableException e) {
+            e.printStackTrace();
+        }
+        pl.play(new Atom((byte)1,(byte)1,(byte)1, "Cw" ));
+        System.out.println("Stop");
     }
 }

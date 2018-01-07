@@ -1,4 +1,4 @@
-package org.randoom.setlx.Exceptions;
+package org.randoom.setlx.SetlXMusic.Patterns.Exceptions;
 
         import org.randoom.setlx.exceptions.CatchableInSetlXException;
 
@@ -7,6 +7,6 @@ package org.randoom.setlx.Exceptions;
  */
 public class PatternNotFoundException extends CatchableInSetlXException {
     public PatternNotFoundException() {
-        super("Musical pattern you wanted to look up could not be found");
+        super("The nusical pattern you wanted to look up could not be found in all currently saved patterns.");
     }
 }

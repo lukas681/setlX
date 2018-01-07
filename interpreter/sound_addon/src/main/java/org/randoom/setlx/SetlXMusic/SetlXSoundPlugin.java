@@ -1,10 +1,11 @@
 package org.randoom.setlx.SetlXMusic;
 
-import org.randoom.setlx.SetlXMusic.SetlXPatternManager.SetlXPatternManager;
-import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXPatternManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.SetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
@@ -21,14 +22,14 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
     private AtomFactory atomFactory;
     public NoteFactory noteFactory;
 
-    private SetlXSoundPlugin(){
+    private SetlXSoundPlugin() throws SetlXMidiNotAvailableException { //TODO SetlXMidiNotAvailable lassen?
         initializeComponents();
     }
 
     /**
      * Initializes all components: Creates new instances.
       */
-    private void initializeComponents(){
+    private void initializeComponents() throws SetlXMidiNotAvailableException {
 
         patternManager = new SetlXPatternManager();
         musicPlayer = new SetlXMusicPlayer(patternManager);
@@ -53,7 +54,11 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
 
     public static SetlXSoundPlugin getInstance(){
         if(setlxSoundPlugin == null){ //Singleton
-            setlxSoundPlugin = new SetlXSoundPlugin();
+            try {
+                setlxSoundPlugin = new SetlXSoundPlugin();
+            } catch (SetlXMidiNotAvailableException e) {
+                e.printStackTrace();
+            }
         }
         return setlxSoundPlugin;
     }

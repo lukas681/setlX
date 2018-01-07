@@ -1,11 +1,11 @@
-package org.randoom.setlx.SetlXMusic.SetlXPatternManager;
+package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
-import org.randoom.setlx.Exceptions.NullArgumentsException;
-import org.randoom.setlx.Exceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXSetlXPatternStorage;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternStorage;
 import org.randoom.setlx.SetlXMusic.Patterns.iSetlXPatternStorage;
 import org.randoom.setlx.exceptions.SetlException;
 
@@ -23,7 +23,7 @@ public class SetlXPatternManager implements iSetlXPatternManager {
      * Default constructor for {@link SetlXPatternManager}. Creates a new P
      */
     public SetlXPatternManager(){
-        patternStorage = new SetlXSetlXPatternStorage(); //Creates a new Pattern Storage for future music patterns
+        patternStorage = new SetlXPatternStorage(); //Creates a new Pattern Storage for future music patterns
         player = new Player();
     }
 
@@ -33,11 +33,11 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     }
 
     @Override
-    public void addToPattern(String patternName, String notePattern) {
+    public void addToPattern(String patternName, String notePattern) throws PatternNotFoundException {
         patternStorage.getPattern(patternName).add(notePattern);
     }
     @Override
-    public void addToPattern(String patternName, String notePattern, int repetitions) {
+    public void addToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException {
         patternStorage.getPattern(patternName).add(notePattern, repetitions);
     }
 
@@ -66,8 +66,20 @@ public class SetlXPatternManager implements iSetlXPatternManager {
         }
     }
     @Override
-    public Pattern getPattern(String name){
+    public Pattern getPattern(String name) throws PatternNotFoundException {
     return patternStorage.getPattern(name);
+    }
+
+
+    @Override
+    public void duplicatePattern(String sourceName, String newName) throws PatternNotFoundException, NullArgumentsException {
+        Pattern toCopy = getPattern(sourceName);
+        Pattern copy  = toCopy.repeat(1); //We want to copy the object
+                                    //Unfortunately, the Pattern Class does not implement
+                                    //the Clonable or Serializable interface making it impossible to (deep)
+                                    //copy an instance. The trick is here, that every method on a pattern returns
+                                    //a new pattern.
+        addPattern(newName, copy);
     }
 
     @Override

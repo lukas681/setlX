@@ -1,20 +1,17 @@
 package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 
 import org.jfugue.pattern.Pattern;
-import org.jfugue.pattern.PatternProducer;
-import org.jfugue.player.ManagedPlayer;
 import org.jfugue.player.ManagedPlayerListener;
 import org.jfugue.player.Player;
-import org.randoom.setlx.Exceptions.NullArgumentsException;
-import org.randoom.setlx.Exceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
-import org.randoom.setlx.SetlXMusic.SetlXPatternManager.SetlXPatternManager;
-import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXPatternManager;
 import org.randoom.setlx.exceptions.SetlException;
 
 import javax.sound.midi.Sequence;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Lukas on 28.12.2017.

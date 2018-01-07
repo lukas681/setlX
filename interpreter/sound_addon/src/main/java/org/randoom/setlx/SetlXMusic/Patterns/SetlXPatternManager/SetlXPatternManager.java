@@ -74,7 +74,7 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     @Override
     public void duplicatePattern(String sourceName, String newName) throws PatternNotFoundException, NullArgumentsException {
         Pattern toCopy = getPattern(sourceName);
-        Pattern copy  = toCopy.repeat(1); //We want to copy the object
+        Pattern copy  = new Pattern(toCopy); //We want to copy the object
                                     //Unfortunately, the Pattern Class does not implement
                                     //the Clonable or Serializable interface making it impossible to (deep)
                                     //copy an instance. The trick is here, that every method on a pattern returns

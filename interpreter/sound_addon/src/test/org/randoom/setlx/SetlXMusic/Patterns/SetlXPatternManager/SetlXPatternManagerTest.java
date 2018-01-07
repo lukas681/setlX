@@ -4,8 +4,6 @@ import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Objects;
-
 import static org.junit.Assert.*;
 
 public class SetlXPatternManagerTest {
@@ -45,7 +43,7 @@ public class SetlXPatternManagerTest {
     @Test
     public void duplicatePatternDoesNotReferenceToSameObject() throws Exception{
         mgr.duplicatePattern("Test","Test2");
-        assertTrue(mgr.getPattern("Test")==mgr.getPattern("Test2")); //Make sure, that both objects are different
+        assertFalse(mgr.getPattern("Test")==mgr.getPattern("Test2")); //Make sure, that both objects are different
     }
 
 }

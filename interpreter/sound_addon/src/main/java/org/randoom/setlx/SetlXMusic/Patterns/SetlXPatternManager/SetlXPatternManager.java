@@ -1,9 +1,9 @@
 package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
-import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.Token;
 import org.jfugue.player.Player;
+import org.jfugue.tools.GetPatternStats;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
@@ -19,8 +19,9 @@ import java.util.List;
  */
 public class SetlXPatternManager implements iSetlXPatternManager {
 
-    iSetlXPatternStorage patternStorage;
-    Player player;
+    private iSetlXPatternStorage patternStorage;
+    private Player player;
+    private GetPatternStats stats;
 
     /**
      * Default constructor for {@link SetlXPatternManager}. Creates a new P
@@ -28,6 +29,7 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     public SetlXPatternManager(){
         patternStorage = new SetlXPatternStorage(); //Creates a new Pattern Storage for future music patterns
         player = new Player();
+        stats = new GetPatternStats();
     }
 
     @Override
@@ -93,6 +95,24 @@ public class SetlXPatternManager implements iSetlXPatternManager {
                                     //a staccato string via the toString-method
 
         addPattern(newName, copy);
+    }
+
+    @Override
+    public HashMap<String, GetPatternStats.Stats> getDetailPatternStats(String patternName) throws PatternNotFoundException {
+        HashMap<String, GetPatternStats.Stats> statistics = new HashMap<>(); //TODO Do not parse it every time again for general and details stats
+        stats.parsePattern(patternStorage.getPattern(patternName),true);
+        statistics.put("Harmonic", stats.getHarmonicStats()) ;
+        statistics.put("Duration", stats.getDurationStats()) ;
+        statistics.put("Interval", stats.getIntervalStats()) ;
+        statistics.put("Pitch", stats.getPitchStats()) ;
+        statistics.put("Rest", stats.getRestStats());
+        return statistics;
+    }
+
+    @Override
+    public int[] getGeneralPatternStats(String patternName) throws PatternNotFoundException {
+        stats.parsePattern(patternStorage.getPattern(patternName), true);
+        return stats.getGeneralStats();
     }
 
     @Override

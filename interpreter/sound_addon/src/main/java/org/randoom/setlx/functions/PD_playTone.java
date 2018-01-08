@@ -1,11 +1,8 @@
 package org.randoom.setlx.functions;
 
-import org.jfugue.pattern.Atom;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
 import org.randoom.setlx.types.SetlDouble;
@@ -22,7 +19,7 @@ public class PD_playTone extends PreDefinedProcedure {
     private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ONE);
     private final static ParameterDefinition LAYER = createOptionalParameter("layer", SetlDouble.ONE);
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_playTone();
+    public final static PreDefinedProcedure DEFINITION = new PD_playTone();
 
     private iSetlXRealTimePlayer rtplayer = SetlXSoundPlugin.getInstance().getSetlXRealTimePlayer();
 
@@ -44,7 +41,7 @@ public class PD_playTone extends PreDefinedProcedure {
         final Value voice = args.get(VOICE);
         final Value layer = args.get(LAYER);
         //TODO check byte outer bounds
-        rtplayer.play((byte)voice.toJIntValue(state), (byte)layer.toJIntValue(state), (byte)instrument.toJIntValue(state),
+        rtplayer.play((byte) voice.toJIntValue(state), (byte) layer.toJIntValue(state), (byte) instrument.toJIntValue(state),
                 note.toJIntValue(state), duration.toJDoubleValue(state));
 
         return SetlBoolean.TRUE;

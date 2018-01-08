@@ -14,7 +14,7 @@ public class PD_duplicatePattern extends PreDefinedProcedure {
     private final static ParameterDefinition PATTERN_SOURCE_NAME = createParameter("patternSourceName");
     private final static ParameterDefinition PATTERN_NEW_NAME = createParameter("patternNewName");
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_duplicatePattern();
+    public final static PreDefinedProcedure DEFINITION = new PD_duplicatePattern();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 

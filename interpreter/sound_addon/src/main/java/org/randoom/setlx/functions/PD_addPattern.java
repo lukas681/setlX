@@ -22,7 +22,7 @@ public class PD_addPattern extends PreDefinedProcedure {
     private final static ParameterDefinition REPEAT = createOptionalParameter("repeat", SetlDouble.ONE); //TODO Implement That!
 
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_addPattern();
+    public final static PreDefinedProcedure DEFINITION = new PD_addPattern();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 
@@ -45,19 +45,19 @@ public class PD_addPattern extends PreDefinedProcedure {
         final Value voice = args.get(VOICE);
 
         Pattern patt = new Pattern(pattern.getUnquotedString(state)) //Fucking 3hours of debugging... just to see, that there were "" put in...
-            .setInstrument(instrument.toJIntValue(state)) //TODO Pattern Producer. Not nice to do it here...
-            .setTempo(checkTempo(tempo.toJIntValue(state))) //TODO Do NOT set values explicitly. Just Test, if you HAVE to...
-            .setVoice(voice.toJIntValue(state));
+                .setInstrument(instrument.toJIntValue(state)) //TODO Pattern Producer. Not nice to do it here...
+                .setTempo(checkTempo(tempo.toJIntValue(state))) //TODO Do NOT set values explicitly. Just Test, if you HAVE to...
+                .setVoice(voice.toJIntValue(state));
 
-        root.getSetlXPatternManager().addPattern(patternName.toString().replaceAll("\"",""), patt);
+        root.getSetlXPatternManager().addPattern(patternName.toString().replaceAll("\"", ""), patt);
         return SetlBoolean.TRUE;
     }
 
     /**
      * Because optional Parameters just allow some predefined double values, we set {@link SetlDouble} ZERO to a defautl of 120 BPM
      */
-    public int checkTempo(int tempo){
-        return tempo==0?120:tempo;
+    public int checkTempo(int tempo) {
+        return tempo == 0 ? 120 : tempo;
     }
 
 }

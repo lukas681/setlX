@@ -1,10 +1,14 @@
 package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 
-import org.jfugue.pattern.*;
+import org.jfugue.pattern.Atom;
+import org.jfugue.pattern.PatternProducer;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.factories.*;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.iNoteFactory;
 
 import javax.sound.midi.MidiUnavailableException;
 
@@ -21,7 +25,7 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     public SetlXRealTimePlayer() throws SetlXMidiNotAvailableException {
         try {
             rtplayer = new RealtimePlayer();
-        }catch(MidiUnavailableException midiException){
+        } catch (MidiUnavailableException midiException) {
             throw new SetlXMidiNotAvailableException();
         }
         noteFac = new NoteFactory();
@@ -30,7 +34,7 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
 
 
     @Override
-    public void stopNotes() throws SetlXMidiNotAvailableException{
+    public void stopNotes() throws SetlXMidiNotAvailableException {
         rtplayer.close();
         try {
             //We replace the current RealTime player with an new object.
@@ -70,16 +74,5 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     @Override
     public void setNoteDuration(int duration) {
         this.noteDuration = duration;
-    }
-
-    public static void main(String[] args) {
-        SetlXRealTimePlayer pl = null;
-        try {
-            pl = new SetlXRealTimePlayer();
-        } catch (SetlXMidiNotAvailableException e) {
-            e.printStackTrace();
-        }
-        pl.play(new Atom((byte)1,(byte)1,(byte)1, "Cw" ));
-        System.out.println("Stop");
     }
 }

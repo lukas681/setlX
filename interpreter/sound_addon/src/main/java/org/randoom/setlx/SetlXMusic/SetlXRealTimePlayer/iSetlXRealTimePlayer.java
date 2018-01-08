@@ -6,7 +6,6 @@ import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
 
 /**
- *
  * This players allows playing tones in Real Time without any preprocessing.
  */
 
@@ -21,6 +20,7 @@ public interface iSetlXRealTimePlayer {
     /**
      * simply plays a musical pattern. This pattern is accessing to the global properties of the
      * iSetlXRealTimePlayer
+     *
      * @param pattern
      */
     void play(PatternProducer pattern);

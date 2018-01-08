@@ -8,7 +8,7 @@ import org.jfugue.theory.Note;
 public class NoteFactory implements iNoteFactory {
 
     @Override
-    public Note createNote(){
+    public Note createNote() {
         return createNote(defaultNoteValue);
     }
 

@@ -3,7 +3,7 @@ package org.randoom.setlx.SetlXMusic.factories;
 import org.jfugue.pattern.Atom;
 import org.jfugue.theory.Note;
 
-public class AtomFactory implements iAtomFactory{
+public class AtomFactory implements iAtomFactory {
 
     @Override
     public Atom createAtom(Note note) {

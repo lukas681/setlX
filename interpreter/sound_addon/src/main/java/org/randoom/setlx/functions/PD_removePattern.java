@@ -13,7 +13,7 @@ public class PD_removePattern extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_removePattern();
+    public final static PreDefinedProcedure DEFINITION = new PD_removePattern();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 

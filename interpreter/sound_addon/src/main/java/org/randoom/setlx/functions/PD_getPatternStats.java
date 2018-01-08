@@ -16,7 +16,7 @@ public class PD_getPatternStats extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_getPatternStats();
+    public final static PreDefinedProcedure DEFINITION = new PD_getPatternStats();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 
@@ -30,21 +30,21 @@ public class PD_getPatternStats extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME);
         HashMap<String, GetPatternStats.Stats> detailStats = root.getSetlXPatternManager().getDetailPatternStats(patternName.getUnquotedString(state));
         int[] generalStats = root.getSetlXPatternManager().getGeneralPatternStats(patternName.getUnquotedString(state));
-        print(state, "Statistics for Pattern '"+ patternName.getUnquotedString(state)+"'" //prints the stats
-                +"\n~~~~~~~~~~GENERAL~~~~~~~~~~"+
-                "\nNumber of notes: " + generalStats[0]+
-                "\nNumber of rests: " + generalStats[1]+
+        print(state, "Statistics for Pattern '" + patternName.getUnquotedString(state) + "'" //prints the stats
+                + "\n~~~~~~~~~~GENERAL~~~~~~~~~~" +
+                "\nNumber of notes: " + generalStats[0] +
+                "\nNumber of rests: " + generalStats[1] +
                 "\nNumber of measures: " + generalStats[2] +
                 "\n~~~~~~~~~~DETAILS~~~~~~~~~~" +
                 "\n        [N, Avg, SD, Range]");
 
         Iterator<Map.Entry<String, GetPatternStats.Stats>> it = detailStats.entrySet().iterator();
-        while(it.hasNext()){ //Iterates over all detail stats
+        while (it.hasNext()) { //Iterates over all detail stats
             Map.Entry pair = it.next();
-            GetPatternStats.Stats s = (GetPatternStats.Stats)(pair.getValue());
-            print(state, "\n"+ pair.getKey().toString()+": " + s.getN() + " | "+s.getAverage()+" | " + s.getSD() + " | " + s.getRange());
+            GetPatternStats.Stats s = (GetPatternStats.Stats) (pair.getValue());
+            print(state, "\n" + pair.getKey().toString() + ": " + s.getN() + " | " + s.getAverage() + " | " + s.getSD() + " | " + s.getRange());
         }
-        print(state,"\n");
+        print(state, "\n");
         return SetlBoolean.TRUE;
     }
 

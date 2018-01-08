@@ -14,7 +14,7 @@ public class PD_addToPattern extends PreDefinedProcedure {
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
     private final static ParameterDefinition PATTERN_STRING = createParameter("patternString");
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_addToPattern();
+    public final static PreDefinedProcedure DEFINITION = new PD_addToPattern();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 

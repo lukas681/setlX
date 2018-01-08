@@ -14,12 +14,12 @@ public class SetlXPatternStorage implements iSetlXPatternStorage {
     HashMap<String, Pattern> patternStorage = new HashMap<>();
 
     @Override
-        public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
-            if(name!=null&&pattern!=null) {
-                patternStorage.put(name, pattern);
-            }else{
-                throw new NullArgumentsException();
-            }
+    public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
+        if (name != null && pattern != null) {
+            patternStorage.put(name, pattern);
+        } else {
+            throw new NullArgumentsException();
+        }
     }
 
     @Override
@@ -28,8 +28,8 @@ public class SetlXPatternStorage implements iSetlXPatternStorage {
     }
 
     @Override
-    public Pattern getPattern(String name)throws PatternNotFoundException {
-        if(!checkExisting(name)){
+    public Pattern getPattern(String name) throws PatternNotFoundException {
+        if (!checkExisting(name)) {
             throw new PatternNotFoundException();
         }
         return patternStorage.get(name);

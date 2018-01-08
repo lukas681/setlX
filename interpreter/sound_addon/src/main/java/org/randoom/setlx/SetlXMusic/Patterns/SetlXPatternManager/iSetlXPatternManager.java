@@ -49,7 +49,7 @@ public interface iSetlXPatternManager {
      * Deletes a pattern from this music manager
      * @param patternName
      */
-    void removePattern(String patternName);
+    void removePattern(String patternName) throws PatternNotFoundException;
 
     /**
      * Returns a specific pattern from the storage
@@ -61,7 +61,7 @@ public interface iSetlXPatternManager {
     HashMap<String, Pattern> getAllPatterns();
 
     /**
-     * Duplicates an existing pattern.
+     * Duplicates an existing pattern. It might loose explicit set settings.
      * There are many usecases for this:
      *  1) A pattern is used in different voices at the same time
      *  2) A pattern is transposed. This is useful, when making chords or just play the melody in an

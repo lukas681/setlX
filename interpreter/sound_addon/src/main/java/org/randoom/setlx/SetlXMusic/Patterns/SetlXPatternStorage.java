@@ -29,11 +29,10 @@ public class SetlXPatternStorage implements iSetlXPatternStorage {
 
     @Override
     public Pattern getPattern(String name)throws PatternNotFoundException {
-        Pattern tmp = patternStorage.get(name);
-        if(tmp==null){
+        if(!checkExisting(name)){
             throw new PatternNotFoundException();
         }
-        return tmp;
+        return patternStorage.get(name);
     }
 
     @Override

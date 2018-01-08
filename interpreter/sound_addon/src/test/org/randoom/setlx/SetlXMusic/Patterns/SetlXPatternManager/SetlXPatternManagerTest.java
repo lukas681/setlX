@@ -21,6 +21,7 @@ public class SetlXPatternManagerTest {
       */
     @Test
     public void duplicatePatternIsCreated() throws Exception {
+        mgr.getPattern("Test").setVoice(1).setInstrument(1).setTempo(120).setLayer(1);
         mgr.duplicatePattern("Test", "Test2");
         assertTrue(mgr.getAllPatterns().size()==2); //A new duplicate Element was added
         //not tested: the set tempo/voice and instrumentation, because we can not fetch those properties
@@ -44,6 +45,14 @@ public class SetlXPatternManagerTest {
     public void duplicatePatternDoesNotReferenceToSameObject() throws Exception{
         mgr.duplicatePattern("Test","Test2");
         assertFalse(mgr.getPattern("Test")==mgr.getPattern("Test2")); //Make sure, that both objects are different
+        assertFalse(mgr.getPattern("Test").getPattern()==mgr.getPattern("Test2").getPattern()); //Make sure, that both objects are different
+    }
+    @Test
+    public void duplicatePatternDoesRemoveExplicitSettings() throws Exception{
+        mgr.getPattern("Test").setInstrument(1);
+        mgr.addPattern("A",new Pattern("C D E F").setInstrument(2));
+        mgr.duplicatePattern("A","B");
+        assertTrue(mgr.getPattern("B").toString().compareTo("C D E F") == 0);
     }
 
 }

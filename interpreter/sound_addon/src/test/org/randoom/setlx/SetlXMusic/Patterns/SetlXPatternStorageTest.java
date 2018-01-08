@@ -62,6 +62,7 @@ public class SetlXPatternStorageTest {
     public void deletePattern() throws Exception {
         storage.addPattern("Test", new Pattern());
         storage.deletePattern("Test");
+        assertTrue(storage.getAllPatterns().size()==0);
     }
 
     @Test

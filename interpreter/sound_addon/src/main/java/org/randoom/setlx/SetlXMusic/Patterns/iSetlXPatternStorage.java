@@ -41,7 +41,7 @@ public interface iSetlXPatternStorage {
      * Allows to remove a pattern from the storage by using a symbolic name
      * @param name
      */
-    void deletePattern(String name);
+    void deletePattern(String name) throws PatternNotFoundException;
 
     /**
      * Returns all patterns, that are stored in this storage

@@ -3,12 +3,14 @@ package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.Token;
 import org.jfugue.player.Player;
+import org.jfugue.rhythm.Rhythm;
+import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternStorage;
-import org.randoom.setlx.SetlXMusic.Patterns.iSetlXPatternStorage;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.SetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.iSetlXMusicStorage;
 import org.randoom.setlx.exceptions.SetlException;
 
 import java.util.HashMap;
@@ -19,32 +21,38 @@ import java.util.List;
  */
 public class SetlXPatternManager implements iSetlXPatternManager {
 
-    private iSetlXPatternStorage patternStorage;
+    private iSetlXMusicStorage<Pattern> patternStorage;
+    private iSetlXMusicStorage<ChordProgression> chordProgressionStorage;
+    private iSetlXMusicStorage<Rhythm> rythmStorage;
+
     private Player player;
     private GetPatternStats stats;
 
     /**
-     * Default constructor for {@link SetlXPatternManager}. Creates a new P
+     * Default constructor for {@link SetlXPatternManager}. Creates a new Patternmanager
      */
     public SetlXPatternManager() {
-        patternStorage = new SetlXPatternStorage(); //Creates a new Pattern Storage for future music patterns
+        patternStorage = new SetlXMusicStorage<Pattern>(); //Creates a new Pattern Storage for future music patterns
+        chordProgressionStorage = new SetlXMusicStorage<ChordProgression>();
+        rythmStorage = new SetlXMusicStorage<Rhythm>();
+
         player = new Player();
         stats = new GetPatternStats();
     }
 
     @Override
     public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
-        patternStorage.addPattern(name, pattern);
+        patternStorage.addElement(name, pattern);
     }
 
     @Override
     public void addToPattern(String patternName, String notePattern) throws PatternNotFoundException {
-        patternStorage.getPattern(patternName).add(notePattern);
+        patternStorage.getElement(patternName).add(notePattern);
     }
 
     @Override
     public void addToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException {
-        patternStorage.getPattern(patternName).add(notePattern, repetitions);
+        patternStorage.getElement(patternName).add(notePattern, repetitions);
     }
 
     @Override
@@ -54,25 +62,25 @@ public class SetlXPatternManager implements iSetlXPatternManager {
         }
         switch (param) {
             case TEMPO:
-                patternStorage.getPattern(patternName).setTempo(value);
+                patternStorage.getElement(patternName).setTempo(value);
                 break;
             case INSTRUMENT:
-                patternStorage.getPattern(patternName).setInstrument(value);
+                patternStorage.getElement(patternName).setInstrument(value);
                 break;
             case VOICE:
-                patternStorage.getPattern(patternName).setVoice(value);
+                patternStorage.getElement(patternName).setVoice(value);
                 break;
         }
     }
 
     @Override
     public void removePattern(String patternName) throws PatternNotFoundException {
-        patternStorage.deletePattern(patternName);
+        patternStorage.deleteElement(patternName);
     }
 
     @Override
     public Pattern getPattern(String name) throws PatternNotFoundException {
-        return patternStorage.getPattern(name);
+        return patternStorage.getElement(name);
     }
 
 
@@ -102,7 +110,7 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     @Override
     public HashMap<String, GetPatternStats.Stats> getDetailPatternStats(String patternName) throws PatternNotFoundException {
         HashMap<String, GetPatternStats.Stats> statistics = new HashMap<>(); //TODO Do not parse it every time again for general and details stats
-        stats.parsePattern(patternStorage.getPattern(patternName), true);
+        stats.parsePattern(patternStorage.getElement(patternName), true);
         statistics.put("Harmonic", stats.getHarmonicStats());
         statistics.put("Duration", stats.getDurationStats());
         statistics.put("Interval", stats.getIntervalStats());
@@ -113,12 +121,12 @@ public class SetlXPatternManager implements iSetlXPatternManager {
 
     @Override
     public int[] getGeneralPatternStats(String patternName) throws PatternNotFoundException {
-        stats.parsePattern(patternStorage.getPattern(patternName), true);
+        stats.parsePattern(patternStorage.getElement(patternName), true);
         return stats.getGeneralStats();
     }
 
     @Override
     public HashMap<String, Pattern> getAllPatterns() {
-        return patternStorage.getAllPatterns();
+        return patternStorage.getAllElements();
     }
 }

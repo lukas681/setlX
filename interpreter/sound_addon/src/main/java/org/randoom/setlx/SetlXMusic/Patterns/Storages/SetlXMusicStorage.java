@@ -1,6 +1,6 @@
-package org.randoom.setlx.SetlXMusic.Patterns;
+package org.randoom.setlx.SetlXMusic.Patterns.Storages;
 
-import org.jfugue.pattern.Pattern;
+import org.jfugue.pattern.PatternProducer;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
 
@@ -9,26 +9,25 @@ import java.util.HashMap;
 /**
  *
  */
-public class SetlXPatternStorage implements iSetlXPatternStorage {
+public class SetlXMusicStorage<T extends PatternProducer> implements iSetlXMusicStorage<T> {
 
-    HashMap<String, Pattern> patternStorage = new HashMap<>();
+    HashMap<String, T> patternStorage = new HashMap<>();
 
     @Override
-    public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
-        if (name != null && pattern != null) {
-            patternStorage.put(name, pattern);
+    public void addElement(String name, T element) throws NullArgumentsException {
+        if (name != null && element != null) {
+            patternStorage.put(name, element);
         } else {
             throw new NullArgumentsException();
         }
     }
-
     @Override
     public boolean checkExisting(String name) {
         return patternStorage.containsKey(name);
     }
 
     @Override
-    public Pattern getPattern(String name) throws PatternNotFoundException {
+    public T getElement(String name) throws PatternNotFoundException {
         if (!checkExisting(name)) {
             throw new PatternNotFoundException();
         }
@@ -36,12 +35,12 @@ public class SetlXPatternStorage implements iSetlXPatternStorage {
     }
 
     @Override
-    public void deletePattern(String name) {
+    public void deleteElement(String name) {
         patternStorage.remove(name);
     }
 
     @Override
-    public HashMap<String, Pattern> getAllPatterns() {
+    public HashMap<String, T> getAllElements() {
         return patternStorage;
     }
 

@@ -4,11 +4,13 @@ import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.SetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.iSetlXMusicStorage;
 
 import static org.junit.Assert.*;
 
-public class SetlXPatternStorageTest {
-    iSetlXPatternStorage storage = new SetlXPatternStorage();
+public class SetlXMusicStorageTest {
+    iSetlXMusicStorage storage = new SetlXMusicStorage();
 
     @Before
     public void setUp() throws Exception {
@@ -18,7 +20,7 @@ public class SetlXPatternStorageTest {
     //Checks if a pattern can be saved
     @Test
     public void addPattern1() throws Exception {
-        storage.addPattern("Test", new Pattern());
+        storage.addElement("Test", new Pattern());
         assertNotNull("Pattern stored", storage.getPattern("Test"));
     }
     //Checks if a null pattern can be saved
@@ -26,7 +28,7 @@ public class SetlXPatternStorageTest {
     public void addPattern2() throws Exception {
         boolean exceptionOccured = false;
         try {
-            storage.addPattern("Test", null);
+            storage.addElement("Test", null);
         } catch (NullArgumentsException ne) {
             exceptionOccured = true;
         }
@@ -39,7 +41,7 @@ public class SetlXPatternStorageTest {
      */
     @Test
     public void checkExisting() throws Exception {
-    storage.addPattern("Test",new Pattern());
+    storage.addElement("Test",new Pattern());
     assertTrue(storage.checkExisting("Test"));
     }
 
@@ -49,28 +51,28 @@ public class SetlXPatternStorageTest {
      */
     @Test
     public void checkExisting1() throws Exception {
-        storage.addPattern("Test", new Pattern());
+        storage.addElement("Test", new Pattern());
         assertFalse(storage.checkExisting("tesT"));
     }
 
     @Test
     public void getPattern() throws Exception{
-        storage.addPattern("Test", new Pattern());
+        storage.addElement("Test", new Pattern());
         assertNotNull(storage.getPattern("Test"));
     }
     @Test
     public void deletePattern() throws Exception {
-        storage.addPattern("Test", new Pattern());
+        storage.addElement("Test", new Pattern());
         storage.deletePattern("Test");
         assertTrue(storage.getAllPatterns().size()==0);
     }
 
     @Test
     public void getAllPatterns() throws Exception {
-        storage.addPattern("Test", new Pattern());
-        storage.addPattern("Test2", new Pattern());
-        storage.addPattern("Test3", new Pattern());
-        storage.addPattern("Test4", new Pattern());
+        storage.addElement("Test", new Pattern());
+        storage.addElement("Test2", new Pattern());
+        storage.addElement("Test3", new Pattern());
+        storage.addElement("Test4", new Pattern());
         assertTrue(storage.getAllPatterns().size()==4);
     }
 

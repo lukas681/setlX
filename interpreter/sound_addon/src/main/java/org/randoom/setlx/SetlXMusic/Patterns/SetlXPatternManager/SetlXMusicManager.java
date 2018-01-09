@@ -1,13 +1,18 @@
 package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
+import org.jfugue.pattern.PatternProducer;
 import org.jfugue.pattern.Token;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.KeyAlreadyInUseException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.ChordProgressionNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.RhythmNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotSupportedException;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.SetlXMusicStorage;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.iSetlXMusicStorage;
@@ -19,7 +24,7 @@ import java.util.List;
 /**
  * Created by Lukas on 28.12.2017.
  */
-public class SetlXPatternManager implements iSetlXPatternManager {
+public class SetlXMusicManager implements iSetlXMusicManager {
 
     private iSetlXMusicStorage<Pattern> patternStorage;
     private iSetlXMusicStorage<ChordProgression> chordProgressionStorage;
@@ -29,20 +34,30 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     private GetPatternStats stats;
 
     /**
-     * Default constructor for {@link SetlXPatternManager}. Creates a new Patternmanager
+     * Default constructor for {@link SetlXMusicManager}. Creates a new Patternmanager
      */
-    public SetlXPatternManager() {
-        patternStorage = new SetlXMusicStorage<Pattern>(); //Creates a new Pattern Storage for future music patterns
-        chordProgressionStorage = new SetlXMusicStorage<ChordProgression>();
-        rythmStorage = new SetlXMusicStorage<Rhythm>();
+    public SetlXMusicManager() {
+        patternStorage = new SetlXMusicStorage<>(); //Creates a new Pattern Storage for future music patterns
+        chordProgressionStorage = new SetlXMusicStorage<>();
+        rythmStorage = new SetlXMusicStorage<>();
 
         player = new Player();
         stats = new GetPatternStats();
     }
 
     @Override
-    public void addPattern(String name, Pattern pattern) throws NullArgumentsException {
-        patternStorage.addElement(name, pattern);
+    public void add(String name, PatternProducer pattern) throws NullArgumentsException, ProducerNotSupportedException, KeyAlreadyInUseException {
+        if(KeyInUse(name)){
+            throw new KeyAlreadyInUseException();
+        }
+        if(pattern instanceof Pattern)
+            patternStorage.addElement(name, (Pattern)pattern);
+        else if (pattern instanceof Rhythm)
+            rythmStorage.addElement(name, (Rhythm)pattern);
+        else if(pattern instanceof ChordProgression)
+            chordProgressionStorage.addElement(name, (ChordProgression)pattern);
+        else
+            throw new ProducerNotSupportedException();
     }
 
     @Override
@@ -74,8 +89,19 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     }
 
     @Override
-    public void removePattern(String patternName) throws PatternNotFoundException {
-        patternStorage.deleteElement(patternName);
+    public void removeElement(String key) throws PatternNotFoundException {
+        switch(getStorageWhereKeyIsUsed(key)){
+            case -1: throw new PatternNotFoundException();
+            case 1:
+                patternStorage.deleteElement(key);
+                break;
+            case 2:
+                rythmStorage.deleteElement(key);
+                break;
+            case 3:
+                chordProgressionStorage.deleteElement(key);
+                break;
+        }
     }
 
     @Override
@@ -85,7 +111,7 @@ public class SetlXPatternManager implements iSetlXPatternManager {
 
 
     @Override
-    public void duplicatePattern(String sourceName, String newName) throws PatternNotFoundException, NullArgumentsException {
+    public void duplicatePattern(String sourceName, String newName) throws PatternNotFoundException, NullArgumentsException, KeyAlreadyInUseException {
         Pattern copy = new Pattern(); //We want to copy the object
 
         List<Token> tokenList = getPattern(sourceName).getTokens();
@@ -103,8 +129,11 @@ public class SetlXPatternManager implements iSetlXPatternManager {
         //the Clonable or Serializable interface making it impossible to (deep)
         //copy an instance. The trick is, that we just copy the information, that are stored in
         //a staccato string via the toString-method
-
-        addPattern(newName, copy);
+        try {
+            add(newName, copy);
+        } catch (ProducerNotSupportedException e) { //We can be sure
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -126,7 +155,58 @@ public class SetlXPatternManager implements iSetlXPatternManager {
     }
 
     @Override
+    public Rhythm getRhythm(String rhythmName) throws PatternNotFoundException{
+        return rythmStorage.getElement(rhythmName);
+    }
+
+    @Override
+    public ChordProgression getChordProgression(String progressionName) throws PatternNotFoundException {
+        return chordProgressionStorage.getElement(progressionName);
+    }
+
+    @Override
+    public HashMap<String, Rhythm> getAllRhythms() {
+        return rythmStorage.getAllElements();
+    }
+
+    @Override
+    public HashMap<String, ChordProgression> getAllChordProgressions() {
+        return chordProgressionStorage.getAllElements();
+    }
+
+    /**
+     * Returns the storage, where this key is used.
+     * @param key
+     * @return
+     *         1: Pattern Storage
+     *         2: Rhythm Storage
+     *         3. ChordProgression Storage
+     *         -1: if the pattern could not be found in any of the storages
+     */
+    @Override
+    public int getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException {
+        if(patternStorage.checkExisting(key))
+            return 1;
+        if(rythmStorage.checkExisting(key))
+            return 2;
+        if(chordProgressionStorage.checkExisting(key))
+            return 3;
+        else return -1;
+    }
+
+    @Override
     public HashMap<String, Pattern> getAllPatterns() {
         return patternStorage.getAllElements();
+    }
+
+    /**
+     * Checks, weather a given key is already in use in on of the storages.
+     * @param key
+     * @return
+     */
+    private boolean KeyInUse(String key){
+        return patternStorage.checkExisting(key)
+                ||rythmStorage.checkExisting(key)
+                ||chordProgressionStorage.checkExisting(key);
     }
 }

@@ -49,7 +49,7 @@ public class PD_addPattern extends PreDefinedProcedure {
                 .setTempo(checkTempo(tempo.toJIntValue(state))) //TODO Do NOT set values explicitly. Just Test, if you HAVE to...
                 .setVoice(voice.toJIntValue(state));
 
-        root.getSetlXPatternManager().addPattern(patternName.toString().replaceAll("\"", ""), patt);
+        root.getSetlXPatternManager().add(patternName.toString().replaceAll("\"", ""), patt);
         return SetlBoolean.TRUE;
     }
 

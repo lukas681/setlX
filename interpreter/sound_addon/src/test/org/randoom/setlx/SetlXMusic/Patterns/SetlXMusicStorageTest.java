@@ -10,7 +10,7 @@ import org.randoom.setlx.SetlXMusic.Patterns.Storages.iSetlXMusicStorage;
 import static org.junit.Assert.*;
 
 public class SetlXMusicStorageTest {
-    iSetlXMusicStorage storage = new SetlXMusicStorage();
+    iSetlXMusicStorage<Pattern> storage = new SetlXMusicStorage();
 
     @Before
     public void setUp() throws Exception {
@@ -21,7 +21,7 @@ public class SetlXMusicStorageTest {
     @Test
     public void addPattern1() throws Exception {
         storage.addElement("Test", new Pattern());
-        assertNotNull("Pattern stored", storage.getPattern("Test"));
+        assertNotNull("Pattern stored", storage.getElement("Test"));
     }
     //Checks if a null pattern can be saved
     @Test
@@ -58,13 +58,13 @@ public class SetlXMusicStorageTest {
     @Test
     public void getPattern() throws Exception{
         storage.addElement("Test", new Pattern());
-        assertNotNull(storage.getPattern("Test"));
+        assertNotNull(storage.getElement("Test"));
     }
     @Test
     public void deletePattern() throws Exception {
         storage.addElement("Test", new Pattern());
-        storage.deletePattern("Test");
-        assertTrue(storage.getAllPatterns().size()==0);
+        storage.deleteElement("Test");
+        assertTrue(storage.getAllElements().size()==0);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class SetlXMusicStorageTest {
         storage.addElement("Test2", new Pattern());
         storage.addElement("Test3", new Pattern());
         storage.addElement("Test4", new Pattern());
-        assertTrue(storage.getAllPatterns().size()==4);
+        assertTrue(storage.getAllElements().size()==4);
     }
 
 }

@@ -26,7 +26,7 @@ public class PD_removePattern extends PreDefinedProcedure {
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value patternName = args.get(PATTERN_NAME);
 
-        root.getSetlXPatternManager().removePattern(patternName.getUnquotedString(state));
+        root.getSetlXPatternManager().removeElement(patternName.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }
 }

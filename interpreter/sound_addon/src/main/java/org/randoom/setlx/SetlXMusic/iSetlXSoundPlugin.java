@@ -1,6 +1,6 @@
 package org.randoom.setlx.SetlXMusic;
 
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXMusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
 
@@ -15,7 +15,7 @@ public interface iSetlXSoundPlugin {
      *
      * @return
      */
-    iSetlXPatternManager getSetlXPatternManager();
+    iSetlXMusicManager getSetlXPatternManager();
 
     /**
      * returns the instance of the music player

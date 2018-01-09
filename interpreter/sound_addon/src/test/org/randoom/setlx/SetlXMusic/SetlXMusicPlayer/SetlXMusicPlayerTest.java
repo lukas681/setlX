@@ -3,15 +3,15 @@ package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXPatternManager;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXMusicManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXMusicManager;
 
 public class SetlXMusicPlayerTest {
     iSetlXMusicPlayer player;
-    iSetlXPatternManager pat = new SetlXPatternManager();
+    iSetlXMusicManager pat = new SetlXMusicManager();
     @Before
     public void setUp() throws Exception {
-        pat.addPattern("Test",new Pattern("A B C"));
+        pat.add("Test",new Pattern("A B C"));
         player = new SetlXMusicPlayer(pat);
     }
 

@@ -2,7 +2,7 @@ package org.randoom.setlx.SetlXMusic.Patterns.Storages;
 
 import org.jfugue.pattern.PatternProducer;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 
 import java.util.HashMap;
 
@@ -27,7 +27,7 @@ public class SetlXMusicStorage<T extends PatternProducer> implements iSetlXMusic
     }
 
     @Override
-    public T getElement(String name) throws PatternNotFoundException {
+    public T getElement(String name) throws PatternNotFoundException { //TODO Really Pattern not found? consolidate the exceptions
         if (!checkExisting(name)) {
             throw new PatternNotFoundException();
         }

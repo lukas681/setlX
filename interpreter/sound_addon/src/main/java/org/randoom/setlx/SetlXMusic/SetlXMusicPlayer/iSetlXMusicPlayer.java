@@ -1,6 +1,6 @@
 package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 
 /**
  * Created by Lukas on 28.12.2017.

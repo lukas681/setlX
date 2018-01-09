@@ -1,6 +1,8 @@
 package org.randoom.setlx.functions;
 
 import org.jfugue.pattern.Pattern;
+import org.jfugue.rhythm.Rhythm;
+import org.jfugue.theory.ChordProgression;
 import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
@@ -29,15 +31,32 @@ public class PD_showPatterns extends PreDefinedProcedure {
         print(state, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         print(state, "[Name, Tempo, Voice, Instrument, Pattern\n");
         HashMap<String, Pattern> allPatterns = root.getSetlXPatternManager().getAllPatterns();
+        HashMap<String, Rhythm> allRhythms = root.getSetlXPatternManager().getAllRhythms();
+        HashMap<String, ChordProgression> allProgressions = root.getSetlXPatternManager().getAllChordProgressions();
+
         int i = 0;
-        Iterator it = allPatterns.entrySet().iterator();
-        while (it.hasNext()) { //TODO foreach
-            Map.Entry pair = (Map.Entry) it.next();
-            print(state, ++i + ".)" + pair.getKey() + " " + pair.getValue() + "\n");
+            Iterator it = allPatterns.entrySet().iterator();
+        for(int y = 0; y <3; y++) { //In order to save redundant
+            if(y == 1) { //Iterating over Rhythms
+                print(state, "\n~~~~~~RHYTHMS~~~~~");
+                i=0;
+                it = allRhythms.entrySet().iterator();
+            }if(y == 2) { //Iterating over Chord Progressions
+                i = 0;
+                print(state, "\n~~~~~Progressions~~~~~");
+                it = allProgressions.entrySet().iterator();
+            }
+            while (it.hasNext()) { //Patterns
+                Map.Entry pair = (Map.Entry) it.next();
+                print(state, ++i + ".)" + pair.getKey() + " " + pair.getValue() + "\n");
+            }
         }
         return SetlBoolean.TRUE;
+
     }
 
+    //TODO printall Method...
+    // void printAll
     /**
      * Print string to standard out; override with suitable function to print somewhere else.
      *

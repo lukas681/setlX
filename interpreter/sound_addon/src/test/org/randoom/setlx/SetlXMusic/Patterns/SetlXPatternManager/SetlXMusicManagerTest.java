@@ -1,19 +1,30 @@
 package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
+import org.jfugue.rhythm.Rhythm;
+import org.jfugue.theory.ChordProgression;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SetlXPatternManagerTest {
-    SetlXPatternManager mgr;
+public class SetlXMusicManagerTest {
+
+    SetlXMusicManager mgr;
     @Before
     public void setUp() throws Exception {
-        mgr = new SetlXPatternManager();
-        mgr.addPattern("Test", new Pattern("C D E F G"));
+        mgr = new SetlXMusicManager();
+        mgr.add("Test", new Pattern("C D E F G"));
     }
 
+    @Test
+    public void add() throws Exception {
+        mgr.add("Test2", new Pattern("C D E F"));
+        mgr.add("Test3", new Rhythm("....."));
+        mgr.add("Test4", new ChordProgression("I IV V I"));
+        mgr.getPattern("Test2");
+
+    }
 
     /**
     * Tests, weather a new pattern will be created on duplicatePattern call
@@ -50,7 +61,7 @@ public class SetlXPatternManagerTest {
     @Test
     public void duplicatePatternDoesRemoveExplicitSettings() throws Exception{
         mgr.getPattern("Test").setInstrument(1);
-        mgr.addPattern("A",new Pattern("C D E F").setInstrument(2));
+        mgr.add("A",new Pattern("C D E F").setInstrument(2));
         mgr.duplicatePattern("A","B");
         assertTrue(mgr.getPattern("B").toString().compareTo("C D E F") == 0);
     }

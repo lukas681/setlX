@@ -3,14 +3,11 @@ package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.rhythm.Rhythm;
-import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.KeyAlreadyInUseException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.ChordProgressionNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.RhythmNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotSupportedException;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
 import org.randoom.setlx.exceptions.SetlException;
@@ -117,5 +114,5 @@ public interface iSetlXMusicManager {
      * @param key
      * @return
      */
-    int getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException;
+    StorageTypes getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException;
 }

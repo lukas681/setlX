@@ -25,13 +25,13 @@ public class SetlXMusicPlayer implements iSetlXMusicPlayer {
         ArrayList<PatternProducer> temp = new ArrayList<>();
         for (String name : patternNames) {
             switch(musicSource.getStorageWhereKeyIsUsed(name)){
-                case 1:
+                case PATTERN_STORAGE:
                         temp.add(musicSource.getPattern(name));
                         break;
-                case 2:
+                case RHYTHM_STORAGE:
                         temp.add(musicSource.getRhythm(name));
                         break;
-                case 3:
+                case CHORD_PROGRESSION_STORAGE:
                         temp.add(musicSource.getChordProgression(name));
                         break;
             }

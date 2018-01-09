@@ -1,21 +1,14 @@
 package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
-import org.jfugue.pattern.Pattern;
-import org.jfugue.pattern.PatternProducer;
-import org.jfugue.pattern.Token;
+import org.jfugue.pattern.*;
+
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.KeyAlreadyInUseException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.ChordProgressionNotFoundException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.*;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.RhythmNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotSupportedException;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.SetlXMusicStorage;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.iSetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.*;
 import org.randoom.setlx.exceptions.SetlException;
 
 import java.util.HashMap;
@@ -91,14 +84,14 @@ public class SetlXMusicManager implements iSetlXMusicManager {
     @Override
     public void removeElement(String key) throws PatternNotFoundException {
         switch(getStorageWhereKeyIsUsed(key)){
-            case -1: throw new PatternNotFoundException();
-            case 1:
+            case UNSUPPORTED_TYPE: throw new PatternNotFoundException();
+            case PATTERN_STORAGE:
                 patternStorage.deleteElement(key);
                 break;
-            case 2:
+            case RHYTHM_STORAGE:
                 rythmStorage.deleteElement(key);
                 break;
-            case 3:
+            case CHORD_PROGRESSION_STORAGE:
                 chordProgressionStorage.deleteElement(key);
                 break;
         }
@@ -184,14 +177,14 @@ public class SetlXMusicManager implements iSetlXMusicManager {
      *         -1: if the pattern could not be found in any of the storages
      */
     @Override
-    public int getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException {
+    public StorageTypes getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException {
         if(patternStorage.checkExisting(key))
-            return 1;
+            return StorageTypes.PATTERN_STORAGE;
         if(rythmStorage.checkExisting(key))
-            return 2;
+            return StorageTypes.RHYTHM_STORAGE;
         if(chordProgressionStorage.checkExisting(key))
-            return 3;
-        else return -1;
+            return StorageTypes.CHORD_PROGRESSION_STORAGE;
+        else return StorageTypes.UNSUPPORTED_TYPE;
     }
 
     @Override

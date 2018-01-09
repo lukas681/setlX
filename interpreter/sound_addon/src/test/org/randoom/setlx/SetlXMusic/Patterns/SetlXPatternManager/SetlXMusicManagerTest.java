@@ -66,4 +66,16 @@ public class SetlXMusicManagerTest {
         assertTrue(mgr.getPattern("B").toString().compareTo("C D E F") == 0);
     }
 
+    @Test
+    public void eachChordAs() throws Exception { //TODO Write Test cases
+        mgr.add("Test2", new ChordProgression("I IV V I"));
+        mgr.eachChordAs("Test2","$0q $1w $2q");
+        System.out.println(mgr.getChordProgression("Test2").getPattern());
+    }
+    @Test
+    public void allChordsAs() throws Exception {
+        mgr.add("Test2", new ChordProgression("I IV V I"));
+        mgr.allChordsAs("Test2","$0q $1w $2q $3q");
+        System.out.println(mgr.getChordProgression("Test2").getPattern());
+    }
 }

@@ -38,12 +38,12 @@ public class PD_showPatterns extends PreDefinedProcedure {
             Iterator it = allPatterns.entrySet().iterator();
         for(int y = 0; y <3; y++) { //In order to save redundant
             if(y == 1) { //Iterating over Rhythms
-                print(state, "\n~~~~~~RHYTHMS~~~~~");
+                print(state, "\n~~~~~~RHYTHMS~~~~~\n");
                 i=0;
                 it = allRhythms.entrySet().iterator();
             }if(y == 2) { //Iterating over Chord Progressions
                 i = 0;
-                print(state, "\n~~~~~Progressions~~~~~");
+                print(state, "\n~~~~~Progressions~~~~~\n");
                 it = allProgressions.entrySet().iterator();
             }
             while (it.hasNext()) { //Patterns

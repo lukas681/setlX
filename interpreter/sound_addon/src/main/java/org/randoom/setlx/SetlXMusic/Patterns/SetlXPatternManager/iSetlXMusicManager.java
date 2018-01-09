@@ -115,4 +115,16 @@ public interface iSetlXMusicManager {
      * @return
      */
     StorageTypes getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException;
+
+
+    ChordProgression eachChordAs(String chordprogressionName, String sequence) throws PatternNotFoundException;
+
+    /**
+     * Requires passing a string that has dollar signs followed by an index, in which case each dollar+index will be replaced by the indexed chord of the chord progression. For example, given a ChordProgression of "I IV V" and a string of "$0q $1h $2w", will return "C4MAJq F4MAJh G4MAJw". Using the underscore character instead of an index will result in the pattern of the ChordProgression itself added to the string. The final result will be returned from the getPattern() method.
+     * @param chordprogressionName The Name of the saved chord Progression
+     * @param sequence
+     * @return
+     * @throws PatternNotFoundException
+     */
+    ChordProgression allChordsAs(String chordprogressionName, String sequence) throws PatternNotFoundException;
 }

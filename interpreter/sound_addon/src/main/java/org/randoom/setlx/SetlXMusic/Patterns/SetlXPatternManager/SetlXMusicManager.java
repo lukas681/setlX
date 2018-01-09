@@ -188,6 +188,16 @@ public class SetlXMusicManager implements iSetlXMusicManager {
     }
 
     @Override
+    public ChordProgression eachChordAs(String progressionName, String sequence) throws PatternNotFoundException {
+        return chordProgressionStorage.getElement(progressionName).eachChordAs(sequence);
+    }
+
+ @Override
+    public ChordProgression allChordsAs(String progressionName, String sequence) throws PatternNotFoundException {
+        return chordProgressionStorage.getElement(progressionName).allChordsAs(sequence);
+    }
+
+    @Override
     public HashMap<String, Pattern> getAllPatterns() {
         return patternStorage.getAllElements();
     }

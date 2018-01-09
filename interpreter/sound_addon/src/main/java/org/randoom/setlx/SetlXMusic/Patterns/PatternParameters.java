@@ -1,7 +1,8 @@
 package org.randoom.setlx.SetlXMusic.Patterns;
 
 /**
- * Created by Lukas on 28.12.2017.
+ * Parameters for a {@link org.jfugue.pattern.Pattern}.
+ * This is used for modifying single Pattern values.
  */
 public enum PatternParameters {
     INSTRUMENT,

@@ -3,12 +3,12 @@ package org.randoom.setlx.SetlXMusic.Patterns;
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
 
 import static org.junit.Assert.*;
 
-public class SetlXSetlXPatternStorageTest {
-    iSetlXPatternStorage storage = new SetlXSetlXPatternStorage();
+public class SetlXPatternStorageTest {
+    iSetlXPatternStorage storage = new SetlXPatternStorage();
 
     @Before
     public void setUp() throws Exception {
@@ -62,7 +62,7 @@ public class SetlXSetlXPatternStorageTest {
     public void deletePattern() throws Exception {
         storage.addPattern("Test", new Pattern());
         storage.deletePattern("Test");
-        assertNull(storage.getPattern("Test"));
+        assertTrue(storage.getAllPatterns().size()==0);
     }
 
     @Test

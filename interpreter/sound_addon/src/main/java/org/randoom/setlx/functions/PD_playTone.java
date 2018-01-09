@@ -1,9 +1,8 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
 import org.randoom.setlx.types.SetlDouble;
@@ -14,19 +13,23 @@ import java.util.HashMap;
 
 public class PD_playTone extends PreDefinedProcedure {
 
-    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
-    private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO);
+    private final static ParameterDefinition NOTE = createOptionalParameter("note", SetlDouble.ZERO); //TODO Also accept an String for note value
     private final static ParameterDefinition DURATION = createOptionalParameter("duration", SetlDouble.ZERO);
+    private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ONE);
+    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ONE);
+    private final static ParameterDefinition LAYER = createOptionalParameter("layer", SetlDouble.ONE);
 
-    public  final static PreDefinedProcedure DEFINITION = new PD_playTone();
+    public final static PreDefinedProcedure DEFINITION = new PD_playTone();
 
-    private iSetlXRealTimePlayer rtplayer = new SetlXRealTimePlayer();
+    private iSetlXRealTimePlayer rtplayer = SetlXSoundPlugin.getInstance().getSetlXRealTimePlayer();
 
     protected PD_playTone() {
         super();
         addParameter(NOTE);
         addParameter(DURATION);
         addParameter(INSTRUMENT);
+        addParameter(VOICE);
+        addParameter(LAYER);
     }
 
     @Override
@@ -34,10 +37,12 @@ public class PD_playTone extends PreDefinedProcedure {
         //Extracts input values
         final Value note = args.get(NOTE);
         final Value duration = args.get(DURATION);
-        final Value instrument = args.get(INSTRUMENT); //TODO resolve instrument enum
-    //TODO Cast Values
-        rtplayer.changeInstrument(instrument.jIntValue());
-        rtplayer.play(NoteFactory.getInstance().createNote(note.jIntValue(), duration.jDoubleValue())); //TODO Make instrument optional
+        final Value instrument = args.get(INSTRUMENT);
+        final Value voice = args.get(VOICE);
+        final Value layer = args.get(LAYER);
+        //TODO check byte outer bounds
+        rtplayer.play((byte) voice.toJIntValue(state), (byte) layer.toJIntValue(state), (byte) instrument.toJIntValue(state),
+                note.toJIntValue(state), duration.toJDoubleValue(state));
 
         return SetlBoolean.TRUE;
     }

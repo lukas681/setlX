@@ -1,0 +1,3 @@
+addPattern("Test", "C D E F G A B C");
+showPatterns();
+getPatternStats("Test");

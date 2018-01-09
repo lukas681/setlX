@@ -1,4 +1,4 @@
-package org.randoom.setlx.Exceptions;
+package org.randoom.setlx.SetlXMusic.Patterns.Exceptions;
 
 import org.randoom.setlx.exceptions.CatchableInSetlXException;
 

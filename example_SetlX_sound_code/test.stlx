@@ -1,4 +1,7 @@
-for(x in [30..100]){
-	playTone(x, 0.02, 1);
-}
-playTone(50, 0.02, 1);
+addPattern("Test1", "C D E F G A B C F G D C");
+play("Test1");
+addPattern("Test2", "Ch Gh Fh Ch");
+play("Test2");
+modifyPatternProperty("Test2" ,"VOICE", 10);
+play("Test1 Test2");
+

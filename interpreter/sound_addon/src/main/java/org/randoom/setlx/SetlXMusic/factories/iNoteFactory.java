@@ -15,7 +15,8 @@ public interface iNoteFactory {
 
     /**
      * Creates a new Note
-     * @param value The note Value
+     *
+     * @param value    The note Value
      * @param duration a duration in seconds
      * @return
      */

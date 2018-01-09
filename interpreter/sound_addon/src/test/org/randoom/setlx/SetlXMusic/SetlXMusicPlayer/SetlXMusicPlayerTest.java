@@ -3,8 +3,8 @@ package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.SetlXPatternManager.SetlXPatternManager;
-import org.randoom.setlx.SetlXMusic.SetlXPatternManager.iSetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXPatternManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXPatternManager;
 
 public class SetlXMusicPlayerTest {
     iSetlXMusicPlayer player;

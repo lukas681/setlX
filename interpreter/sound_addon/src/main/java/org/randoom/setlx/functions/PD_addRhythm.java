@@ -17,7 +17,6 @@ public class PD_addRhythm extends PreDefinedProcedure {
 
     private final static ParameterDefinition RHYTHM_NAME = createParameter("patternName");
     private final static ParameterDefinition PATTERN = createParameter("pattern");
-    private final static ParameterDefinition TEMPO = createOptionalParameter("tempo", SetlDouble.ZERO);
     private final static ParameterDefinition LENGTH= createOptionalParameter("length", SetlDouble.ONE);
 
     public final static PreDefinedProcedure DEFINITION = new PD_addRhythm();
@@ -28,7 +27,6 @@ public class PD_addRhythm extends PreDefinedProcedure {
         super();
         addParameter(RHYTHM_NAME);
         addParameter(PATTERN);
-        addParameter(TEMPO);
         addParameter(LENGTH);
     }
 

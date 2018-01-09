@@ -5,6 +5,7 @@ import org.jfugue.pattern.PatternProducer;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.CanNotConvertException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.KeyAlreadyInUseException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
@@ -127,4 +128,6 @@ public interface iSetlXMusicManager {
      * @throws PatternNotFoundException
      */
     ChordProgression allChordsAs(String chordprogressionName, String sequence) throws PatternNotFoundException;
+
+    void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException;
 }

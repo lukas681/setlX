@@ -9,15 +9,15 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
-public class PD_removePattern extends PreDefinedProcedure {
+public class PD_removeMusic extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
 
-    public final static PreDefinedProcedure DEFINITION = new PD_removePattern();
+    public final static PreDefinedProcedure DEFINITION = new PD_removeMusic();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 
-    protected PD_removePattern() {
+    protected PD_removeMusic() {
         super();
         addParameter(PATTERN_NAME);
     }
@@ -25,7 +25,6 @@ public class PD_removePattern extends PreDefinedProcedure {
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value patternName = args.get(PATTERN_NAME);
-
         root.getSetlXPatternManager().removeElement(patternName.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }

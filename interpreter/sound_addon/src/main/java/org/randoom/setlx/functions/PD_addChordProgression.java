@@ -43,12 +43,4 @@ public class PD_addChordProgression extends PreDefinedProcedure {
         root.getSetlXPatternManager().add(patternName.getUnquotedString(state), cp);
         return SetlBoolean.TRUE;
     }
-
-    /**
-     * Because optional Parameters just allow some predefined double values, we set {@link SetlDouble} ZERO to a defautl of 120 BPM
-     */
-    public int checkTempo(int tempo) {
-        return tempo == 0 ? 120 : tempo;
-    }
-
 }

@@ -14,13 +14,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class PD_showPatterns extends PreDefinedProcedure {
+public class PD_showMusic extends PreDefinedProcedure {
 
-    public final static PreDefinedProcedure DEFINITION = new PD_showPatterns();
+    public final static PreDefinedProcedure DEFINITION = new PD_showMusic();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 
-    protected PD_showPatterns() {
+    protected PD_showMusic() {
         super();
     }
 

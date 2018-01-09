@@ -45,7 +45,8 @@ public class PD_addPattern extends PreDefinedProcedure {
         final Value voice = args.get(VOICE);
 
         Pattern patt = new Pattern(pattern.getUnquotedString(state)) //Fucking 3hours of debugging... just to see, that there were "" put in...
-                .setInstrument(instrument.toJIntValue(state)) //TODO Pattern Producer. Not nice to do it here...
+                .setInstrument(instrument.toJIntValue(state)) //TODO Pattern Producer. Not nice to do it here... /
+                //TODO Just add if given.
                 .setTempo(checkTempo(tempo.toJIntValue(state))) //TODO Do NOT set values explicitly. Just Test, if you HAVE to...
                 .setVoice(voice.toJIntValue(state));
 

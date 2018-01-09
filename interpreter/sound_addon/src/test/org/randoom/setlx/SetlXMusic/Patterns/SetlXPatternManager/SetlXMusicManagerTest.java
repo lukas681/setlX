@@ -2,6 +2,7 @@ package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.rhythm.Rhythm;
+import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,7 +59,7 @@ public class SetlXMusicManagerTest {
     @Test
     public void duplicatePatternDoesNotReferenceToSameObject() throws Exception{
         mgr.duplicatePattern("Test","Test2");
-        assertFalse(mgr.getPattern("Test")==mgr.getPattern("Test2")); //Make sure, that both objects are different
+        assertFalse(mgr.getPattern("Test")==mgr.getPattern("Test2")); //Make sure, that both objects are differentd
         assertFalse(mgr.getPattern("Test").getPattern()==mgr.getPattern("Test2").getPattern()); //Make sure, that both objects are different
     }
     @Test
@@ -80,5 +81,12 @@ public class SetlXMusicManagerTest {
         mgr.add("Test2", new ChordProgression("I IV V"));
         mgr.allChordsAs("Test2","$0q $1w $2q");
         assertTrue( mgr.getChordProgression("Test2").toString().compareTo("C4MAJq F4MAJw G4MAJq")==0);
+    }
+
+    @Test
+    public void getChordProgressions() throws Exception {
+        ChordProgression prog = new ChordProgression("I IV V I");
+        mgr.add("Test2", prog);
+        assertEquals(mgr.getChordProgression("Test2"),prog);
     }
 }

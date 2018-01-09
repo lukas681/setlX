@@ -142,7 +142,7 @@ public class SetlXMusicManager implements iSetlXMusicManager {
     }
 
     @Override
-    public int[] getGeneralPatternStats(String patternName) throws PatternNotFoundException {
+    public int[] getGeneralPatternStats(String patternName) throws PatternNotFoundException { //TODO also Pattern stats for rhythm and chordProgression
         stats.parsePattern(patternStorage.getElement(patternName), true);
         return stats.getGeneralStats();
     }
@@ -195,6 +195,20 @@ public class SetlXMusicManager implements iSetlXMusicManager {
  @Override
     public ChordProgression allChordsAs(String progressionName, String sequence) throws PatternNotFoundException {
         return chordProgressionStorage.getElement(progressionName).allChordsAs(sequence);
+    }
+
+    @Override
+    public void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException {
+        switch(getStorageWhereKeyIsUsed(elementName)){
+            case CHORD_PROGRESSION_STORAGE:
+                patternStorage.addElement(elementName + "_conv", chordProgressionStorage.getElement(elementName).getPattern());
+                break; //TODO make something against collisions: multiconverts..
+            case RHYTHM_STORAGE:
+                patternStorage.addElement(elementName + "_conv", rythmStorage.getElement(elementName).getPattern());
+                break;
+            default:
+                throw new CanNotConvertException();
+    }
     }
 
     @Override

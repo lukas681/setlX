@@ -51,7 +51,7 @@ public class PD_eachChordAs extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
         final Value replacementString = args.get(CHORD_PROGRESSION);
 
-        root.getSetlXPatternManager().eachChordAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace('#', '$'));
+        root.getSetlXPatternManager().eachChordAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace('#', '$')); //TODO Catch possible exceptions
         return SetlBoolean.TRUE;
     }
 

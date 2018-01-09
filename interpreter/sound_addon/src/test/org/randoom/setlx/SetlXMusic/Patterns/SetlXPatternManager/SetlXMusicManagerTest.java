@@ -5,15 +5,18 @@ import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.junit.Before;
 import org.junit.Test;
+import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.SetlXMusicPlayer;
 
 import static org.junit.Assert.*;
 
 public class SetlXMusicManagerTest {
 
     SetlXMusicManager mgr;
+    SetlXMusicPlayer pl;
     @Before
     public void setUp() throws Exception {
         mgr = new SetlXMusicManager();
+        pl = new SetlXMusicPlayer(mgr);
         mgr.add("Test", new Pattern("C D E F G"));
     }
 
@@ -73,9 +76,9 @@ public class SetlXMusicManagerTest {
         System.out.println(mgr.getChordProgression("Test2").getPattern());
     }
     @Test
-    public void allChordsAs() throws Exception {
-        mgr.add("Test2", new ChordProgression("I IV V I"));
-        mgr.allChordsAs("Test2","$0q $1w $2q $3q");
-        System.out.println(mgr.getChordProgression("Test2").getPattern());
+    public void allChordsAsModified() throws Exception {
+        mgr.add("Test2", new ChordProgression("I IV V"));
+        mgr.allChordsAs("Test2","$0q $1w $2q");
+        assertTrue( mgr.getChordProgression("Test2").toString().compareTo("C4MAJq F4MAJw G4MAJq")==0);
     }
 }

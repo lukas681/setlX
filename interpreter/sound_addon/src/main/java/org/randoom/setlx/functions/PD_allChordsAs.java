@@ -22,7 +22,7 @@ public class PD_allChordsAs extends PreDefinedProcedure {
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
     private final static ParameterDefinition CHORD_PROGRESSION = createParameter("chordProgression");
 
-    public final static PreDefinedProcedure DEFINITION = new PD_eachChordAs();
+    public final static PreDefinedProcedure DEFINITION = new PD_allChordsAs();
 
     SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
 
@@ -34,9 +34,10 @@ public class PD_allChordsAs extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
+        final Value patternName = args.get(PATTERN_NAME);
         final Value replacementString = args.get(CHORD_PROGRESSION);
 
+        state.outWrite(replacementString.getUnquotedString(state).replace('#', '$'));
         root.getSetlXPatternManager().allChordsAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace('#', '$'));
         return SetlBoolean.TRUE;
     }

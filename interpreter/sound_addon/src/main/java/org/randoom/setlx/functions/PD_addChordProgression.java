@@ -19,7 +19,7 @@ public class PD_addChordProgression extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
     private final static ParameterDefinition CHORD_PROGRESSION = createParameter("chordProgression");
-    private final static ParameterDefinition KEY = createOptionalParameter("key", SetlString.parseLiteral("C"));
+    private final static ParameterDefinition KEY = createOptionalParameter("key", SetlString.newSetlStringFromSB(new StringBuilder("C"))); //The default base key is a C
 
     public final static PreDefinedProcedure DEFINITION = new PD_addChordProgression();
 

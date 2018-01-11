@@ -1,10 +1,11 @@
 
-addPattern("Test1", "Dq Cq Cq Cq Dq Cq Cq Cq");
+addPattern("Test1", "Dq Cq Cq Cq Dq Cq Cq Cq"); //Adds a simple pattern
 play("Test1");
-addPattern("Test2", "Ch Gh fh Ch"); 
-play("Test2");
-modifyPatternProperty("Test2" ,"VOICE", 2);
+addPattern("Test2", "Ch Gh fh Cw"); //adds note durations h=half w=whole and so on... 
+play("Test2"); //plays the pattern
+modifyPatternProperty("Test2" ,"VOICE", 2); //Change global Pattern parameters
 modifyPatternProperty("Test2" ,"INSTRUMENT", 8);
-play("Test1 Test2");
-showPatterns();
-
+play("Test1 Test2"); //plays two patterns
+showPatterns(); //shows a list of all patterns
+addPattern("Test3","T180 V1 Cq Eq Gw V2 Gq Cq Eq"); //playing multiple voices at same time
+play("Test3");

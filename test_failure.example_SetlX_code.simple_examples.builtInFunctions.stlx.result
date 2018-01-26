@@ -1,0 +1,4 @@
+78c78
+< shuffled `this is a test' is `h itts ast ies'.
+---
+> shuffled `this is a test' is `ahst t  sitsei'.

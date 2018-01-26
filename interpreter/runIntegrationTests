@@ -4,7 +4,6 @@
 # launcher script for the setlX integration tests
 #
 #
-
 # set overrides for setlX launcher script
 export OVERRIDE_setlXJarDirectory="$PWD"
 export SETLX_LIBRARY_PATH="$PWD/setlXlibrary"

@@ -35,7 +35,6 @@ public class AdvancedChordProgressions {
         rt.play(new Atom(a,b,c++, "C"));
         rt.play(new Atom(a,b,c++, "C"));
 
-        Thread.sleep(1000);
         ChordProgression cp = new ChordProgression("I IV V");
         Player player = new Player();
         player.getManagedPlayer().addManagedPlayerListener(new ManagedPlayerListener() {

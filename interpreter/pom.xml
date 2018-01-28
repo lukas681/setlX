@@ -6,7 +6,7 @@
 
     <groupId>org.randoom.setlx</groupId>
     <artifactId>interpreter</artifactId>
-    <version>2.6.2-SNAPSHOT</version>
+    <version>2.7.0</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -70,14 +70,6 @@
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
             </dependency>
-            <dependency>
-                <groupId>com.explodingart</groupId>
-                <artifactId>jmusic</artifactId>
-                <version>1.6.4.1</version>
-            </dependency>
-
-
-
 
             <dependency>
                 <groupId>org.apache.maven</groupId>
@@ -118,7 +110,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>2.6</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -177,7 +169,6 @@
                     <target>${setlX.java.version}</target>
                     <showWarnings>true</showWarnings>
                     <compilerArgs>
-                        <!--<arg>-Werror</arg>-->
                         <arg>-Xlint:all</arg>
                     </compilerArgs>
                     <debug>true</debug>

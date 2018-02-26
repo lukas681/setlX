@@ -20,6 +20,7 @@ public class AdvancedChordProgressions {
         byte a = 0;
         byte b = 0;
         byte c = 0;
+
         rt.play(new Atom(a,b++,c, "C"));
         rt.play(new Atom(a,b,c++, "C"));
         rt.play(new Atom(a,b,c++, "C"));

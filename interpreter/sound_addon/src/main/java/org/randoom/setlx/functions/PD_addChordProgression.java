@@ -40,14 +40,13 @@ public class PD_addChordProgression extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
+        final Value patternName = args.get(PATTERN_NAME);
         final Value chordProgression = args.get(CHORD_PROGRESSION);
         final Value key = args.get(KEY);
 
         ChordProgression cp = root.getChordProgressionFactory()
                 .createChordProgression(
                         chordProgression.getUnquotedString(state), key.getUnquotedString(state));
-        //        new ChordProgression(chordProgression.getUnquotedString(state)).setKey(key.getUnquotedString(state));
         root.getSetlXPatternManager().add(patternName.getUnquotedString(state), cp);
         return SetlBoolean.TRUE;
     }

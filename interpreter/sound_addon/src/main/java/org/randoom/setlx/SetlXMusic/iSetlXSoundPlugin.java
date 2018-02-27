@@ -3,6 +3,10 @@ package org.randoom.setlx.SetlXMusic;
 import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXMusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.factories.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.iChordProgressionFactory;
+import org.randoom.setlx.SetlXMusic.factories.iNoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.iPatternFactory;
 
 /**
  * provides access to every components of the sound plugin
@@ -29,5 +33,31 @@ public interface iSetlXSoundPlugin {
      * for playing tones in real time without preprocessing.
      */
     iSetlXRealTimePlayer getSetlXRealTimePlayer();
+
+
+    /**
+     * Returns a Atom Factory
+     * @return Atom Factory
+     */
+    iAtomFactory getAtomFactory();
+
+    /**
+     * Returns a Pattern Factory
+     * @return
+     */
+    iPatternFactory getPatternFactoy();
+
+    /**
+     * Returns a Chord Progression Factory
+     * @return
+     */
+    iChordProgressionFactory getChordProgressionFactory();
+
+    /**
+     * Returns a Note Factory
+     * @return
+     */
+    iNoteFactory getNoteFactory();
+
 
 }

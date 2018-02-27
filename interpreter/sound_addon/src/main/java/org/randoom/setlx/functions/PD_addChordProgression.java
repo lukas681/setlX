@@ -1,19 +1,25 @@
 package org.randoom.setlx.functions;
 
-import org.jfugue.pattern.Pattern;
 import org.jfugue.theory.ChordProgression;
-import org.jfugue.theory.Key;
 import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
-import org.randoom.setlx.types.SetlDouble;
 import org.randoom.setlx.types.SetlString;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
+/**
+ * Adds a new {@link ChordProgression} to the storay.
+ * A Chord Progression is a sequence of roman letters, that describes an musical progression.
+ * Therefore, as known from musical theory, upper case letters are used for major Chords and
+ * lower case letters for minor ones.
+ * Additionally, you need a base key, which signalizes the tonality of the progression.
+   By default, 'C' is the base key.
+ * For example, the progression "I IV V I" shows
+ */
 public class PD_addChordProgression extends PreDefinedProcedure {
 
 
@@ -37,9 +43,11 @@ public class PD_addChordProgression extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
         final Value chordProgression = args.get(CHORD_PROGRESSION);
         final Value key = args.get(KEY);
-        //TODO warning if key not supported
-            ChordProgression cp = new ChordProgression(chordProgression.getUnquotedString(state)).setKey(key.getUnquotedString(state));
 
+        ChordProgression cp = root.getChordProgressionFactory()
+                .createChordProgression(
+                        chordProgression.getUnquotedString(state), key.getUnquotedString(state));
+        //        new ChordProgression(chordProgression.getUnquotedString(state)).setKey(key.getUnquotedString(state));
         root.getSetlXPatternManager().add(patternName.getUnquotedString(state), cp);
         return SetlBoolean.TRUE;
     }

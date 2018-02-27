@@ -32,7 +32,6 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
         atomFac = new AtomFactory();
     }
 
-
     @Override
     public void stopNotes() throws SetlXMidiNotAvailableException {
         rtplayer.close();

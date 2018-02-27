@@ -4,6 +4,7 @@ import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.NegativeArgumentException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
 import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
@@ -28,7 +29,7 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
         } catch (MidiUnavailableException midiException) {
             throw new SetlXMidiNotAvailableException();
         }
-        noteFac = new NoteFactory();
+        noteFac = new NoteFactory(); //Todo use root factories
         atomFac = new AtomFactory();
     }
 
@@ -56,22 +57,48 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     }
 
     @Override
-    public void play(byte voice, byte layer, byte instrument, Note note) {
+    public void play(byte voice, byte layer, byte instrument, Note note) throws NegativeArgumentException {
+        if(isNegativeOrZeroValue(voice, layer, instrument)){
+            throw new NegativeArgumentException();
+        }
         rtplayer.play(atomFac.createAtom(voice, layer, instrument, note));
     }
 
     @Override
-    public void play(byte voice, byte layer, byte instrument, int value, double duration) {
+    public void play(byte voice, byte layer, byte instrument, int value, double duration) throws NegativeArgumentException {
+        if(isNegativeOrZeroValue(voice, layer, instrument, value)||duration<=0){
+            throw new NegativeArgumentException();
+        }
         play(voice, layer, instrument, noteFac.createNote(value, duration));
     }
 
     @Override
-    public void changeInstrument(int instrument) {
+    public void changeInstrument(int instrument) throws NegativeArgumentException {
+        if(instrument<=0){
+            throw new NegativeArgumentException();
+        }
         rtplayer.changeInstrument(instrument);
     }
 
     @Override
-    public void setNoteDuration(int duration) {
+    public void setNoteDuration(int duration) throws NegativeArgumentException {
+        if(duration <=0){
+            throw new NegativeArgumentException();
+        }
         this.noteDuration = duration;
     }
+
+    /**
+     * Returns true, if one of the input values is zero or negative
+     * @param values
+     * @return
+     */
+    private boolean isNegativeOrZeroValue(long... values){
+        for(long x: values){
+            if(x<=0)
+                return true;
+        }
+        return false;
+    }
+
 }

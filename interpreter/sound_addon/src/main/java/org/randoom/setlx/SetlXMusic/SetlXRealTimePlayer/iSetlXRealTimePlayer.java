@@ -3,6 +3,7 @@ package org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer;
 import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.theory.Note;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.NegativeArgumentException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
 
 /**
@@ -27,12 +28,12 @@ public interface iSetlXRealTimePlayer {
 
     void play(Atom musicalUnit);
 
-    void play(byte voice, byte layer, byte instrument, Note note);
+    void play(byte voice, byte layer, byte instrument, Note note) throws NegativeArgumentException;
 
-    void play(byte voice, byte layer, byte instrument, int value, double duration);
+    void play(byte voice, byte layer, byte instrument, int value, double duration) throws NegativeArgumentException;
 
-    void changeInstrument(int instrument);
+    void changeInstrument(int instrument) throws NegativeArgumentException;
 
-    void setNoteDuration(int duration);
+    void setNoteDuration(int duration) throws NegativeArgumentException;
 
 }

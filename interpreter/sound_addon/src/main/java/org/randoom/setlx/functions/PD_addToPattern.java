@@ -9,6 +9,10 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
+/**
+ * Allows to add musical information to an already existing pattern.
+ * This can be used for example to add another voice, notes and so on.
+ */
 public class PD_addToPattern extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
@@ -26,7 +30,7 @@ public class PD_addToPattern extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
+        final Value patternName = args.get(PATTERN_NAME);
         final Value pattern = args.get(PATTERN_STRING);
 
         root.getSetlXPatternManager().addToPattern(patternName.getUnquotedString(state), pattern.getUnquotedString(state));

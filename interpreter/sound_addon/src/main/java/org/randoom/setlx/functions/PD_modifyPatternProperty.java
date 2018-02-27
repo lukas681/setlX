@@ -26,7 +26,6 @@ public class PD_modifyPatternProperty extends PreDefinedProcedure {
         addParameter(PATTERN_NAME);
         addParameter(PROPERTY);
         addParameter(VALUE);
-
     }
 
     @Override

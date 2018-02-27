@@ -1,15 +1,14 @@
 package org.randoom.setlx.functions;
 
-import org.jfugue.theory.ChordProgression;
 import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
-import org.randoom.setlx.types.SetlDouble;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
+
 public class PD_allChordsAs extends PreDefinedProcedure {
 
     /**
@@ -37,7 +36,7 @@ public class PD_allChordsAs extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME);
         final Value replacementString = args.get(CHORD_PROGRESSION);
 
-        state.outWrite(replacementString.getUnquotedString(state).replace('#', '$'));
+        state.outWrite(replacementString.getUnquotedString(state).replace(referator, '$'));
         root.getSetlXPatternManager().allChordsAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace('#', '$'));
         return SetlBoolean.TRUE;
     }

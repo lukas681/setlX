@@ -22,7 +22,7 @@ import java.util.HashMap;
  * Using the underscore character instead of an index will result in the chord
  * itself added to the string. The final result will be returned from the getPattern() method.
  *
- * It can be used for example to create arpeggios and bass progressions like Alberti Bas
+ * It can be used for example to create arpeggios and bass progressions like Alberti Basses
  */
 public class PD_eachChordAs extends PreDefinedProcedure {
 
@@ -48,15 +48,15 @@ public class PD_eachChordAs extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        final Value patternName = args.get(PATTERN_NAME); //TODO Possible security issue on splitting the string
+        final Value patternName = args.get(PATTERN_NAME);
         final Value replacementString = args.get(CHORD_PROGRESSION);
 
-        root.getSetlXPatternManager().eachChordAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace('#', '$')); //TODO Catch possible exceptions
+        root.getSetlXPatternManager().eachChordAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace(referator, '$')); //TODO Catch possible exceptions
         return SetlBoolean.TRUE;
     }
 
     /**
-     * Because optional Parameters just allow some predefined double values, we set {@link SetlDouble} ZERO to a defautl of 120 BPM
+     * Because optional Parameters just allow some predefined double values, we set {@link SetlDouble} ZERO to a default of 120 BPM
      */
     public int checkTempo(int tempo) {
         return tempo == 0 ? 120 : tempo;

@@ -10,6 +10,10 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
+/**
+ * plays a musical content, that is stored in the music player.
+ * This can be e. g. a pattern, a chordProgression or a rhythm.
+ */
 public class PD_play extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAMES = createOptionalParameter("patternName", SetlString.NIL);
@@ -30,7 +34,6 @@ public class PD_play extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAMES); //Extracts the name of the patterns
         patternName.appendUnquotedString(state, out, 0);
         String patternNames[] = out.toString().split("\\s+"); //We can play multiple patterns at once by seperating them
-        //with a blank
         root.getSetlxMusicPlayer().play(patternNames);
         return SetlBoolean.TRUE;
     }

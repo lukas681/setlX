@@ -36,7 +36,7 @@ public class PD_showMusic extends PreDefinedProcedure {
 
         int i = 0;
             Iterator it = allPatterns.entrySet().iterator();
-        for(int y = 0; y <3; y++) { //In order to save redundant
+        for(int y = 0; y <3; y++) { //In order to save redundance
             if(y == 1) { //Iterating over Rhythms
                 print(state, "\n~~~~~~RHYTHMS~~~~~\n");
                 i=0;

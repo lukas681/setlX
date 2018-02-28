@@ -23,14 +23,14 @@ public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
     iNoteFactory noteFac;
     iAtomFactory atomFac;
 
-    public SetlXRealTimePlayer() throws SetlXMidiNotAvailableException {
+    public SetlXRealTimePlayer(iNoteFactory noteFactory, iAtomFactory atomFactory) throws SetlXMidiNotAvailableException {
         try {
             rtplayer = new RealtimePlayer();
         } catch (MidiUnavailableException midiException) {
             throw new SetlXMidiNotAvailableException();
         }
-        noteFac = new NoteFactory(); //Todo use root factories
-        atomFac = new AtomFactory();
+        noteFac = noteFactory;
+        atomFac = atomFactory;
     }
 
     @Override

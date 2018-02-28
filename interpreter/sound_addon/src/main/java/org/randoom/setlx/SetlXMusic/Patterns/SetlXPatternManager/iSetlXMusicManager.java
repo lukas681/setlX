@@ -16,14 +16,13 @@ import org.randoom.setlx.exceptions.SetlException;
 import java.util.HashMap;
 
 /**
- * This Manager holds and manages patterns, that can be created by setlx.
- * It is also possible to modify an edit the patterns.
+ * This Manager holds and manages patterns that can be created and used by setlx.
+ * It is the main interface to all musical content available during runtime.
  */
 public interface iSetlXMusicManager {
 
     /**
-     * Adds a new pattern to this Music Manager. It can then me used to build a song.
-     *
+     * Adds a new pattern to this Music Manager. Patterns can then be e. g. played or modified.
      * @param name
      * @param pattern
      */

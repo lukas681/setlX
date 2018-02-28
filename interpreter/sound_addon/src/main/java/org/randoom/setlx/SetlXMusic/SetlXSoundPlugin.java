@@ -42,15 +42,17 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
      */
     private void initializeComponents() throws SetlXMidiNotAvailableException {
 
-        patternManager = new SetlXMusicManager();
-        musicPlayer = new SetlXMusicPlayer(patternManager);
-        realTimePlayer = new SetlXRealTimePlayer();
-
+        // Initializes factories
         atomFactory = new AtomFactory();
         noteFactory = new NoteFactory();
         chordProgressionFactory = new ChordProgressionFactory();
         patternFactory = new PatternFactory();
         rhythmFactory = new RhythmFactory();
+
+        patternManager = new SetlXMusicManager();
+        musicPlayer = new SetlXMusicPlayer(patternManager);
+        realTimePlayer = new SetlXRealTimePlayer(noteFactory, atomFactory);
+
     }
 
     @Override

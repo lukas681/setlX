@@ -37,6 +37,6 @@ public class SetlXMusicPlayer implements iSetlXMusicPlayer {
             }
         }
         player.play(temp.toArray(new PatternProducer[temp.size()]));
-        player = new Player(); //TODO A bug, that is delaying the start of new Patterns. Keep track of future updates of the framework
+        player = new Player();
     }
 }

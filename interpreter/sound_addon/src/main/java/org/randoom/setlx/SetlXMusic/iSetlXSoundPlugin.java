@@ -3,10 +3,11 @@ package org.randoom.setlx.SetlXMusic;
 import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXMusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.factories.iAtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.iChordProgressionFactory;
-import org.randoom.setlx.SetlXMusic.factories.iNoteFactory;
-import org.randoom.setlx.SetlXMusic.factories.iPatternFactory;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.iChordProgressionFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.PatternFactory.iPatternFactory;
+import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.iRhythmFactory;
 
 /**
  * provides access to every components of the sound plugin
@@ -59,5 +60,10 @@ public interface iSetlXSoundPlugin {
      */
     iNoteFactory getNoteFactory();
 
+    /**
+     * Returns a Rhythm Factory
+     * @return
+     */
+    iRhythmFactory getRhythmFactory();
 
 }

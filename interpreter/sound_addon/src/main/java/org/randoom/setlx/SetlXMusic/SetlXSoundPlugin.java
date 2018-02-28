@@ -7,7 +7,16 @@ import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.factories.*;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory.AtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.ChordProgressionFactory;
+import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.iChordProgressionFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.NoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.PatternFactory.PatternFactory;
+import org.randoom.setlx.SetlXMusic.factories.PatternFactory.iPatternFactory;
+import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.RhythmFactory;
+import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.iRhythmFactory;
 
 public class SetlXSoundPlugin implements iSetlXSoundPlugin {
 
@@ -22,6 +31,7 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
     private iNoteFactory noteFactory;
     private iChordProgressionFactory chordProgressionFactory;
     private iPatternFactory patternFactory;
+    private iRhythmFactory rhythmFactory;
 
     private SetlXSoundPlugin() throws SetlXMidiNotAvailableException { //TODO SetlXMidiNotAvailable lassen?
         initializeComponents();
@@ -40,6 +50,7 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
         noteFactory = new NoteFactory();
         chordProgressionFactory = new ChordProgressionFactory();
         patternFactory = new PatternFactory();
+        rhythmFactory = new RhythmFactory();
     }
 
     @Override
@@ -75,6 +86,11 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
     @Override
     public iNoteFactory getNoteFactory() {
         return noteFactory;
+    }
+
+    @Override
+    public iRhythmFactory getRhythmFactory() {
+        return rhythmFactory;
     }
 
     public static SetlXSoundPlugin getInstance() {

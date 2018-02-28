@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.factories;
+package org.randoom.setlx.SetlXMusic.factories.PatternFactory;
 
 import org.jfugue.pattern.Pattern;
 import org.randoom.setlx.SetlXMusic.factories.Exceptions.PatternValueOutOfRangeException;

@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.factories;
+package org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory;
 
 import org.jfugue.theory.ChordProgression;
 import org.randoom.setlx.SetlXMusic.factories.Exceptions.KeyNotAcceptedException;

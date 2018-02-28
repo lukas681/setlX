@@ -35,12 +35,11 @@ public class PD_addRhythm extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-
         final Value patternName = args.get(RHYTHM_NAME);
         final Value pattern = args.get(PATTERN);
         final Value length = args.get(LENGTH);
-        Rhythm rhythm = new Rhythm(pattern.getUnquotedString(state)).setLength(length.toJIntValue(state)); //Fucking 3hours of debugging... just to see, that there were "" put in...
-// Todo refactor with own method
+        Rhythm rhythm = root.getRhythmFactory().createRhythm(pattern.getUnquotedString(state)).setLength(length.toJIntValue(state));
+
         root.getSetlXPatternManager().add(patternName.getUnquotedString(state), rhythm);
         return SetlBoolean.TRUE;
     }

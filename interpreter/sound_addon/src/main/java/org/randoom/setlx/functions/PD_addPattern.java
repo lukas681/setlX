@@ -23,7 +23,7 @@ public class PD_addPattern extends PreDefinedProcedure {
     private final static ParameterDefinition TEMPO = createOptionalParameter("tempo", SetlDouble.ZERO); //Zero if we use default value
     private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ZERO);
     private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ZERO);
-    private final static ParameterDefinition REPEAT = createOptionalParameter("repeat", SetlDouble.ONE); //TODO Implement That!
+    // private final static ParameterDefinition REPEAT = createOptionalParameter("repeat", SetlDouble.ONE); //TODO Implement That!
 
 
     public final static PreDefinedProcedure DEFINITION = new PD_addPattern();
@@ -37,7 +37,7 @@ public class PD_addPattern extends PreDefinedProcedure {
         addParameter(TEMPO);
         addParameter(INSTRUMENT);
         addParameter(VOICE);
-        addParameter(REPEAT);
+       //  addParameter(REPEAT);
     }
 
     @Override
@@ -50,6 +50,7 @@ public class PD_addPattern extends PreDefinedProcedure {
 
         Pattern ptrn;
         if(instrument.toJIntValue(state)!=0||tempo.toJIntValue(state)!=0||voice.toJIntValue(state)!=0) {
+            // If there are given values for instrument, tempo or voice, then we need to call a special factory method
             ptrn = root.getPatternFactoy().createPattern(
                     pattern.getUnquotedString(state),instrument.toJIntValue(state), tempo.toJIntValue(state),voice.toJIntValue(state));
         }else{

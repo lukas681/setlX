@@ -6,10 +6,10 @@ import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.NegativeArgumentException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory;
-import org.randoom.setlx.SetlXMusic.factories.iAtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.iNoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory.AtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.NoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
 
 import javax.sound.midi.MidiUnavailableException;
 

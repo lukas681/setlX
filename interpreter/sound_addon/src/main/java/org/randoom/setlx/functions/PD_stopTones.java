@@ -10,20 +10,18 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
-public class PD_stopNotes extends PreDefinedProcedure {
+public class PD_stopTones extends PreDefinedProcedure {
 
-    public final static PreDefinedProcedure DEFINITION = new PD_stopNotes();
+    public final static PreDefinedProcedure DEFINITION = new PD_stopTones();
 
     private iSetlXRealTimePlayer rtplayer = SetlXSoundPlugin.getInstance().getSetlXRealTimePlayer();
 
-    protected PD_stopNotes() {
+    protected PD_stopTones() {
         super();
-
     }
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-
         rtplayer.stopNotes();
         return SetlBoolean.TRUE;
     }

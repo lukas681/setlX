@@ -3,6 +3,8 @@ package org.randoom.setlx.SetlXMusic.factories;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.NoteFactory;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
 
 import static org.junit.Assert.*;
 

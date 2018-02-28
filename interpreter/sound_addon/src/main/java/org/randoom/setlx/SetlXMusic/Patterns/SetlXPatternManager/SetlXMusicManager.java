@@ -131,7 +131,7 @@ public class SetlXMusicManager implements iSetlXMusicManager {
 
     @Override
     public HashMap<String, GetPatternStats.Stats> getDetailPatternStats(String patternName) throws PatternNotFoundException {
-        HashMap<String, GetPatternStats.Stats> statistics = new HashMap<>(); //TODO Do not parse it every time again for general and details stats
+        HashMap<String, GetPatternStats.Stats> statistics = new HashMap<>();
         stats.parsePattern(patternStorage.getElement(patternName), true);
         statistics.put("Harmonic", stats.getHarmonicStats());
         statistics.put("Duration", stats.getDurationStats());
@@ -142,7 +142,7 @@ public class SetlXMusicManager implements iSetlXMusicManager {
     }
 
     @Override
-    public int[] getGeneralPatternStats(String patternName) throws PatternNotFoundException { //TODO also Pattern stats for rhythm and chordProgression
+    public int[] getGeneralPatternStats(String patternName) throws PatternNotFoundException {
         stats.parsePattern(patternStorage.getElement(patternName), true);
         return stats.getGeneralStats();
     }
@@ -201,10 +201,10 @@ public class SetlXMusicManager implements iSetlXMusicManager {
     public void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException {
         switch(getStorageWhereKeyIsUsed(elementName)){
             case CHORD_PROGRESSION_STORAGE:
-                patternStorage.addElement(elementName + "_conv", chordProgressionStorage.getElement(elementName).getPattern());
-                break; //TODO make something against collisions: multiconverts..
+                patternStorage.addElement(elementName + "_c", chordProgressionStorage.getElement(elementName).getPattern());
+                break;
             case RHYTHM_STORAGE:
-                patternStorage.addElement(elementName + "_conv", rythmStorage.getElement(elementName).getPattern());
+                patternStorage.addElement(elementName + "_c", rythmStorage.getElement(elementName).getPattern());
                 break;
             default:
                 throw new CanNotConvertException();

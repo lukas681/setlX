@@ -1,5 +1,6 @@
 package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 
+import org.jfugue.pattern.PatternProducer;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 
 /**
@@ -16,5 +17,5 @@ public interface iSetlXMusicPlayer { //TODO Maybe a own song system
      */
     void play(String... patternNames) throws PatternNotFoundException;
 
-    //StaccatoParser getStaccatoParser();
+    void play(PatternProducer pattern);
 }

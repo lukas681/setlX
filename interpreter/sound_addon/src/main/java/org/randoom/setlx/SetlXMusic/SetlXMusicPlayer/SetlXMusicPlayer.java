@@ -39,4 +39,9 @@ public class SetlXMusicPlayer implements iSetlXMusicPlayer {
         player.play(temp.toArray(new PatternProducer[temp.size()]));
         player = new Player();
     }
+
+    @Override
+    public void play(PatternProducer pattern) {
+        player.play(pattern);
+    }
 }

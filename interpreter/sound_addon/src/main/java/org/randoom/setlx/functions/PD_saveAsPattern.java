@@ -14,8 +14,7 @@ import java.util.HashMap;
 
 public class PD_saveAsPattern extends PreDefinedProcedure {
 
-    private final static ParameterDefinition ELEMENT_NAME = createParameter("patternName"); //TODO Autocount
-
+    private final static ParameterDefinition ELEMENT_NAME = createParameter("patternName");
 
     public final static PreDefinedProcedure DEFINITION = new PD_saveAsPattern();
 
@@ -28,7 +27,7 @@ public class PD_saveAsPattern extends PreDefinedProcedure {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
-        final Value elementName = args.get(ELEMENT_NAME); //TODO Possible security issue on splitting the string
+        final Value elementName = args.get(ELEMENT_NAME);
 
         root.getSetlXPatternManager().saveAsPattern(elementName.getUnquotedString(state));
         return SetlBoolean.TRUE;

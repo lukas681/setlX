@@ -6,7 +6,7 @@ import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptio
 /**
  * Created by Lukas on 28.12.2017.
  */
-public interface iSetlXMusicPlayer { //TODO Maybe a own song system
+public interface iMusicPlayer { //TODO Maybe a own song system
     /**
      * Plays the music elements with that name.
      * IMPORTANT: If you want to play more than one pattern at one, be aware, that the TEMPO of the first argument

@@ -1,21 +1,20 @@
 package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 
-import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.player.Player;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXMusicManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iMusicManager;
 
 import java.util.ArrayList;
 
 /**
  * Created by Lukas on 28.12.2017.
  */
-public class SetlXMusicPlayer implements iSetlXMusicPlayer {
-    iSetlXMusicManager musicSource;
+public class MusicPlayer implements iMusicPlayer {
+    iMusicManager musicSource;
     Player player;
 
-    public SetlXMusicPlayer(iSetlXMusicManager musicSource) {
+    public MusicPlayer(iMusicManager musicSource) {
         this.musicSource = musicSource;
         player = new Player(); //Initialized the first player
     }

@@ -2,22 +2,21 @@ package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.rhythm.Rhythm;
-import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.SetlXMusicPlayer;
+import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
 
 import static org.junit.Assert.*;
 
 public class SetlXMusicManagerTest {
 
-    SetlXMusicManager mgr;
-    SetlXMusicPlayer pl;
+    MusicManager mgr;
+    MusicPlayer pl;
     @Before
     public void setUp() throws Exception {
-        mgr = new SetlXMusicManager();
-        pl = new SetlXMusicPlayer(mgr);
+        mgr = new MusicManager();
+        pl = new MusicPlayer(mgr);
         mgr.add("Test", new Pattern("C D E F G"));
     }
 

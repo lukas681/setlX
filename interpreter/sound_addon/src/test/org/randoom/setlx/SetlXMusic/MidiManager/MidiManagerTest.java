@@ -1,10 +1,10 @@
-package org.randoom.setlx.SetlXMusic.SetlXMIDI;
+package org.randoom.setlx.SetlXMusic.MidiManager;
 
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXMusicManager;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.SetlXMusicPlayer;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.MusicManager;
+import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
 
 import static org.junit.Assert.*;
 
@@ -12,12 +12,12 @@ public class MidiManagerTest {
 
     Pattern testPattern;
     MidiManager manager;
-    SetlXMusicPlayer Player;
+    MusicPlayer Player;
     @Before
     public void setUp() throws Exception {
       testPattern = new Pattern("C D E F G A B H");
       manager = new MidiManager();
-      Player = new SetlXMusicPlayer(new SetlXMusicManager());
+      Player = new MusicPlayer(new MusicManager());
     }
 
     @Test

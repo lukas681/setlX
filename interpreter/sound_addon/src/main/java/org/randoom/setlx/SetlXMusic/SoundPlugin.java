@@ -1,12 +1,12 @@
 package org.randoom.setlx.SetlXMusic;
 
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.SetlXMusicManager;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iSetlXMusicManager;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.SetlXMusicPlayer;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iSetlXMusicPlayer;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.MusicManager;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iMusicManager;
+import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
+import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.SetlXRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.RealTimerPlayer;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory.AtomFactory;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
 import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.ChordProgressionFactory;
@@ -18,13 +18,13 @@ import org.randoom.setlx.SetlXMusic.factories.PatternFactory.iPatternFactory;
 import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.RhythmFactory;
 import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.iRhythmFactory;
 
-public class SetlXSoundPlugin implements iSetlXSoundPlugin {
+public class SoundPlugin implements iSoundPlugin {
 
-    private static SetlXSoundPlugin setlxSoundPlugin;
+    private static SoundPlugin setlxSoundPlugin;
 
-    private iSetlXMusicPlayer musicPlayer;
-    private iSetlXMusicManager patternManager;
-    private iSetlXRealTimePlayer realTimePlayer;
+    private iMusicPlayer musicPlayer;
+    private iMusicManager patternManager;
+    private iRealTimePlayer realTimePlayer;
 
     // Factories TODO Sum up factories
     private iAtomFactory atomFactory;
@@ -33,7 +33,7 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
     private iPatternFactory patternFactory;
     private iRhythmFactory rhythmFactory;
 
-    private SetlXSoundPlugin() throws SetlXMidiNotAvailableException { //TODO SetlXMidiNotAvailable lassen?
+    private SoundPlugin() throws SetlXMidiNotAvailableException { //TODO SetlXMidiNotAvailable lassen?
         initializeComponents();
     }
 
@@ -49,24 +49,24 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
         patternFactory = new PatternFactory();
         rhythmFactory = new RhythmFactory();
 
-        patternManager = new SetlXMusicManager();
-        musicPlayer = new SetlXMusicPlayer(patternManager);
-        realTimePlayer = new SetlXRealTimePlayer(noteFactory, atomFactory);
+        patternManager = new MusicManager();
+        musicPlayer = new MusicPlayer(patternManager);
+        realTimePlayer = new RealTimerPlayer(noteFactory, atomFactory);
 
     }
 
     @Override
-    public iSetlXMusicManager getSetlXPatternManager() {
+    public iMusicManager getSetlXPatternManager() {
         return patternManager;
     }
 
     @Override
-    public iSetlXMusicPlayer getSetlxMusicPlayer() {
+    public iMusicPlayer getSetlxMusicPlayer() {
         return musicPlayer;
     }
 
     @Override
-    public iSetlXRealTimePlayer getSetlXRealTimePlayer() {
+    public iRealTimePlayer getSetlXRealTimePlayer() {
         return realTimePlayer;
     }
 
@@ -95,10 +95,10 @@ public class SetlXSoundPlugin implements iSetlXSoundPlugin {
         return rhythmFactory;
     }
 
-    public static SetlXSoundPlugin getInstance() {
+    public static SoundPlugin getInstance() {
         if (setlxSoundPlugin == null) { //Singleton
             try {
-                setlxSoundPlugin = new SetlXSoundPlugin();
+                setlxSoundPlugin = new SoundPlugin();
             } catch (SetlXMidiNotAvailableException e) {
                 e.printStackTrace();
             }

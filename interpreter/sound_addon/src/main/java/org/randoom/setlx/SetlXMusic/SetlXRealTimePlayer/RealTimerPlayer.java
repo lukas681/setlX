@@ -6,8 +6,6 @@ import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.NegativeArgumentException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory.AtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory.NoteFactory;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
 import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
 
@@ -16,14 +14,14 @@ import javax.sound.midi.MidiUnavailableException;
 /**
  * Created by Lukas on 28.12.2017.
  */
-public class SetlXRealTimePlayer implements iSetlXRealTimePlayer {
+public class RealTimerPlayer implements iRealTimePlayer {
 
     RealtimePlayer rtplayer;
     int noteDuration = 1;
     iNoteFactory noteFac;
     iAtomFactory atomFac;
 
-    public SetlXRealTimePlayer(iNoteFactory noteFactory, iAtomFactory atomFactory) throws SetlXMidiNotAvailableException {
+    public RealTimerPlayer(iNoteFactory noteFactory, iAtomFactory atomFactory) throws SetlXMidiNotAvailableException {
         try {
             rtplayer = new RealtimePlayer();
         } catch (MidiUnavailableException midiException) {

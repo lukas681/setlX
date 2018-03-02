@@ -11,6 +11,7 @@ import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotSupportedException;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
+import org.randoom.setlx.SetlXMusic.Patterns.Storages.StorageTypes;
 import org.randoom.setlx.exceptions.SetlException;
 
 import java.util.HashMap;
@@ -19,7 +20,7 @@ import java.util.HashMap;
  * This Manager holds and manages patterns that can be created and used by setlx.
  * It is the main interface to all musical content available during runtime.
  */
-public interface iSetlXMusicManager {
+public interface iMusicManager {
 
     /**
      * Adds a new pattern to this Music Manager. Patterns can then be e. g. played or modified.

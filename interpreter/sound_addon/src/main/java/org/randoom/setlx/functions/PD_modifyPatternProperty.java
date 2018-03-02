@@ -2,7 +2,7 @@ package org.randoom.setlx.functions;
 
 import org.randoom.setlx.Exceptions.ParameterNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.SetlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
@@ -19,7 +19,7 @@ public class PD_modifyPatternProperty extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_modifyPatternProperty();
 
-    SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
+    SoundPlugin root = SoundPlugin.getInstance();
 
     protected PD_modifyPatternProperty() {
         super();

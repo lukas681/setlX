@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.SetlXMIDI;
+package org.randoom.setlx.SetlXMusic.MidiManager;
 
 import org.jfugue.midi.MidiFileManager;
 import org.jfugue.pattern.Pattern;

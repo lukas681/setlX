@@ -1,8 +1,8 @@
 package org.randoom.setlx.functions;
 
 import org.randoom.setlx.Exceptions.NotInByteRangeException;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iSetlXRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
@@ -10,7 +10,6 @@ import org.randoom.setlx.types.SetlDouble;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
-import javax.print.DocFlavor;
 import java.util.HashMap;
 
 /**
@@ -26,7 +25,7 @@ public class PD_playTone extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_playTone();
 
-    private iSetlXRealTimePlayer rtplayer = SetlXSoundPlugin.getInstance().getSetlXRealTimePlayer();
+    private iRealTimePlayer rtplayer = SoundPlugin.getInstance().getSetlXRealTimePlayer();
 
     protected PD_playTone() {
         super();

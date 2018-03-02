@@ -3,7 +3,7 @@ package org.randoom.setlx.functions;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.SetlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
@@ -18,7 +18,7 @@ public class PD_showMusic extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_showMusic();
 
-    SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
+    SoundPlugin root = SoundPlugin.getInstance();
 
     protected PD_showMusic() {
         super();

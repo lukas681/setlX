@@ -1,12 +1,9 @@
 package org.randoom.setlx.functions;
 
-import org.jfugue.pattern.Pattern;
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.SetlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
-import org.randoom.setlx.types.SetlDouble;
-import org.randoom.setlx.types.SetlString;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
@@ -28,7 +25,7 @@ public class PD_setKeyForChordProgression extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_setKeyForChordProgression();
 
-    SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
+    SoundPlugin root = SoundPlugin.getInstance();
 
     protected PD_setKeyForChordProgression() {
         super();

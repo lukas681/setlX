@@ -10,7 +10,7 @@ import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotA
  * This players allows playing tones in Real Time without any preprocessing.
  */
 
-public interface iSetlXRealTimePlayer {
+public interface iRealTimePlayer {
 
 
     /**
@@ -20,7 +20,7 @@ public interface iSetlXRealTimePlayer {
 
     /**
      * simply plays a musical pattern. This pattern is accessing to the global properties of the
-     * iSetlXRealTimePlayer
+     * iRealTimePlayer
      *
      * @param pattern
      */

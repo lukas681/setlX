@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Lukas on 28.12.2017.
  */
-public class SetlXMusicManager implements iSetlXMusicManager {
+public class MusicManager implements iMusicManager {
 
     private iSetlXMusicStorage<Pattern> patternStorage;
     private iSetlXMusicStorage<ChordProgression> chordProgressionStorage;
@@ -27,9 +27,9 @@ public class SetlXMusicManager implements iSetlXMusicManager {
     private GetPatternStats stats;
 
     /**
-     * Default constructor for {@link SetlXMusicManager}. Creates a new Patternmanager
+     * Default constructor for {@link MusicManager}. Creates a new Patternmanager
      */
-    public SetlXMusicManager() {
+    public MusicManager() {
         patternStorage = new SetlXMusicStorage<>(); //Creates a new Pattern Storage for future music patterns
         chordProgressionStorage = new SetlXMusicStorage<>();
         rythmStorage = new SetlXMusicStorage<>();

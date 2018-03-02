@@ -30,7 +30,9 @@ public interface iRealTimePlayer {
 
     void play(byte voice, byte layer, byte instrument, Note note) throws NegativeArgumentException;
 
-    void play(byte voice, byte layer, byte instrument, int value, double duration) throws NegativeArgumentException;
+    void play(byte voice, byte layer, byte instrument, int value, double durationRelative) throws NegativeArgumentException;
+
+    void play(byte voice, byte layer, byte instrument, int value, int durationBPM) throws NegativeArgumentException;
 
     void changeInstrument(int instrument) throws NegativeArgumentException;
 

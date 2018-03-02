@@ -8,6 +8,7 @@ import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.NegativeArgumentEx
 import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.MidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.Factories.AtomFactory.iAtomFactory;
 import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.iNoteFactory;
+import org.randoom.setlx.exceptions.SetlException;
 
 import javax.sound.midi.MidiUnavailableException;
 
@@ -63,11 +64,16 @@ public class RealTimerPlayer implements iRealTimePlayer {
     }
 
     @Override
-    public void play(byte voice, byte layer, byte instrument, int value, double duration) throws NegativeArgumentException {
-        if (isNegativeOrZeroValue(voice, layer, instrument, value) || duration <= 0) {
+    public void play(byte voice, byte layer, byte instrument, int value, double durationRelative) throws NegativeArgumentException {
+        if (isNegativeOrZeroValue(voice, layer, instrument, value) || durationRelative <= 0) {
             throw new NegativeArgumentException();
         }
-        play(voice, layer, instrument, noteFac.createNote(value, duration));
+        play(voice, layer, instrument, noteFac.createNote(value, durationRelative));
+    }
+    @Override
+    public void play(byte voice, byte layer, byte instrument, int value, int durationBPM) throws NegativeArgumentException {
+        play(voice, layer, instrument, value, convertBPMToRelativeValue(durationBPM));
+
     }
 
     @Override
@@ -98,6 +104,24 @@ public class RealTimerPlayer implements iRealTimePlayer {
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Converts a Beats per Minute value into a relative one ranging from [0,1]
+     *
+     * It is a pure function defined by
+     /*      convertBPMToRelativeValue: ]0,infty] -> ]0,1]
+     *
+     * Notice, that
+     /*      convertBPMToRelativeValue(30) = 1 as the slowest value.
+     *
+     * @param bpm Beats per minute
+     * @return
+     */
+    public double convertBPMToRelativeValue(int bpm){
+      //  if(bpm==0) return 0;
+            //TODO Possible Div by Zero excpetion;
+        return 30d/(double)bpm; // 30 is the slowest possible tempo.
     }
 
 }

@@ -1,0 +1,7 @@
+print("Simple Demo for Real Time Music");
+playTone(40);
+for(x in {40..100}){
+    playTone(x, 0.5);
+}
+sleep(15000);
+

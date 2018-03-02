@@ -48,8 +48,14 @@ public class PD_playTone extends PreDefinedProcedure {
         if (!isInByteRange(voice.toJIntValue(state), layer.toJIntValue(state), instrument.toJIntValue(state))) {
             throw new NotInByteRangeException(); // Cancel, if not in byte range.
         }
-        rtplayer.play((byte) voice.toJIntValue(state), (byte) layer.toJIntValue(state), (byte) instrument.toJIntValue(state),
-                note.toJIntValue(state), duration.toJDoubleValue(state));
+        int durationAbsolute = (duration.toJIntValue(state) == 0 ? 120 : duration.toJIntValue(state));
+
+        rtplayer.play((byte) voice.toJIntValue(state)
+                , (byte) layer.toJIntValue(state)
+                , (byte) instrument.toJIntValue(state)
+                , note.toJIntValue(state)
+                , durationAbsolute);
+
         return SetlBoolean.TRUE;
     }
 

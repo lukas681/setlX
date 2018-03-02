@@ -24,7 +24,7 @@ public class MidiManager implements iMidiManager {
 
             filename = "Soundpattern_" + System.nanoTime();
         }
-        if (!hasFileEnding(filename)) {
+        if (!hasFileEnding(filename, ".mid")) {
             filename += ".mid";
         }
 
@@ -32,7 +32,7 @@ public class MidiManager implements iMidiManager {
             MidiFileManager.savePatternToMidi(pattern, file);
     }
 
-    public boolean hasFileEnding(String filename) {
-        return filename.matches(".*[.].*");
+    public boolean hasFileEnding(String filename, String ending) {
+        return filename.matches(".*[.]"+ending);
     }
 }

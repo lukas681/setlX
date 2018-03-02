@@ -6,6 +6,9 @@ import org.junit.Test;
 import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.MusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
 
+import javax.sound.midi.InvalidMidiDataException;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class MidiManagerTest {
@@ -21,7 +24,7 @@ public class MidiManagerTest {
     }
 
     @Test
-    public void load() {
+    public void load() throws IOException, InvalidMidiDataException {
         manager.save("test.mid", testPattern); //Assuming correctness of this method.
         Pattern loadedPattern = manager.load("test.mid");
         assertNotNull(loadedPattern);
@@ -30,14 +33,18 @@ public class MidiManagerTest {
     }
 
     @Test
-    public void save() {
+    public void save() throws IOException {
         manager.save("", testPattern);
     }
 
     @Test
     public void hasFileEnding() {
-        assertTrue(manager.hasFileEnding("test.mid"));
-        assertFalse(manager.hasFileEnding("test"));
-        assertFalse(manager.hasFileEnding(""));
+        assertFalse(manager.hasFileEnding("/this/is/a/absolute/path/mid","mid"));
+        assertTrue(manager.hasFileEnding("./this/is/a/relative/path/mid.mid","mid"));
+        assertFalse(manager.hasFileEnding("./this/is/a/relative/path/mid","mid"));
+        assertFalse(manager.hasFileEnding("/this/is/a/absolute/path/mid","mid"));
+        assertTrue(manager.hasFileEnding("test.mid","mid"));
+        assertFalse(manager.hasFileEnding("test","mid"));
+        assertFalse(manager.hasFileEnding("","mid"));
     }
 }

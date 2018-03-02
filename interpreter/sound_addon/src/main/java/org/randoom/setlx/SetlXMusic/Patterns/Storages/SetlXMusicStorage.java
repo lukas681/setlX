@@ -21,6 +21,7 @@ public class SetlXMusicStorage<T extends PatternProducer> implements iSetlXMusic
             throw new NullArgumentsException();
         }
     }
+
     @Override
     public boolean checkExisting(String name) {
         return patternStorage.containsKey(name);

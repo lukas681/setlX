@@ -12,8 +12,8 @@ import javax.sound.midi.InvalidMidiDataException;
 import java.util.HashMap;
 
 /**
- Exports an existing pattern to the filesystem.
- It will be saved as an *.mid file, which can then be played in various other programs, that support midi-codec
+ * Exports an existing pattern to the filesystem.
+ * It will be saved as an *.mid file, which can then be played in various other programs, that support midi-codec
  */
 public class PD_loadMidi extends PreDefinedProcedure {
 
@@ -36,7 +36,7 @@ public class PD_loadMidi extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME);
         final Value fileName = args.get(FILE_NAME);
 
-            root.getMusicManager().loadMidi(patternName.getUnquotedString(state), fileName.getUnquotedString(state));
-                return SetlBoolean.TRUE;
+        root.getMusicManager().loadMidi(patternName.getUnquotedString(state), fileName.getUnquotedString(state));
+        return SetlBoolean.TRUE;
     }
 }

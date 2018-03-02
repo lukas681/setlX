@@ -45,7 +45,7 @@ public class PD_playTone extends PreDefinedProcedure {
         final Value voice = args.get(VOICE);
         final Value layer = args.get(LAYER);
 
-        if(!isInByteRange(voice.toJIntValue(state), layer.toJIntValue(state), instrument.toJIntValue(state))){
+        if (!isInByteRange(voice.toJIntValue(state), layer.toJIntValue(state), instrument.toJIntValue(state))) {
             throw new NotInByteRangeException(); // Cancel, if not in byte range.
         }
         rtplayer.play((byte) voice.toJIntValue(state), (byte) layer.toJIntValue(state), (byte) instrument.toJIntValue(state),
@@ -55,12 +55,13 @@ public class PD_playTone extends PreDefinedProcedure {
 
     /**
      * Checks, weather the given long values are in the range of an byte array
+     *
      * @param valueN
      * @return
      */
-    public static boolean isInByteRange(long... valueN){ //TODO Test!
-        for(long x: valueN){
-            if(!(x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE)){
+    public static boolean isInByteRange(long... valueN) { //TODO Test!
+        for (long x : valueN) {
+            if (!(x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE)) {
                 return false;
             }
         }

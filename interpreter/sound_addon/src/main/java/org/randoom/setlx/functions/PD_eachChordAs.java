@@ -21,7 +21,7 @@ import java.util.HashMap;
  * will return "Cq E4h G4w Fq A4h C5w Gq B4h D5w".
  * Using the underscore character instead of an index will result in the chord
  * itself added to the string. The final result will be returned from the getPattern() method.
- *
+ * <p>
  * It can be used for example to create arpeggios and bass progressions like Alberti Basses
  */
 public class PD_eachChordAs extends PreDefinedProcedure {

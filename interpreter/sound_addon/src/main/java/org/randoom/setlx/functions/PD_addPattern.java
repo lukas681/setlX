@@ -37,7 +37,7 @@ public class PD_addPattern extends PreDefinedProcedure {
         addParameter(TEMPO);
         addParameter(INSTRUMENT);
         addParameter(VOICE);
-       //  addParameter(REPEAT);
+        //  addParameter(REPEAT);
     }
 
     @Override
@@ -49,11 +49,11 @@ public class PD_addPattern extends PreDefinedProcedure {
         final Value voice = args.get(VOICE);
 
         Pattern ptrn;
-        if(instrument.toJIntValue(state)!=0||tempo.toJIntValue(state)!=0||voice.toJIntValue(state)!=0) {
+        if (instrument.toJIntValue(state) != 0 || tempo.toJIntValue(state) != 0 || voice.toJIntValue(state) != 0) {
             // If there are given values for instrument, tempo or voice, then we need to call a special factory method
             ptrn = root.getPatternFactoy().createPattern(
-                    pattern.getUnquotedString(state),instrument.toJIntValue(state), tempo.toJIntValue(state),voice.toJIntValue(state));
-        }else{
+                    pattern.getUnquotedString(state), instrument.toJIntValue(state), tempo.toJIntValue(state), voice.toJIntValue(state));
+        } else {
             ptrn = root.getPatternFactoy().createPattern(pattern.getUnquotedString(state));
         }
 

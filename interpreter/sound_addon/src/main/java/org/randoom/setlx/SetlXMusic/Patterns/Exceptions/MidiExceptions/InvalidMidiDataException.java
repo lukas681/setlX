@@ -4,7 +4,7 @@ import org.randoom.setlx.exceptions.CatchableInSetlXException;
 
 
 public class InvalidMidiDataException extends CatchableInSetlXException {
-    public InvalidMidiDataException(){
+    public InvalidMidiDataException() {
         super("The midi Data you want to load is invalid!");
     } //TODO examine, when this can happen
 }

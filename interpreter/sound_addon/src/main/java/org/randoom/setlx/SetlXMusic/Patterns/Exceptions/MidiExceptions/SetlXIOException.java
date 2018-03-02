@@ -4,7 +4,7 @@ import org.randoom.setlx.exceptions.CatchableInSetlXException;
 
 
 public class SetlXIOException extends CatchableInSetlXException {
-    public SetlXIOException(){
+    public SetlXIOException() {
         super("An IO-Exception has occured.");
     }
 }

@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Therefore, as known from musical theory, upper case letters are used for major Chords and
  * lower case letters for minor ones.
  * Additionally, you need a base key, which signalizes the tonality of the progression.
-   By default, 'C' is the base key.
+ * By default, 'C' is the base key.
  * For example, the progression "I IV V I" shows
  */
 public class PD_addChordProgression extends PreDefinedProcedure {

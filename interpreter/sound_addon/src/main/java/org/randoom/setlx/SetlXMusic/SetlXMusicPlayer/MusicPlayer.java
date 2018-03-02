@@ -23,16 +23,16 @@ public class MusicPlayer implements iMusicPlayer {
     public void play(String... patternNames) throws PatternNotFoundException {
         ArrayList<PatternProducer> temp = new ArrayList<>();
         for (String name : patternNames) {
-            switch(musicSource.getStorageWhereKeyIsUsed(name)){
+            switch (musicSource.getStorageWhereKeyIsUsed(name)) {
                 case PATTERN_STORAGE:
-                        temp.add(musicSource.getPattern(name));
-                        break;
+                    temp.add(musicSource.getPattern(name));
+                    break;
                 case RHYTHM_STORAGE:
-                        temp.add(musicSource.getRhythm(name));
-                        break;
+                    temp.add(musicSource.getRhythm(name));
+                    break;
                 case CHORD_PROGRESSION_STORAGE:
-                        temp.add(musicSource.getChordProgression(name));
-                        break;
+                    temp.add(musicSource.getChordProgression(name));
+                    break;
             }
         }
         player.play(temp.toArray(new PatternProducer[temp.size()]));

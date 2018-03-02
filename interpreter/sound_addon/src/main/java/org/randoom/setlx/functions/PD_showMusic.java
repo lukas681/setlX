@@ -32,16 +32,17 @@ public class PD_showMusic extends PreDefinedProcedure {
         print(state, "[Name, Tempo, Voice, Instrument, Pattern\n");
         HashMap<String, Pattern> allPatterns = root.getMusicManager().getAllPatterns();
         HashMap<String, Rhythm> allRhythms = root.getMusicManager().getAllRhythms();
-        HashMap<String, ChordProgression> allProgressions = root.getMusicManager()  .getAllChordProgressions();
+        HashMap<String, ChordProgression> allProgressions = root.getMusicManager().getAllChordProgressions();
 
         int i = 0;
-            Iterator it = allPatterns.entrySet().iterator();
-        for(int y = 0; y <3; y++) { //In order to save redundance
-            if(y == 1) { //Iterating over Rhythms
+        Iterator it = allPatterns.entrySet().iterator();
+        for (int y = 0; y < 3; y++) { //In order to save redundance
+            if (y == 1) { //Iterating over Rhythms
                 print(state, "\n~~~~~~RHYTHMS~~~~~\n");
-                i=0;
+                i = 0;
                 it = allRhythms.entrySet().iterator();
-            }if(y == 2) { //Iterating over Chord Progressions
+            }
+            if (y == 2) { //Iterating over Chord Progressions
                 i = 0;
                 print(state, "\n~~~~~Progressions~~~~~\n");
                 it = allProgressions.entrySet().iterator();

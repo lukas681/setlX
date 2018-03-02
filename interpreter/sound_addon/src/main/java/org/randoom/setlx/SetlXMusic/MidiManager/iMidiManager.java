@@ -9,6 +9,7 @@ public interface iMidiManager {
 
     /**
      * Loads a pattern from a midi file.
+     *
      * @param filename
      * @return
      */
@@ -16,6 +17,7 @@ public interface iMidiManager {
 
     /**
      * Saves a {@link Pattern} to a midi file.
+     *
      * @param filename
      */
     void save(String filename, Pattern pattern) throws IOException;

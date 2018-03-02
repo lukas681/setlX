@@ -56,7 +56,7 @@ public class RealTimerPlayer implements iRealTimePlayer {
 
     @Override
     public void play(byte voice, byte layer, byte instrument, Note note) throws NegativeArgumentException {
-        if(isNegativeOrZeroValue(voice, layer, instrument)){
+        if (isNegativeOrZeroValue(voice, layer, instrument)) {
             throw new NegativeArgumentException();
         }
         rtplayer.play(atomFac.createAtom(voice, layer, instrument, note));
@@ -64,7 +64,7 @@ public class RealTimerPlayer implements iRealTimePlayer {
 
     @Override
     public void play(byte voice, byte layer, byte instrument, int value, double duration) throws NegativeArgumentException {
-        if(isNegativeOrZeroValue(voice, layer, instrument, value)||duration<=0){
+        if (isNegativeOrZeroValue(voice, layer, instrument, value) || duration <= 0) {
             throw new NegativeArgumentException();
         }
         play(voice, layer, instrument, noteFac.createNote(value, duration));
@@ -72,7 +72,7 @@ public class RealTimerPlayer implements iRealTimePlayer {
 
     @Override
     public void changeInstrument(int instrument) throws NegativeArgumentException {
-        if(instrument<=0){
+        if (instrument <= 0) {
             throw new NegativeArgumentException();
         }
         rtplayer.changeInstrument(instrument);
@@ -80,7 +80,7 @@ public class RealTimerPlayer implements iRealTimePlayer {
 
     @Override
     public void setNoteDuration(int duration) throws NegativeArgumentException {
-        if(duration <=0){
+        if (duration <= 0) {
             throw new NegativeArgumentException();
         }
         this.noteDuration = duration;
@@ -88,12 +88,13 @@ public class RealTimerPlayer implements iRealTimePlayer {
 
     /**
      * Returns true, if one of the input values is zero or negative
+     *
      * @param values
      * @return
      */
-    private boolean isNegativeOrZeroValue(long... values){
-        for(long x: values){
-            if(x<=0)
+    private boolean isNegativeOrZeroValue(long... values) {
+        for (long x : values) {
+            if (x <= 0)
                 return true;
         }
         return false;

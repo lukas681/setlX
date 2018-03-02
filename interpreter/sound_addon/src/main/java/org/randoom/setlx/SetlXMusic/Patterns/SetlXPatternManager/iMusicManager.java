@@ -25,6 +25,7 @@ public interface iMusicManager {
 
     /**
      * Adds a new pattern to this Music Manager. Patterns can then be e. g. played or modified.
+     *
      * @param name
      * @param pattern
      */
@@ -113,6 +114,7 @@ public interface iMusicManager {
 
     /**
      * Returns the storage, where the key is used
+     *
      * @param key
      * @return
      */
@@ -123,6 +125,7 @@ public interface iMusicManager {
 
     /**
      * Requires passing a string that has dollar signs followed by an index, in which case each dollar+index will be replaced by the indexed chord of the chord progression. For example, given a ChordProgression of "I IV V" and a string of "$0q $1h $2w", will return "C4MAJq F4MAJh G4MAJw". Using the underscore character instead of an index will result in the pattern of the ChordProgression itself added to the string. The final result will be returned from the getPattern() method.
+     *
      * @param chordprogressionName The Name of the saved chord Progression
      * @param sequence
      * @return
@@ -134,6 +137,7 @@ public interface iMusicManager {
 
     /**
      * Saves a pattern as a *.mid file at the local file system.
+     *
      * @param elementName the name of the element fo be saved
      * @param filename
      */
@@ -141,6 +145,7 @@ public interface iMusicManager {
 
     /**
      * Loads a midi file from local filesystem into a new pattern.
+     *
      * @param patternName
      * @param filename
      */

@@ -16,7 +16,8 @@ public interface iSetlXMusicStorage<T extends PatternProducer> {
      * Adds a new musical element to this storage, Musical Elements can be for example
      * {@link org.jfugue.pattern.Pattern}s, {@link org.jfugue.theory.ChordProgression}s and so on.
      * A name MUST be specified in order to later identify the specific element.
-     *  @param name
+     *
+     * @param name
      * @param element
      */
     void addElement(String name, T element) throws NullArgumentsException;

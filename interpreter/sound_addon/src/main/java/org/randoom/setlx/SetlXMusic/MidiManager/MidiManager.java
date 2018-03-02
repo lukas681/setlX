@@ -11,10 +11,9 @@ public class MidiManager implements iMidiManager {
 
     @Override
     public Pattern load(String filename) throws IOException, InvalidMidiDataException {
-        Pattern loadedPattern = null;
-
-            File file = new File(filename);
-            loadedPattern = MidiFileManager.loadPatternFromMidi(file);
+        Pattern loadedPattern;
+        File file = new File(filename);
+        loadedPattern = MidiFileManager.loadPatternFromMidi(file);
         return loadedPattern;
     }
 
@@ -27,12 +26,11 @@ public class MidiManager implements iMidiManager {
         if (!hasFileEnding(filename, ".mid")) {
             filename += ".mid";
         }
-
-            File file = new File(filename);
-            MidiFileManager.savePatternToMidi(pattern, file);
+        File file = new File(filename);
+        MidiFileManager.savePatternToMidi(pattern, file);
     }
 
     public boolean hasFileEnding(String filename, String ending) {
-        return filename.matches(".*[.]"+ending);
+        return filename.matches(".*[.]" + ending);
     }
 }

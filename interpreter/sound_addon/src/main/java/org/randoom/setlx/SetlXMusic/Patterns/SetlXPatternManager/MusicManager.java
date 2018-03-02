@@ -48,15 +48,15 @@ public class MusicManager implements iMusicManager {
 
     @Override
     public void add(String name, PatternProducer pattern) throws NullArgumentsException, ProducerNotSupportedException, KeyAlreadyInUseException {
-        if(KeyInUse(name)){
+        if (KeyInUse(name)) {
             throw new KeyAlreadyInUseException();
         }
-        if(pattern instanceof Pattern)
-            patternStorage.addElement(name, (Pattern)pattern);
+        if (pattern instanceof Pattern)
+            patternStorage.addElement(name, (Pattern) pattern);
         else if (pattern instanceof Rhythm)
-            rythmStorage.addElement(name, (Rhythm)pattern);
-        else if(pattern instanceof ChordProgression)
-            chordProgressionStorage.addElement(name, (ChordProgression)pattern);
+            rythmStorage.addElement(name, (Rhythm) pattern);
+        else if (pattern instanceof ChordProgression)
+            chordProgressionStorage.addElement(name, (ChordProgression) pattern);
         else
             throw new ProducerNotSupportedException();
     }
@@ -91,8 +91,9 @@ public class MusicManager implements iMusicManager {
 
     @Override
     public void removeElement(String key) throws PatternNotFoundException {
-        switch(getStorageWhereKeyIsUsed(key)){
-            case UNSUPPORTED_TYPE: throw new PatternNotFoundException();
+        switch (getStorageWhereKeyIsUsed(key)) {
+            case UNSUPPORTED_TYPE:
+                throw new PatternNotFoundException();
             case PATTERN_STORAGE:
                 patternStorage.deleteElement(key);
                 break;
@@ -156,7 +157,7 @@ public class MusicManager implements iMusicManager {
     }
 
     @Override
-    public Rhythm getRhythm(String rhythmName) throws PatternNotFoundException{
+    public Rhythm getRhythm(String rhythmName) throws PatternNotFoundException {
         return rythmStorage.getElement(rhythmName);
     }
 
@@ -177,17 +178,17 @@ public class MusicManager implements iMusicManager {
 
     /**
      * Returns the storage, where this key is used.
+     *
      * @param key
      * @return Name of store from {@link StorageTypes}
-     *
      */
     @Override
     public StorageTypes getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException {
-        if(patternStorage.checkExisting(key))
+        if (patternStorage.checkExisting(key))
             return StorageTypes.PATTERN_STORAGE;
-        if(rythmStorage.checkExisting(key))
+        if (rythmStorage.checkExisting(key))
             return StorageTypes.RHYTHM_STORAGE;
-        if(chordProgressionStorage.checkExisting(key))
+        if (chordProgressionStorage.checkExisting(key))
             return StorageTypes.CHORD_PROGRESSION_STORAGE;
         else return StorageTypes.UNSUPPORTED_TYPE;
     }
@@ -197,14 +198,14 @@ public class MusicManager implements iMusicManager {
         return chordProgressionStorage.getElement(progressionName).eachChordAs(sequence);
     }
 
- @Override
+    @Override
     public ChordProgression allChordsAs(String progressionName, String sequence) throws PatternNotFoundException {
         return chordProgressionStorage.getElement(progressionName).allChordsAs(sequence);
     }
 
     @Override
     public void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException {
-        switch(getStorageWhereKeyIsUsed(elementName)){
+        switch (getStorageWhereKeyIsUsed(elementName)) {
             case PATTERN_STORAGE:
                 break; //Already in Patterns...
             case CHORD_PROGRESSION_STORAGE:
@@ -215,13 +216,13 @@ public class MusicManager implements iMusicManager {
                 break;
             default:
                 throw new CanNotConvertException();
-    }
+        }
     }
 
     @Override
     public void saveAsMidi(String elementName, String filename) throws PatternNotFoundException, CanNotConvertException, NotAPatternException, SetlXIOException {
         if (getStorageWhereKeyIsUsed(elementName) != StorageTypes.PATTERN_STORAGE) {
-           throw new NotAPatternException();
+            throw new NotAPatternException();
         }
         try {
             midiManager.save(filename, patternStorage.getElement(elementName));
@@ -248,12 +249,13 @@ public class MusicManager implements iMusicManager {
 
     /**
      * Checks, weather a given key is already in use in on of the storages.
+     *
      * @param key
      * @return
      */
-    private boolean KeyInUse(String key){
+    private boolean KeyInUse(String key) {
         return patternStorage.checkExisting(key)
-                ||rythmStorage.checkExisting(key)
-                ||chordProgressionStorage.checkExisting(key);
+                || rythmStorage.checkExisting(key)
+                || chordProgressionStorage.checkExisting(key);
     }
 }

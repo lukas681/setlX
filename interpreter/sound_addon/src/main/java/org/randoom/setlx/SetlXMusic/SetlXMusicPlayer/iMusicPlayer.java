@@ -12,6 +12,7 @@ public interface iMusicPlayer { //TODO Maybe a own song system
      * IMPORTANT: If you want to play more than one pattern at one, be aware, that the TEMPO of the first argument
      * will be used, if there are more different temppos given.
      * It does not make any sense, to allow different tempos at once.
+     *
      * @param patternNames
      * @throws PatternNotFoundException
      */

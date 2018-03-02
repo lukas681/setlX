@@ -38,30 +38,35 @@ public interface iSoundPlugin {
 
     /**
      * Returns a Atom Factory
+     *
      * @return Atom Factory
      */
     iAtomFactory getAtomFactory();
 
     /**
      * Returns a Pattern Factory
+     *
      * @return
      */
     iPatternFactory getPatternFactoy();
 
     /**
      * Returns a Chord Progression Factory
+     *
      * @return
      */
     iChordProgressionFactory getChordProgressionFactory();
 
     /**
      * Returns a Note Factory
+     *
      * @return
      */
     iNoteFactory getNoteFactory();
 
     /**
      * Returns a Rhythm Factory
+     *
      * @return
      */
     iRhythmFactory getRhythmFactory();

@@ -1,13 +1,13 @@
 package org.randoom.setlx.SetlXMusic;
 
+import org.randoom.setlx.SetlXMusic.MusicPlayer.iMusicPlayer;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iMusicPlayer;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.iChordProgressionFactory;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
-import org.randoom.setlx.SetlXMusic.factories.PatternFactory.iPatternFactory;
-import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.iRhythmFactory;
+import org.randoom.setlx.SetlXMusic.RealTimeSystem.iRealTimePlayer;
+import org.randoom.setlx.SetlXMusic.Factories.AtomFactory.iAtomFactory;
+import org.randoom.setlx.SetlXMusic.Factories.ChordProgressionFactory.iChordProgressionFactory;
+import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.iNoteFactory;
+import org.randoom.setlx.SetlXMusic.Factories.PatternFactory.iPatternFactory;
+import org.randoom.setlx.SetlXMusic.Factories.RhythmFactory.iRhythmFactory;
 
 /**
  * provides access to every components of the sound plugin

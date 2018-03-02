@@ -7,8 +7,8 @@ import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
-import org.randoom.setlx.SetlXMusic.MidiManager.MidiManager;
-import org.randoom.setlx.SetlXMusic.MidiManager.iMidiManager;
+import org.randoom.setlx.SetlXMusic.MidiSystem.MidiManager;
+import org.randoom.setlx.SetlXMusic.MidiSystem.iMidiManager;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.CanNotConvertException;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.KeyAlreadyInUseException;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.NotAPatternException;
@@ -16,14 +16,15 @@ import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.SetlXI
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotSupportedException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.MusicStorage;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.PatternParameters;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.SetlXMusicStorage;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.StorageTypes;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.iSetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.iMusicStorage;
 import org.randoom.setlx.exceptions.SetlException;
 
 import javax.sound.midi.InvalidMidiDataException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,9 +33,9 @@ import java.util.List;
  */
 public class MusicManager implements iMusicManager {
 
-    private iSetlXMusicStorage<Pattern> patternStorage;
-    private iSetlXMusicStorage<ChordProgression> chordProgressionStorage;
-    private iSetlXMusicStorage<Rhythm> rythmStorage;
+    private iMusicStorage<Pattern> patternStorage;
+    private iMusicStorage<ChordProgression> chordProgressionStorage;
+    private iMusicStorage<Rhythm> rythmStorage;
     private iMidiManager midiManager;
 
     private Player player;
@@ -44,9 +45,9 @@ public class MusicManager implements iMusicManager {
      * Default constructor for {@link MusicManager}. Creates a new Patternmanager
      */
     public MusicManager() {
-        patternStorage = new SetlXMusicStorage<>(); //Creates a new Pattern Storage for future music patterns
-        chordProgressionStorage = new SetlXMusicStorage<>();
-        rythmStorage = new SetlXMusicStorage<>();
+        patternStorage = new MusicStorage<>(); //Creates a new Pattern Storage for future music patterns
+        chordProgressionStorage = new MusicStorage<>();
+        rythmStorage = new MusicStorage<>();
         midiManager = new MidiManager();
 
         player = new Player();
@@ -69,14 +70,30 @@ public class MusicManager implements iMusicManager {
     }
 
     @Override
-    public void addToPattern(String patternName, String notePattern) throws PatternNotFoundException {
+    public void addNotesToPattern(String patternName, String notePattern) throws PatternNotFoundException {
         patternStorage.getElement(patternName).add(notePattern);
     }
 
     @Override
-    public void addToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException {
+    public void addPatternsToPatternByName(String patternSourceName, String... patternTargetNames) throws PatternNotFoundException {
+        if(!allPatternsExists()){
+            throw new PatternNotFoundException();
+        }
+        for (String s : patternTargetNames) {
+            patternStorage.getElement(patternSourceName).add(patternStorage.getElement(s));
+        }
+    }
+
+    @Override
+    public void addPatternsToPattern(String patternName, PatternProducer... patterns) throws PatternNotFoundException {
+        patternStorage.getElement(patternName).add(patterns);
+    }
+
+    @Override
+    public void addNotesToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException {
         patternStorage.getElement(patternName).add(notePattern, repetitions);
     }
+
 
     @Override
     public void modifyPatternProperty(String patternName, PatternParameters param, int value) throws SetlException {
@@ -130,7 +147,7 @@ public class MusicManager implements iMusicManager {
                 //explicitly set properties via .setXX-method.
                 //In order to be able to set them in the copy
                 //we have to skip this preamble
-                continue;
+                continue; // TODO Refactor this code
             }
             copy.add(tokenList.get(i));
         }
@@ -183,12 +200,7 @@ public class MusicManager implements iMusicManager {
         return chordProgressionStorage.getAllElements();
     }
 
-    /**
-     * Returns the storage, where this key is used.
-     *
-     * @param key
-     * @return Name of store from {@link StorageTypes}
-     */
+
     @Override
     public StorageTypes getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException {
         if (patternStorage.checkExisting(key))
@@ -264,5 +276,11 @@ public class MusicManager implements iMusicManager {
         return patternStorage.checkExisting(key)
                 || rythmStorage.checkExisting(key)
                 || chordProgressionStorage.checkExisting(key);
+    }
+    public boolean allPatternsExists(String... patternNames){
+        long numberOfExistingPatterns = Arrays.stream(patternNames)
+                .filter(x -> patternStorage.checkExisting(x))
+                .count(); // Ensure that it is a transaction.
+        return numberOfExistingPatterns==patternNames.length;
     }
 }

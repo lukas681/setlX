@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  *
  */
-public class SetlXMusicStorage<T extends PatternProducer> implements iSetlXMusicStorage<T> {
+public class MusicStorage<T extends PatternProducer> implements iMusicStorage<T> {
 
     HashMap<String, T> patternStorage = new HashMap<>();
 

@@ -38,7 +38,32 @@ public interface iMusicManager {
      * @param patternName
      * @param notePattern
      */
-    void addToPattern(String patternName, String notePattern) throws PatternNotFoundException;
+    void addNotesToPattern(String patternName, String notePattern) throws PatternNotFoundException;
+
+    /**
+     * Adds existing patterns to another pattern.
+     * Consequently, you can build up your songs using smaller bricks: That patterns.
+     * <p>
+     * /*              song
+     * /*          <           >
+     * /*       pattern3     pattern4
+     * /*     <        >
+     * /*    p1        p2
+     * <p>
+     * The musical terms anologue to this are motives, themes, parts and movements.
+     *
+     * @param patternSourceNames
+     * @param patternTargetNames
+     */
+    void addPatternsToPatternByName(String patternSourceNames, String... patternTargetNames) throws PatternNotFoundException;
+
+    /**
+     * Adds
+     * @param patternName
+     * @param patterns
+     * @throws PatternNotFoundException
+     */
+    void addPatternsToPattern(String patternName, PatternProducer... patterns) throws PatternNotFoundException;
 
     /**
      * Can be used to add notes to an existing pattern and specify, how often it should be repeated.
@@ -47,7 +72,7 @@ public interface iMusicManager {
      * @param notePattern
      * @param repetitions
      */
-    void addToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException;
+    void addNotesToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException;
 
     /**
      * Modifies a porperty of a pattern.

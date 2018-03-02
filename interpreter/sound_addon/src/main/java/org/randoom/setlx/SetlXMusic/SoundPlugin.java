@@ -1,15 +1,16 @@
 package org.randoom.setlx.SetlXMusic;
 
+import org.randoom.setlx.SetlXMusic.MusicPlayer.MusicPlayer;
+import org.randoom.setlx.SetlXMusic.MusicPlayer.iMusicPlayer;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.*;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.*;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory.*;
-import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.*;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory.*;
-import org.randoom.setlx.SetlXMusic.factories.PatternFactory.*;
-import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.*;
+import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.SetlXMidiNotAvailableException;
+import org.randoom.setlx.SetlXMusic.RealTimeSystem.*;
+import org.randoom.setlx.SetlXMusic.Factories.AtomFactory.*;
+import org.randoom.setlx.SetlXMusic.Factories.ChordProgressionFactory.*;
+import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.*;
+import org.randoom.setlx.SetlXMusic.Factories.PatternFactory.*;
+import org.randoom.setlx.SetlXMusic.Factories.RhythmFactory.*;
 
 public class SoundPlugin implements iSoundPlugin {
 
@@ -19,7 +20,7 @@ public class SoundPlugin implements iSoundPlugin {
     private iMusicManager musicManager;
     private iRealTimePlayer realTimePlayer;
 
-    // Factories TODO Sum up factories
+    // Factories TODO Sum up Factories
     private iAtomFactory atomFactory;
     private iNoteFactory noteFactory;
     private iChordProgressionFactory chordProgressionFactory;
@@ -35,7 +36,7 @@ public class SoundPlugin implements iSoundPlugin {
      */
     private void initializeComponents() throws SetlXMidiNotAvailableException {
 
-        // Initializes factories
+        // Initializes Factories
         atomFactory = new AtomFactory();
         noteFactory = new NoteFactory();
         chordProgressionFactory = new ChordProgressionFactory();

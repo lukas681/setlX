@@ -3,6 +3,8 @@ package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
+import org.randoom.setlx.SetlXMusic.MusicPlayer.MusicPlayer;
+import org.randoom.setlx.SetlXMusic.MusicPlayer.iMusicPlayer;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
 

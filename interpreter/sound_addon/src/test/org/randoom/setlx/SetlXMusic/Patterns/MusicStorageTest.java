@@ -4,13 +4,13 @@ import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
 import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.SetlXMusicStorage;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.iSetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.MusicStorage;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.iMusicStorage;
 
 import static org.junit.Assert.*;
 
-public class SetlXMusicStorageTest {
-    iSetlXMusicStorage<Pattern> storage = new SetlXMusicStorage();
+public class MusicStorageTest {
+    iMusicStorage<Pattern> storage = new MusicStorage();
 
     @Before
     public void setUp() throws Exception {

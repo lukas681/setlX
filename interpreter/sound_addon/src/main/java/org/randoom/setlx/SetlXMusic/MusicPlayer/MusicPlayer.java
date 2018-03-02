@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.SetlXMusicPlayer;
+package org.randoom.setlx.SetlXMusic.MusicPlayer;
 
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.player.Player;

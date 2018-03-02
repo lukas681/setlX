@@ -57,7 +57,7 @@ public class PD_addPattern extends PreDefinedProcedure {
             ptrn = root.getPatternFactoy().createPattern(pattern.getUnquotedString(state));
         }
 
-        root.getSetlXPatternManager().add(patternName.getUnquotedString(state), ptrn);
+        root.getMusicManager().add(patternName.getUnquotedString(state), ptrn);
         return SetlBoolean.TRUE;
     }
 

@@ -51,7 +51,7 @@ public class PD_eachChordAs extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME);
         final Value replacementString = args.get(CHORD_PROGRESSION);
 
-        root.getSetlXPatternManager().eachChordAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace(referator, '$')); //TODO Catch possible exceptions
+        root.getMusicManager().eachChordAs(patternName.getUnquotedString(state), replacementString.getUnquotedString(state).replace(referator, '$')); //TODO Catch possible exceptions
         return SetlBoolean.TRUE;
     }
 

@@ -33,7 +33,7 @@ public class PD_addToPattern extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME);
         final Value pattern = args.get(PATTERN_STRING);
 
-        root.getSetlXPatternManager().addToPattern(patternName.getUnquotedString(state), pattern.getUnquotedString(state));
+        root.getMusicManager().addToPattern(patternName.getUnquotedString(state), pattern.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }
 }

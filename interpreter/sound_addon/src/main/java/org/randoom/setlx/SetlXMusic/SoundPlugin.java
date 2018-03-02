@@ -1,29 +1,21 @@
 package org.randoom.setlx.SetlXMusic;
 
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.MusicManager;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iMusicManager;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
-import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iMusicPlayer;
+import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.*;
+import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.*;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.RealTimerPlayer;
-import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory.AtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;
-import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.ChordProgressionFactory;
-import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.iChordProgressionFactory;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory.NoteFactory;
-import org.randoom.setlx.SetlXMusic.factories.NoteFactory.iNoteFactory;
-import org.randoom.setlx.SetlXMusic.factories.PatternFactory.PatternFactory;
-import org.randoom.setlx.SetlXMusic.factories.PatternFactory.iPatternFactory;
-import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.RhythmFactory;
-import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.iRhythmFactory;
+import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.*;
+import org.randoom.setlx.SetlXMusic.factories.AtomFactory.*;
+import org.randoom.setlx.SetlXMusic.factories.ChordProgressionFactory.*;
+import org.randoom.setlx.SetlXMusic.factories.NoteFactory.*;
+import org.randoom.setlx.SetlXMusic.factories.PatternFactory.*;
+import org.randoom.setlx.SetlXMusic.factories.RhythmFactory.*;
 
 public class SoundPlugin implements iSoundPlugin {
 
     private static SoundPlugin setlxSoundPlugin;
 
     private iMusicPlayer musicPlayer;
-    private iMusicManager patternManager;
+    private iMusicManager musicManager;
     private iRealTimePlayer realTimePlayer;
 
     // Factories TODO Sum up factories
@@ -49,15 +41,15 @@ public class SoundPlugin implements iSoundPlugin {
         patternFactory = new PatternFactory();
         rhythmFactory = new RhythmFactory();
 
-        patternManager = new MusicManager();
-        musicPlayer = new MusicPlayer(patternManager);
+        musicManager = new MusicManager();
+        musicPlayer = new MusicPlayer(musicManager);
         realTimePlayer = new RealTimerPlayer(noteFactory, atomFactory);
 
     }
 
     @Override
-    public iMusicManager getSetlXPatternManager() {
-        return patternManager;
+    public iMusicManager getMusicManager() {
+        return musicManager;
     }
 
     @Override

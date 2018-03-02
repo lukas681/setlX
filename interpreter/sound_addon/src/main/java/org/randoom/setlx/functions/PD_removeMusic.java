@@ -25,7 +25,7 @@ public class PD_removeMusic extends PreDefinedProcedure {
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value patternName = args.get(PATTERN_NAME);
-        root.getSetlXPatternManager().removeElement(patternName.getUnquotedString(state));
+        root.getMusicManager().removeElement(patternName.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }
 }

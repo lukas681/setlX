@@ -40,7 +40,7 @@ public class PD_addRhythm extends PreDefinedProcedure {
         final Value length = args.get(LENGTH);
         Rhythm rhythm = root.getRhythmFactory().createRhythm(pattern.getUnquotedString(state)).setLength(length.toJIntValue(state));
 
-        root.getSetlXPatternManager().add(patternName.getUnquotedString(state), rhythm);
+        root.getMusicManager().add(patternName.getUnquotedString(state), rhythm);
         return SetlBoolean.TRUE;
     }
 }

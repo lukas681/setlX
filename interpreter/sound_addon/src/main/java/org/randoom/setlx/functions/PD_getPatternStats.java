@@ -31,8 +31,8 @@ public class PD_getPatternStats extends PreDefinedProcedure {
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value patternName = args.get(PATTERN_NAME);
-        HashMap<String, GetPatternStats.Stats> detailStats = root.getSetlXPatternManager().getDetailPatternStats(patternName.getUnquotedString(state));
-        int[] generalStats = root.getSetlXPatternManager().getGeneralPatternStats(patternName.getUnquotedString(state));
+        HashMap<String, GetPatternStats.Stats> detailStats = root.getMusicManager().getDetailPatternStats(patternName.getUnquotedString(state));
+        int[] generalStats = root.getMusicManager().getGeneralPatternStats(patternName.getUnquotedString(state));
         print(state, "Statistics for Pattern '" + patternName.getUnquotedString(state) + "'" //prints the stats
                 + "\n~~~~~~~~~~GENERAL~~~~~~~~~~" +
                 "\nNumber of notes: " + generalStats[0] +

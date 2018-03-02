@@ -6,11 +6,17 @@ import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
+import org.randoom.setlx.SetlXMusic.MidiManager.MidiManager;
+import org.randoom.setlx.SetlXMusic.MidiManager.iMidiManager;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.*;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.NotAPatternException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.SetlXIOException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.*;
 import org.randoom.setlx.exceptions.SetlException;
 
+import javax.sound.midi.InvalidMidiDataException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,6 +28,7 @@ public class MusicManager implements iMusicManager {
     private iSetlXMusicStorage<Pattern> patternStorage;
     private iSetlXMusicStorage<ChordProgression> chordProgressionStorage;
     private iSetlXMusicStorage<Rhythm> rythmStorage;
+    private iMidiManager midiManager;
 
     private Player player;
     private GetPatternStats stats;
@@ -33,6 +40,7 @@ public class MusicManager implements iMusicManager {
         patternStorage = new SetlXMusicStorage<>(); //Creates a new Pattern Storage for future music patterns
         chordProgressionStorage = new SetlXMusicStorage<>();
         rythmStorage = new SetlXMusicStorage<>();
+        midiManager = new MidiManager();
 
         player = new Player();
         stats = new GetPatternStats();
@@ -170,11 +178,8 @@ public class MusicManager implements iMusicManager {
     /**
      * Returns the storage, where this key is used.
      * @param key
-     * @return
-     *         1: Pattern Storage
-     *         2: Rhythm Storage
-     *         3. ChordProgression Storage
-     *         -1: if the pattern could not be found in any of the storages
+     * @return Name of store from {@link StorageTypes}
+     *
      */
     @Override
     public StorageTypes getStorageWhereKeyIsUsed(String key) throws PatternNotFoundException {
@@ -200,6 +205,8 @@ public class MusicManager implements iMusicManager {
     @Override
     public void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException {
         switch(getStorageWhereKeyIsUsed(elementName)){
+            case PATTERN_STORAGE:
+                break; //Already in Patterns...
             case CHORD_PROGRESSION_STORAGE:
                 patternStorage.addElement(elementName + "_c", chordProgressionStorage.getElement(elementName).getPattern());
                 break;
@@ -209,6 +216,29 @@ public class MusicManager implements iMusicManager {
             default:
                 throw new CanNotConvertException();
     }
+    }
+
+    @Override
+    public void saveAsMidi(String elementName, String filename) throws PatternNotFoundException, CanNotConvertException, NotAPatternException, SetlXIOException {
+        if (getStorageWhereKeyIsUsed(elementName) != StorageTypes.PATTERN_STORAGE) {
+           throw new NotAPatternException();
+        }
+        try {
+            midiManager.save(filename, patternStorage.getElement(elementName));
+        } catch (IOException e) {
+            throw new SetlXIOException();
+        }
+    }
+
+    @Override
+    public void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, InvalidMidiDataException {
+        try {
+            patternStorage.addElement(patternName, midiManager.load(filename));
+        } catch (IOException e) {
+            throw new SetlXIOException();
+        } catch (InvalidMidiDataException e) {
+            throw new InvalidMidiDataException();
+        }
     }
 
     @Override

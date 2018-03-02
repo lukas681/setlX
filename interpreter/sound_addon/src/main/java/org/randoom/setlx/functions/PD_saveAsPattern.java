@@ -27,15 +27,8 @@ public class PD_saveAsPattern extends PreDefinedProcedure {
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value elementName = args.get(ELEMENT_NAME);
 
-        root.getSetlXPatternManager().saveAsPattern(elementName.getUnquotedString(state));
+        root.getMusicManager().saveAsPattern(elementName.getUnquotedString(state));
         return SetlBoolean.TRUE;
-    }
-
-    /**
-     * Because optional Parameters just allow some predefined double values, we set {@link SetlDouble} ZERO to a defautl of 120 BPM
-     */
-    public int checkTempo(int tempo) {
-        return tempo == 0 ? 120 : tempo;
     }
 
 }

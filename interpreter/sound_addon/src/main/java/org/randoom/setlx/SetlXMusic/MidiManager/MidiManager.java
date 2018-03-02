@@ -10,21 +10,16 @@ import java.io.IOException;
 public class MidiManager implements iMidiManager {
 
     @Override
-    public Pattern load(String filename) {
+    public Pattern load(String filename) throws IOException, InvalidMidiDataException {
         Pattern loadedPattern = null;
-        try {
+
             File file = new File(filename);
             loadedPattern = MidiFileManager.loadPatternFromMidi(file);
-        } catch (IOException io) {
-            io.printStackTrace(); // Todo != print Stacktrace
-        } catch (InvalidMidiDataException mde) {
-            mde.printStackTrace();
-        }
         return loadedPattern;
     }
 
     @Override
-    public boolean save(String filename, Pattern pattern) {
+    public void save(String filename, Pattern pattern) throws IOException {
         if (filename.compareTo("") == 0) {
 
             filename = "Soundpattern_" + System.nanoTime();
@@ -32,14 +27,9 @@ public class MidiManager implements iMidiManager {
         if (!hasFileEnding(filename)) {
             filename += ".mid";
         }
-        try {
+
             File file = new File(filename);
             MidiFileManager.savePatternToMidi(pattern, file);
-            return true;
-        } catch (IOException io) {
-            io.printStackTrace();
-        }
-        return false;
     }
 
     public boolean hasFileEnding(String filename) {

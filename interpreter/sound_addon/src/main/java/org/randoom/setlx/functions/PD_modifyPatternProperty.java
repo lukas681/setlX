@@ -38,7 +38,7 @@ public class PD_modifyPatternProperty extends PreDefinedProcedure {
         PatternParameters property = parseProperty(patternProperty.getUnquotedString(state)); //Parses inputpropertyinput property
 
         if (property != null) {
-            root.getSetlXPatternManager().modifyPatternProperty(patternName.getUnquotedString(state), property, patternValue.toJIntValue(state));
+            root.getMusicManager().modifyPatternProperty(patternName.getUnquotedString(state), property, patternValue.toJIntValue(state));
         } else {
             //If we can not find the pattern parameter, we throw a little exception alerting it
             throw new ParameterNotFoundException();

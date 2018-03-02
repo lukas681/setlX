@@ -47,7 +47,7 @@ public class PD_addChordProgression extends PreDefinedProcedure {
         ChordProgression cp = root.getChordProgressionFactory()
                 .createChordProgression(
                         chordProgression.getUnquotedString(state), key.getUnquotedString(state));
-        root.getSetlXPatternManager().add(patternName.getUnquotedString(state), cp);
+        root.getMusicManager().add(patternName.getUnquotedString(state), cp);
         return SetlBoolean.TRUE;
     }
 }

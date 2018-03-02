@@ -29,9 +29,7 @@ public class PD_duplicatePattern extends PreDefinedProcedure {
         final Value patternSource = args.get(PATTERN_SOURCE_NAME);
         final Value patternNewName = args.get(PATTERN_NEW_NAME);
 
-        System.out.println(patternSource.getUnquotedString(state));
-        System.out.println(patternNewName.getUnquotedString(state));
-        root.getSetlXPatternManager().duplicatePattern(patternSource.getUnquotedString(state), patternNewName.getUnquotedString(state));
+        root.getMusicManager().duplicatePattern(patternSource.getUnquotedString(state), patternNewName.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }
 }

@@ -5,15 +5,16 @@ import org.jfugue.pattern.PatternProducer;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.CanNotConvertException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.KeyAlreadyInUseException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.*;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.NotAPatternException;
+import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.SetlXIOException;
 import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotSupportedException;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
 import org.randoom.setlx.SetlXMusic.Patterns.Storages.StorageTypes;
 import org.randoom.setlx.exceptions.SetlException;
 
+import javax.sound.midi.InvalidMidiDataException;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -130,4 +131,18 @@ public interface iMusicManager {
     ChordProgression allChordsAs(String chordprogressionName, String sequence) throws PatternNotFoundException;
 
     void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException;
+
+    /**
+     * Saves a pattern as a *.mid file at the local file system.
+     * @param elementName the name of the element fo be saved
+     * @param filename
+     */
+    void saveAsMidi(String elementName, String filename) throws CanNotConvertException, PatternNotFoundException, NullArgumentsException, NotAPatternException, SetlXIOException;
+
+    /**
+     * Loads a midi file from local filesystem into a new pattern.
+     * @param patternName
+     * @param filename
+     */
+    void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, InvalidMidiDataException;
 }

@@ -20,7 +20,7 @@ public interface iSoundPlugin {
      *
      * @return
      */
-    iMusicManager getSetlXPatternManager();
+    iMusicManager getMusicManager();
 
     /**
      * returns the instance of the music player

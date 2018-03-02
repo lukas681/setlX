@@ -2,6 +2,9 @@ package org.randoom.setlx.SetlXMusic.MidiManager;
 
 import org.jfugue.pattern.Pattern;
 
+import javax.sound.midi.InvalidMidiDataException;
+import java.io.IOException;
+
 public interface iMidiManager {
 
     /**
@@ -9,14 +12,13 @@ public interface iMidiManager {
      * @param filename
      * @return
      */
-    Pattern load(String filename);
+    Pattern load(String filename) throws IOException, InvalidMidiDataException;
 
     /**
      * Saves a {@link Pattern} to a midi file.
      * @param filename
-     * @return Success of operation: true if sucessfull
      */
-    boolean save(String filename, Pattern pattern);
+    void save(String filename, Pattern pattern) throws IOException;
 
 
 }

@@ -5,16 +5,27 @@ import org.randoom.setlx.SetlXMusic.Factories.Exceptions.PatternValueOutOfRangeE
 
 public class PatternFactory implements iPatternFactory {
 
-    private final int tempoLb = 0, tempoUb = 300; //TODO export constraints
-    private final int voiceLb = 0, voiceUb = 16;
-    private final int instrumentLb = 0, instrumentUb = 300;
+
+    private final int tempoLb = -1, tempoUb = 300; //TODO export constraints
+    private final int voiceLb = -1, voiceUb = 16;
+    private final int instrumentLb = -1, instrumentUb = 300;
 
     @Override
     public Pattern createPattern(String pattern, int instrument, int tempo, int voice) throws PatternValueOutOfRangeException {
         if (!checkConstraints(instrument, tempo, voice)) {
             throw new PatternValueOutOfRangeException();
         }
-        return new Pattern(pattern).setInstrument(instrument).setTempo(tempo).setVoice(voice);
+        Pattern patt = new Pattern(pattern);
+            if(instrument != -1){
+                patt.setInstrument(instrument);
+            }
+            if(tempo != -1){
+                patt.setTempo(tempo);
+            }
+            if(voice != -1){
+                patt.setVoice(voice);
+            }
+        return patt;
     }
 
     @Override
@@ -41,7 +52,7 @@ public class PatternFactory implements iPatternFactory {
      * @return if they are allowed
      */
     private boolean checkConstraints(int instrument, int tempo, int voice) {
-        if (tempoLb < tempo && tempo <= tempoUb
+        if (tempoLb <= tempo && tempo <= tempoUb
                 && voiceLb <= voice && voice <= voiceUb
                 && instrumentLb <= instrument && instrument <= instrumentUb)
             return true; //Todo global configuration class

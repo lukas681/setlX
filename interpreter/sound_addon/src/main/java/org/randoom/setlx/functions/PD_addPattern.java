@@ -20,10 +20,14 @@ public class PD_addPattern extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createOptionalParameter("patternName", SetlString.NIL);
     private final static ParameterDefinition PATTERN = createParameter("pattern");
+    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ZERO);
     private final static ParameterDefinition TEMPO = createOptionalParameter("tempo", SetlDouble.ZERO); //Zero if we use default value
     private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ZERO);
-    private final static ParameterDefinition VOICE = createOptionalParameter("voice", SetlDouble.ZERO);
     // private final static ParameterDefinition REPEAT = createOptionalParameter("repeat", SetlDouble.ONE); //TODO Implement That!
+
+    private final int defaultVoice = 0;
+    private final int defaultTempo = 120;
+    private final int defaultInstrument = 1;
 
 
     public final static PreDefinedProcedure DEFINITION = new PD_addPattern();
@@ -34,9 +38,9 @@ public class PD_addPattern extends PreDefinedProcedure {
         super();
         addParameter(PATTERN_NAME);
         addParameter(PATTERN);
+        addParameter(VOICE);
         addParameter(TEMPO);
         addParameter(INSTRUMENT);
-        addParameter(VOICE);
         //  addParameter(REPEAT);
     }
 
@@ -44,16 +48,21 @@ public class PD_addPattern extends PreDefinedProcedure {
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value patternName = args.get(PATTERN_NAME);
         final Value pattern = args.get(PATTERN);
+        final Value voice = args.get(VOICE);
         final Value tempo = args.get(TEMPO);
         final Value instrument = args.get(INSTRUMENT);
-        final Value voice = args.get(VOICE);
 
         Pattern ptrn;
         if (instrument.toJIntValue(state) != 0 || tempo.toJIntValue(state) != 0 || voice.toJIntValue(state) != 0) {
             // If there are given values for instrument, tempo or voice, then we need to call a special factory method
             ptrn = root.getPatternFactoy().createPattern(
-                    pattern.getUnquotedString(state), instrument.toJIntValue(state), tempo.toJIntValue(state), voice.toJIntValue(state));
+                    pattern.getUnquotedString(state), // TODO Proof correctness...
+                    (instrument.toJIntValue(state)==0?-1:instrument.toJIntValue(state)),
+                    (tempo.toJIntValue(state)==0?-1:tempo.toJIntValue(state)),
+                    (voice.toJIntValue(state)==0?-1:voice.toJIntValue(state)) //If no property is set, then we will set them to -1
+            );
         } else {
+            // This is the standard factory call if no extra properties are set
             ptrn = root.getPatternFactoy().createPattern(pattern.getUnquotedString(state));
         }
 

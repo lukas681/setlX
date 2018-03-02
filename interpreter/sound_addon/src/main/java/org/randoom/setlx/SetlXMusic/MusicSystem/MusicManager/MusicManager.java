@@ -75,12 +75,12 @@ public class MusicManager implements iMusicManager {
     }
 
     @Override
-    public void addPatternsToPatternByName(String patternSourceName, String... patternTargetNames) throws PatternNotFoundException {
+    public void addPatternsToPatternByName(String patternTargetName, String... patternSourceNames) throws PatternNotFoundException {
         if(!allPatternsExists()){
             throw new PatternNotFoundException();
         }
-        for (String s : patternTargetNames) {
-            patternStorage.getElement(patternSourceName).add(patternStorage.getElement(s));
+        for (String s : patternSourceNames) {
+            patternStorage.getElement(patternTargetName).add(patternStorage.getElement(s));
         }
     }
 

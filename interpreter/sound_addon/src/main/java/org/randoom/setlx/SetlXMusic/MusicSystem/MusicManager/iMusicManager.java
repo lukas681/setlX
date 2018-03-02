@@ -52,10 +52,10 @@ public interface iMusicManager {
      * <p>
      * The musical terms anologue to this are motives, themes, parts and movements.
      *
+     * @param patternTargetName
      * @param patternSourceNames
-     * @param patternTargetNames
      */
-    void addPatternsToPatternByName(String patternSourceNames, String... patternTargetNames) throws PatternNotFoundException;
+    void addPatternsToPatternByName(String patternTargetName, String... patternSourceNames) throws PatternNotFoundException;
 
     /**
      * Adds

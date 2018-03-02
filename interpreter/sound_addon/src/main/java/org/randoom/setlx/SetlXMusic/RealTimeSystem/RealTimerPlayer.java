@@ -5,7 +5,7 @@ import org.jfugue.pattern.PatternProducer;
 import org.jfugue.realtime.RealtimePlayer;
 import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.NegativeArgumentException;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.SetlXMidiNotAvailableException;
+import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.MidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.Factories.AtomFactory.iAtomFactory;
 import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.iNoteFactory;
 
@@ -21,18 +21,18 @@ public class RealTimerPlayer implements iRealTimePlayer {
     iNoteFactory noteFac;
     iAtomFactory atomFac;
 
-    public RealTimerPlayer(iNoteFactory noteFactory, iAtomFactory atomFactory) throws SetlXMidiNotAvailableException {
+    public RealTimerPlayer(iNoteFactory noteFactory, iAtomFactory atomFactory) throws MidiNotAvailableException {
         try {
             rtplayer = new RealtimePlayer();
         } catch (MidiUnavailableException midiException) {
-            throw new SetlXMidiNotAvailableException();
+            throw new MidiNotAvailableException();
         }
         noteFac = noteFactory;
         atomFac = atomFactory;
     }
 
     @Override
-    public void stopNotes() throws SetlXMidiNotAvailableException {
+    public void stopNotes() throws MidiNotAvailableException {
         rtplayer.close();
         try {
             //We replace the current RealTime player with an new object.
@@ -40,7 +40,7 @@ public class RealTimerPlayer implements iRealTimePlayer {
             //to reset a Real Time palyer
             rtplayer = new RealtimePlayer();
         } catch (MidiUnavailableException e) {
-            throw new SetlXMidiNotAvailableException();
+            throw new MidiNotAvailableException();
         }
     }
 

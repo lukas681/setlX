@@ -14,7 +14,7 @@ public class PD_stopTones extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_stopTones();
 
-    private iRealTimePlayer rtplayer = SoundPlugin.getInstance().getSetlXRealTimePlayer();
+    private iRealTimePlayer rtplayer = SoundPlugin.getInstance().getRealTimePlayer();
 
     protected PD_stopTones() {
         super();

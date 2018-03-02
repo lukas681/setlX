@@ -34,7 +34,7 @@ public class PD_play extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAMES); //Extracts the name of the patterns
         patternName.appendUnquotedString(state, out, 0);
         String patternNames[] = out.toString().split("\\s+"); //We can play multiple patterns at once by seperating them
-        root.getSetlxMusicPlayer().play(patternNames);
+        root.getMusicPlayer().play(patternNames);
         return SetlBoolean.TRUE;
     }
 

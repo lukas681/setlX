@@ -27,13 +27,13 @@ public interface iSoundPlugin {
      *
      * @return
      */
-    iMusicPlayer getSetlxMusicPlayer();
+    iMusicPlayer getMusicPlayer();
 
     /**
      * returns the instance of the real time player, that can be used
      * for playing tones in real time without preprocessing.
      */
-    iRealTimePlayer getSetlXRealTimePlayer();
+    iRealTimePlayer getRealTimePlayer();
 
 
     /**

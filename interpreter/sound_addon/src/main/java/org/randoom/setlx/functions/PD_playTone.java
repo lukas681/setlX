@@ -25,7 +25,7 @@ public class PD_playTone extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_playTone();
 
-    private iRealTimePlayer rtplayer = SoundPlugin.getInstance().getSetlXRealTimePlayer();
+    private iRealTimePlayer rtplayer = SoundPlugin.getInstance().getRealTimePlayer();
 
     protected PD_playTone() {
         super();

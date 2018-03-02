@@ -25,11 +25,6 @@ public class PD_addPattern extends PreDefinedProcedure {
     private final static ParameterDefinition INSTRUMENT = createOptionalParameter("instrument", SetlDouble.ZERO);
     // private final static ParameterDefinition REPEAT = createOptionalParameter("repeat", SetlDouble.ONE); //TODO Implement That!
 
-    private final int defaultVoice = 0;
-    private final int defaultTempo = 120;
-    private final int defaultInstrument = 1;
-
-
     public final static PreDefinedProcedure DEFINITION = new PD_addPattern();
 
     SoundPlugin root = SoundPlugin.getInstance();
@@ -57,9 +52,9 @@ public class PD_addPattern extends PreDefinedProcedure {
             // If there are given values for instrument, tempo or voice, then we need to call a special factory method
             ptrn = root.getPatternFactoy().createPattern(
                     pattern.getUnquotedString(state), // TODO Proof correctness...
-                    (instrument.toJIntValue(state)==0?-1:instrument.toJIntValue(state)),
-                    (tempo.toJIntValue(state)==0?-1:tempo.toJIntValue(state)),
-                    (voice.toJIntValue(state)==0?-1:voice.toJIntValue(state)) //If no property is set, then we will set them to -1
+                    (instrument.toJIntValue(state) == 0 ? -1 : instrument.toJIntValue(state)),
+                    (tempo.toJIntValue(state) == 0 ? -1 : tempo.toJIntValue(state)),
+                    (voice.toJIntValue(state) == 0 ? -1 : voice.toJIntValue(state)) //If no property is set, then we will set them to -1
             );
         } else {
             // This is the standard factory call if no extra properties are set

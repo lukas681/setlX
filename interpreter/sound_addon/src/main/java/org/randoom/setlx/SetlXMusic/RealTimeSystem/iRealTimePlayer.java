@@ -4,7 +4,7 @@ import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.theory.Note;
 import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.NegativeArgumentException;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.SetlXMidiNotAvailableException;
+import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.MidiNotAvailableException;
 
 /**
  * This players allows playing tones in Real Time without any preprocessing.
@@ -16,7 +16,7 @@ public interface iRealTimePlayer {
     /**
      * Stops all current queued notes. Immediately stops the playback.
      */
-    void stopNotes() throws SetlXMidiNotAvailableException;
+    void stopNotes() throws MidiNotAvailableException;
 
     /**
      * simply plays a musical pattern. This pattern is accessing to the global properties of the

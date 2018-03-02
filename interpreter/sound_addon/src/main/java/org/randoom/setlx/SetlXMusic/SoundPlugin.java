@@ -4,7 +4,7 @@ import org.randoom.setlx.SetlXMusic.MusicPlayer.MusicPlayer;
 import org.randoom.setlx.SetlXMusic.MusicPlayer.iMusicPlayer;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
 import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.SetlXMidiNotAvailableException;
+import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.MidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.RealTimeSystem.*;
 import org.randoom.setlx.SetlXMusic.Factories.AtomFactory.*;
 import org.randoom.setlx.SetlXMusic.Factories.ChordProgressionFactory.*;
@@ -27,14 +27,14 @@ public class SoundPlugin implements iSoundPlugin {
     private iPatternFactory patternFactory;
     private iRhythmFactory rhythmFactory;
 
-    private SoundPlugin() throws SetlXMidiNotAvailableException { //TODO SetlXMidiNotAvailable lassen?
+    private SoundPlugin() throws MidiNotAvailableException { //TODO SetlXMidiNotAvailable lassen?
         initializeComponents();
     }
 
     /**
      * Initializes all components: Instantiates the Factories, Players and Storages
      */
-    private void initializeComponents() throws SetlXMidiNotAvailableException {
+    private void initializeComponents() throws MidiNotAvailableException {
 
         // Initializes Factories
         atomFactory = new AtomFactory();
@@ -55,12 +55,12 @@ public class SoundPlugin implements iSoundPlugin {
     }
 
     @Override
-    public iMusicPlayer getSetlxMusicPlayer() {
+    public iMusicPlayer getMusicPlayer() {
         return musicPlayer;
     }
 
     @Override
-    public iRealTimePlayer getSetlXRealTimePlayer() {
+    public iRealTimePlayer getRealTimePlayer() {
         return realTimePlayer;
     }
 
@@ -93,7 +93,7 @@ public class SoundPlugin implements iSoundPlugin {
         if (setlxSoundPlugin == null) { //Singleton
             try {
                 setlxSoundPlugin = new SoundPlugin();
-            } catch (SetlXMidiNotAvailableException e) {
+            } catch (MidiNotAvailableException e) {
                 e.printStackTrace();
             }
         }

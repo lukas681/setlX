@@ -101,7 +101,7 @@
                                 <fileset>
                                     <directory>${project.basedir}/../</directory>
                                     <includes>
-                                        <include>setlX-stat.jar</include>
+                                        <include>setlX-sound.jar</include>
                                     </includes>
                                 </fileset>
                             </filesets>

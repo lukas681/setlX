@@ -3,7 +3,7 @@ package org.randoom.setlx.SetlXMusic.MidiManager;
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.MusicManager;
+import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
 
 import javax.sound.midi.InvalidMidiDataException;

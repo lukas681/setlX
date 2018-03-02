@@ -5,6 +5,7 @@ import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.junit.Before;
 import org.junit.Test;
+import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.MusicPlayer;
 
 import static org.junit.Assert.*;

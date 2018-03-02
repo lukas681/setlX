@@ -1,6 +1,7 @@
 package org.randoom.setlx.SetlXMusic;
 
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.*;
+import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
+import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.*;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.Exceptions.SetlXMidiNotAvailableException;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.*;

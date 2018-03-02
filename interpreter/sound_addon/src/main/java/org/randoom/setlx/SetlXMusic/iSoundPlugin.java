@@ -1,6 +1,6 @@
 package org.randoom.setlx.SetlXMusic;
 
-import org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager.iMusicManager;
+import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
 import org.randoom.setlx.SetlXMusic.SetlXMusicPlayer.iMusicPlayer;
 import org.randoom.setlx.SetlXMusic.SetlXRealTimePlayer.iRealTimePlayer;
 import org.randoom.setlx.SetlXMusic.factories.AtomFactory.iAtomFactory;

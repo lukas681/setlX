@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.Patterns.Storages;
+package org.randoom.setlx.SetlXMusic.MusicSystem.Storages;
 
 /**
  * Parameters for a {@link org.jfugue.pattern.Pattern}.

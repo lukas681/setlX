@@ -1,20 +1,21 @@
-package org.randoom.setlx.SetlXMusic.Patterns.SetlXPatternManager;
+package org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.*;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.NotAPatternException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.SetlXIOException;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.PatternParameters;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.StorageTypes;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.CanNotConvertException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.KeyAlreadyInUseException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.NotAPatternException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.SetlXIOException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotSupportedException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.PatternParameters;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.StorageTypes;
 import org.randoom.setlx.exceptions.SetlException;
 
-import javax.sound.midi.InvalidMidiDataException;
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -149,5 +150,5 @@ public interface iMusicManager {
      * @param patternName
      * @param filename
      */
-    void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.InvalidMidiDataException;
+    void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.InvalidMidiDataException;
 }

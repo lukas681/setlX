@@ -21,7 +21,7 @@ public class MidiManager implements iMidiManager {
     public void save(String filename, Pattern pattern) throws IOException {
         if (filename.compareTo("") == 0) {
 
-            filename = "Soundpattern_" + System.nanoTime();
+            filename = "song_" + System.nanoTime();
         }
         if (!hasFileEnding(filename, ".mid")) {
             filename += ".mid";

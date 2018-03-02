@@ -3,9 +3,9 @@ package org.randoom.setlx.SetlXMusic.Patterns;
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.Patterns.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.SetlXMusicStorage;
-import org.randoom.setlx.SetlXMusic.Patterns.Storages.iSetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.SetlXMusicStorage;
+import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.iSetlXMusicStorage;
 
 import static org.junit.Assert.*;
 

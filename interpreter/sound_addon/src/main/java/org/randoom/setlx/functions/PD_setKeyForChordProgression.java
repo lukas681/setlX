@@ -38,7 +38,7 @@ public class PD_setKeyForChordProgression extends PreDefinedProcedure {
         final Value progressionName = args.get(ELEMENT_NAME); //TODO Possible security issue on splitting the string
         final Value base_key = args.get(BASE_KEY);
 
-        root.getSetlXPatternManager().getChordProgression(progressionName.getUnquotedString(state)).setKey(base_key.getUnquotedString(state));
+        root.getMusicManager().getChordProgression(progressionName.getUnquotedString(state)).setKey(base_key.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }
 }

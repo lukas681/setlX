@@ -30,9 +30,9 @@ public class PD_showMusic extends PreDefinedProcedure {
         print(state, "Showing all registered music patterns:\n");
         print(state, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         print(state, "[Name, Tempo, Voice, Instrument, Pattern\n");
-        HashMap<String, Pattern> allPatterns = root.getSetlXPatternManager().getAllPatterns();
-        HashMap<String, Rhythm> allRhythms = root.getSetlXPatternManager().getAllRhythms();
-        HashMap<String, ChordProgression> allProgressions = root.getSetlXPatternManager().getAllChordProgressions();
+        HashMap<String, Pattern> allPatterns = root.getMusicManager().getAllPatterns();
+        HashMap<String, Rhythm> allRhythms = root.getMusicManager().getAllRhythms();
+        HashMap<String, ChordProgression> allProgressions = root.getMusicManager()  .getAllChordProgressions();
 
         int i = 0;
             Iterator it = allPatterns.entrySet().iterator();

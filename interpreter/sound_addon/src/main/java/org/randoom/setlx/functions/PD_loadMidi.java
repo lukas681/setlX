@@ -8,23 +8,24 @@ import org.randoom.setlx.types.SetlString;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
+import javax.sound.midi.InvalidMidiDataException;
 import java.util.HashMap;
 
 /**
  Exports an existing pattern to the filesystem.
  It will be saved as an *.mid file, which can then be played in various other programs, that support midi-codec
  */
-public class PD_saveMidi extends PreDefinedProcedure {
+public class PD_loadMidi extends PreDefinedProcedure {
 
 
+    private final static ParameterDefinition FILE_NAME = createParameter("fileName");
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
-    private final static ParameterDefinition FILE_NAME = createOptionalParameter("fileName", SetlString.newSetlStringFromSB(new StringBuilder("export.mid"))); //The default base key is a C
 
-    public final static PreDefinedProcedure DEFINITION = new PD_saveMidi();
+    public final static PreDefinedProcedure DEFINITION = new PD_loadMidi();
 
     SoundPlugin root = SoundPlugin.getInstance();
 
-    protected PD_saveMidi() {
+    protected PD_loadMidi() {
         super();
         addParameter(PATTERN_NAME);
         addParameter(FILE_NAME);
@@ -35,7 +36,7 @@ public class PD_saveMidi extends PreDefinedProcedure {
         final Value patternName = args.get(PATTERN_NAME);
         final Value fileName = args.get(FILE_NAME);
 
-        root.getMusicManager().saveAsMidi(patternName.getUnquotedString(state), fileName.getUnquotedString(state));
-        return SetlBoolean.TRUE;
+            root.getMusicManager().loadMidi(patternName.getUnquotedString(state), fileName.getUnquotedString(state));
+                return SetlBoolean.TRUE;
     }
 }

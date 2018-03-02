@@ -144,5 +144,5 @@ public interface iMusicManager {
      * @param patternName
      * @param filename
      */
-    void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, InvalidMidiDataException;
+    void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.InvalidMidiDataException;
 }

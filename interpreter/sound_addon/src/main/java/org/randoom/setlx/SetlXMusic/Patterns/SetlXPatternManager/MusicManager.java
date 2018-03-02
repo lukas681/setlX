@@ -231,13 +231,13 @@ public class MusicManager implements iMusicManager {
     }
 
     @Override
-    public void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, InvalidMidiDataException {
+    public void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.InvalidMidiDataException {
         try {
             patternStorage.addElement(patternName, midiManager.load(filename));
         } catch (IOException e) {
             throw new SetlXIOException();
         } catch (InvalidMidiDataException e) {
-            throw new InvalidMidiDataException();
+            throw new org.randoom.setlx.SetlXMusic.Patterns.Exceptions.MidiExceptions.InvalidMidiDataException();
         }
     }
 

@@ -7,7 +7,7 @@ import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExcep
 import java.util.HashMap;
 
 /**
- *
+ * Stores a set of Type Pattern producer
  */
 public class MusicStorage<T extends PatternProducer> implements iMusicStorage<T> {
 
@@ -28,7 +28,7 @@ public class MusicStorage<T extends PatternProducer> implements iMusicStorage<T>
     }
 
     @Override
-    public T getElement(String name) throws PatternNotFoundException { //TODO Really Pattern not found? consolidate the exceptions
+    public T getElement(String name) throws PatternNotFoundException {
         if (!checkExisting(name)) {
             throw new PatternNotFoundException();
         }

@@ -56,6 +56,9 @@ public class MusicManager implements iMusicManager {
 
     @Override
     public void add(String name, PatternProducer pattern) throws NullArgumentsException, ProducerNotSupportedException, KeyAlreadyInUseException {
+        if(name==null||pattern==null){
+            throw new NullArgumentsException();
+        }
         if (KeyInUse(name)) {
             throw new KeyAlreadyInUseException();
         }
@@ -76,7 +79,7 @@ public class MusicManager implements iMusicManager {
 
     @Override
     public void addPatternsToPatternByName(String patternTargetName, String... patternSourceNames) throws PatternNotFoundException {
-        if(!allPatternsExists()){
+        if(patternSourceNames==null||patternSourceNames==null||!allPatternsExists()) {
             throw new PatternNotFoundException();
         }
         for (String s : patternSourceNames) {

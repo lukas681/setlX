@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.Factories.AtomFactory;
+package org.randoom.setlx.setlXMusic.factories.atomFactory;
 
 import org.jfugue.pattern.Atom;
 import org.jfugue.theory.Note;

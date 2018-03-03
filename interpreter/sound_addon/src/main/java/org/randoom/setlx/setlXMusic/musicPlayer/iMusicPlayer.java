@@ -1,7 +1,7 @@
-package org.randoom.setlx.SetlXMusic.MusicPlayer;
+package org.randoom.setlx.setlXMusic.musicPlayer;
 
 import org.jfugue.pattern.PatternProducer;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 
 /**
  * Created by Lukas on 28.12.2017.

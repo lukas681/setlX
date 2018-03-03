@@ -1,13 +1,12 @@
-package org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager;
+package org.randoom.setlx.setlXMusic.musicSystem.musicManager;
 
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.TestTemplateInvocationContextProvider;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.KeyAlreadyInUseException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotSupportedException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.KeyAlreadyInUseException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.NullArgumentsException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotSupportedException;
 
 import static org.junit.Assert.*;
 

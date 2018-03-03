@@ -1,7 +1,7 @@
-package org.randoom.setlx.SetlXMusic.Factories.PatternFactory;
+package org.randoom.setlx.setlXMusic.factories.patternFactory;
 
 import org.jfugue.pattern.Pattern;
-import org.randoom.setlx.SetlXMusic.Factories.Exceptions.PatternValueOutOfRangeException;
+import org.randoom.setlx.setlXMusic.factories.exceptions.PatternValueOutOfRangeException;
 
 public interface iPatternFactory {
 

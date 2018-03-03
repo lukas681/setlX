@@ -1,10 +1,10 @@
-package org.randoom.setlx.SetlXMusic.RealTimeSystem;
+package org.randoom.setlx.setlXMusic.realTimeSystem;
 
 import org.jfugue.pattern.Atom;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.theory.Note;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.NegativeArgumentException;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.MidiNotAvailableException;
+import org.randoom.setlx.setlXMusic.realTimeSystem.Exceptions.NegativeArgumentException;
+import org.randoom.setlx.setlXMusic.realTimeSystem.Exceptions.MidiNotAvailableException;
 
 /**
  * This players allows playing tones in Real Time without any preprocessing.

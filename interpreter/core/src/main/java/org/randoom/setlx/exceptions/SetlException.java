@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Base class for all Exceptions occurring in SetlX.
+ * Base class for all exceptions occurring in SetlX.
  */
 public abstract class SetlException extends Exception {
 

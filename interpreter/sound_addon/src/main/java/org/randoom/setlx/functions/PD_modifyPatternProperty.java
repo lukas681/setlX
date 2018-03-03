@@ -1,8 +1,8 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.Exceptions.ParameterNotFoundException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.PatternParameters;
-import org.randoom.setlx.SetlXMusic.SoundPlugin;
+import org.randoom.setlx.exceptions.ParameterNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.storages.PatternParameters;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;

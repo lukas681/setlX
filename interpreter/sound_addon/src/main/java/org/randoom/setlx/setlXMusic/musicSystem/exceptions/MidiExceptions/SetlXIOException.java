@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions;
+package org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions;
 
 import org.randoom.setlx.exceptions.CatchableInSetlXException;
 

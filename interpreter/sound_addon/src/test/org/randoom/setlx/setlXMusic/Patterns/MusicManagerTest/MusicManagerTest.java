@@ -1,12 +1,12 @@
-package org.randoom.setlx.SetlXMusic.Patterns.MusicManagerTest;
+package org.randoom.setlx.setlXMusic.Patterns.MusicManagerTest;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.MusicPlayer.MusicPlayer;
-import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
+import org.randoom.setlx.setlXMusic.musicPlayer.MusicPlayer;
+import org.randoom.setlx.setlXMusic.musicSystem.musicManager.MusicManager;
 
 import static org.junit.Assert.*;
 

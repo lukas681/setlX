@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.Factories.NoteFactory;
+package org.randoom.setlx.setlXMusic.factories.noteFactory;
 
 import org.jfugue.theory.Note;
 

@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager;
+package org.randoom.setlx.setlXMusic.musicSystem.musicManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.PatternProducer;
@@ -7,19 +7,19 @@ import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.tools.GetPatternStats;
-import org.randoom.setlx.SetlXMusic.MidiSystem.MidiManager;
-import org.randoom.setlx.SetlXMusic.MidiSystem.iMidiManager;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.CanNotConvertException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.KeyAlreadyInUseException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.NotAPatternException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.SetlXIOException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotSupportedException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.MusicStorage;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.PatternParameters;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.StorageTypes;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Storages.iMusicStorage;
+import org.randoom.setlx.setlXMusic.midiSystem.MidiManager;
+import org.randoom.setlx.setlXMusic.midiSystem.iMidiManager;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.CanNotConvertException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.KeyAlreadyInUseException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions.NotAPatternException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions.SetlXIOException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.NullArgumentsException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotSupportedException;
+import org.randoom.setlx.setlXMusic.musicSystem.storages.MusicStorage;
+import org.randoom.setlx.setlXMusic.musicSystem.storages.PatternParameters;
+import org.randoom.setlx.setlXMusic.musicSystem.storages.StorageTypes;
+import org.randoom.setlx.setlXMusic.musicSystem.storages.iMusicStorage;
 import org.randoom.setlx.exceptions.SetlException;
 
 import javax.sound.midi.InvalidMidiDataException;
@@ -254,13 +254,13 @@ public class MusicManager implements iMusicManager {
     }
 
     @Override
-    public void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.InvalidMidiDataException {
+    public void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions.InvalidMidiDataException {
         try {
             patternStorage.addElement(patternName, midiManager.load(filename));
         } catch (IOException e) {
             throw new SetlXIOException();
         } catch (InvalidMidiDataException e) {
-            throw new org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.MidiExceptions.InvalidMidiDataException();
+            throw new org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions.InvalidMidiDataException();
         }
     }
 

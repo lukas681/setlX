@@ -1,8 +1,8 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.Exceptions.NotInByteRangeException;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.iRealTimePlayer;
-import org.randoom.setlx.SetlXMusic.SoundPlugin;
+import org.randoom.setlx.exceptions.NotInByteRangeException;
+import org.randoom.setlx.setlXMusic.realTimeSystem.iRealTimePlayer;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;

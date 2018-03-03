@@ -1,10 +1,9 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.SetlXMusic.SoundPlugin;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
-import org.randoom.setlx.types.SetlDouble;
 import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 

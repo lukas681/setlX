@@ -1,9 +1,9 @@
-package org.randoom.setlx.SetlXMusic.MusicPlayer;
+package org.randoom.setlx.setlXMusic.musicPlayer;
 
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.player.Player;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.musicManager.iMusicManager;
 
 import java.util.ArrayList;
 

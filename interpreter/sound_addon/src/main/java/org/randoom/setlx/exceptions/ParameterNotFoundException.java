@@ -1,6 +1,4 @@
-package org.randoom.setlx.Exceptions;
-
-import org.randoom.setlx.exceptions.CatchableInSetlXException;
+package org.randoom.setlx.exceptions;
 
 public class ParameterNotFoundException extends CatchableInSetlXException {
     public ParameterNotFoundException() {

@@ -1,7 +1,7 @@
 package org.randoom.setlx.functions;
 
 import org.jfugue.rhythm.Rhythm;
-import org.randoom.setlx.SetlXMusic.SoundPlugin;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;

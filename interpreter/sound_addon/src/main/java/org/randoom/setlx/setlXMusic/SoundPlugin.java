@@ -1,16 +1,16 @@
-package org.randoom.setlx.SetlXMusic;
+package org.randoom.setlx.setlXMusic;
 
-import org.randoom.setlx.SetlXMusic.MusicPlayer.MusicPlayer;
-import org.randoom.setlx.SetlXMusic.MusicPlayer.iMusicPlayer;
-import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.MusicManager;
-import org.randoom.setlx.SetlXMusic.MusicSystem.MusicManager.iMusicManager;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.Exceptions.MidiNotAvailableException;
-import org.randoom.setlx.SetlXMusic.RealTimeSystem.*;
-import org.randoom.setlx.SetlXMusic.Factories.AtomFactory.*;
-import org.randoom.setlx.SetlXMusic.Factories.ChordProgressionFactory.*;
-import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.*;
-import org.randoom.setlx.SetlXMusic.Factories.PatternFactory.*;
-import org.randoom.setlx.SetlXMusic.Factories.RhythmFactory.*;
+import org.randoom.setlx.setlXMusic.musicPlayer.MusicPlayer;
+import org.randoom.setlx.setlXMusic.musicPlayer.iMusicPlayer;
+import org.randoom.setlx.setlXMusic.musicSystem.musicManager.MusicManager;
+import org.randoom.setlx.setlXMusic.musicSystem.musicManager.iMusicManager;
+import org.randoom.setlx.setlXMusic.realTimeSystem.Exceptions.MidiNotAvailableException;
+import org.randoom.setlx.setlXMusic.realTimeSystem.*;
+import org.randoom.setlx.setlXMusic.factories.atomFactory.*;
+import org.randoom.setlx.setlXMusic.factories.chordProgressionFactory.*;
+import org.randoom.setlx.setlXMusic.factories.noteFactory.*;
+import org.randoom.setlx.setlXMusic.factories.patternFactory.*;
+import org.randoom.setlx.setlXMusic.factories.rhythmFactory.*;
 
 public class SoundPlugin implements iSoundPlugin {
 
@@ -20,7 +20,7 @@ public class SoundPlugin implements iSoundPlugin {
     private iMusicManager musicManager;
     private iRealTimePlayer realTimePlayer;
 
-    // Factories TODO Sum up Factories
+    // factories TODO Sum up factories
     private iAtomFactory atomFactory;
     private iNoteFactory noteFactory;
     private iChordProgressionFactory chordProgressionFactory;
@@ -32,11 +32,11 @@ public class SoundPlugin implements iSoundPlugin {
     }
 
     /**
-     * Initializes all components: Instantiates the Factories, Players and Storages
+     * Initializes all components: Instantiates the factories, Players and storages
      */
     private void initializeComponents() throws MidiNotAvailableException {
 
-        // Initializes Factories
+        // Initializes factories
         atomFactory = new AtomFactory();
         noteFactory = new NoteFactory();
         chordProgressionFactory = new ChordProgressionFactory();

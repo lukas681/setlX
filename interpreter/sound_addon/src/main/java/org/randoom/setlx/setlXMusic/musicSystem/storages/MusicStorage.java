@@ -1,8 +1,8 @@
-package org.randoom.setlx.SetlXMusic.MusicSystem.Storages;
+package org.randoom.setlx.setlXMusic.musicSystem.storages;
 
 import org.jfugue.pattern.PatternProducer;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.NullArgumentsException;
-import org.randoom.setlx.SetlXMusic.MusicSystem.Exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.NullArgumentsException;
+import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 
 import java.util.HashMap;
 

@@ -1,7 +1,7 @@
-package org.randoom.setlx.SetlXMusic.Factories.ChordProgressionFactory;
+package org.randoom.setlx.setlXMusic.factories.chordProgressionFactory;
 
 import org.jfugue.theory.ChordProgression;
-import org.randoom.setlx.SetlXMusic.Factories.Exceptions.KeyNotAcceptedException;
+import org.randoom.setlx.setlXMusic.factories.exceptions.KeyNotAcceptedException;
 
 public class ChordProgressionFactory implements iChordProgressionFactory {
 

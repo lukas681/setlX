@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.Factories.RhythmFactory;
+package org.randoom.setlx.setlXMusic.factories.rhythmFactory;
 
 import org.jfugue.rhythm.Rhythm;
 

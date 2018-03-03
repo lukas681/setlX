@@ -1,4 +1,4 @@
-package org.randoom.setlx.SetlXMusic.MusicSystem.Storages;
+package org.randoom.setlx.setlXMusic.musicSystem.storages;
 
 public enum StorageTypes {
     PATTERN_STORAGE,

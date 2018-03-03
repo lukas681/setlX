@@ -1,10 +1,10 @@
-package org.randoom.setlx.SetlXMusic.Factories;
+package org.randoom.setlx.setlXMusic.factories;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.NoteFactory;
-import org.randoom.setlx.SetlXMusic.Factories.NoteFactory.iNoteFactory;
+import org.randoom.setlx.setlXMusic.factories.noteFactory.NoteFactory;
+import org.randoom.setlx.setlXMusic.factories.noteFactory.iNoteFactory;
 
 import static org.junit.Assert.*;
 

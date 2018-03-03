@@ -14,17 +14,17 @@ import java.util.HashMap;
  * Exports an existing pattern to the filesystem.
  * It will be saved as an *.mid file, which can then be played in various other programs, that support midi-codec
  */
-public class PD_saveMidi extends PreDefinedProcedure {
+public class PD_saveAsMidi extends PreDefinedProcedure {
 
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
     private final static ParameterDefinition FILE_NAME = createOptionalParameter("fileName", SetlString.newSetlStringFromSB(new StringBuilder("export.mid"))); //The default base key is a C
 
-    public final static PreDefinedProcedure DEFINITION = new PD_saveMidi();
+    public final static PreDefinedProcedure DEFINITION = new PD_saveAsMidi();
 
     SoundPlugin root = SoundPlugin.getInstance();
 
-    protected PD_saveMidi() {
+    protected PD_saveAsMidi() {
         super();
         addParameter(PATTERN_NAME);
         addParameter(FILE_NAME);

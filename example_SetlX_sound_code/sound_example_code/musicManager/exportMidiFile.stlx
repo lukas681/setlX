@@ -1,0 +1,14 @@
+/*
+Now, things are getting more interesting. You can export your
+songs to midi file, which can than be played in various midi-supporting devices
+*/
+addPattern("Song");
+
+addChordProgression("acmp", "I V IV V IV V IV I V I", "C");
+addPattern("Melody","V0     C D E F  Gh Gh  A A A A  Gw A A  A A Gw F F F F Eh Eh G G G G Cw");
+allChordsAs("acmp","#0w #1w #3w #4w #5w #6w #7w #8w #9w #10w"); // define length of chords
+saveAsPattern("acmp"); //save it as a pattern, that we can add to the song
+
+modifyPatternProperty("acmp_c","voice",2);
+addPatternsToPattern("acmp_c Melody","Song");
+saveMidi("Song","song.mid");

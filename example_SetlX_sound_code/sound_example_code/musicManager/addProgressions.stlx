@@ -1,0 +1,10 @@
+/*
+This file shows, how to work with Progressions.
+A progression is a musical theoretical way to describe harmonies in
+a musical piece.
+*/
+addChordProgression("Progression1", "I IV V I"); // A simple end cadence
+addChordProgression("Progression2","I IV V vii I IV V I","E");
+    // A simple Pop Cadence on key Base Key 'E'
+play("Progression1");
+play("Progression2");

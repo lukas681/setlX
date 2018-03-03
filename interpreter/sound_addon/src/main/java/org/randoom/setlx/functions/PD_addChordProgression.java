@@ -12,8 +12,8 @@ import org.randoom.setlx.utilities.State;
 import java.util.HashMap;
 
 /**
- * Adds a new {@link ChordProgression} to the storay.
- * A Chord Progression is a sequence of roman letters, that describes an musical progression.
+ * Adds a new {@link ChordProgression} to the storage.
+ * A Chord Progression is a sequence of roman letters, which describe a musical progression.
  * Therefore, as known from musical theory, upper case letters are used for major Chords and
  * lower case letters for minor ones.
  * Additionally, you need a base key, which signalizes the tonality of the progression.

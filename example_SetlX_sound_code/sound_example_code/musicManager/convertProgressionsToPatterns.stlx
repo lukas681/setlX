@@ -1,0 +1,8 @@
+/*
+You can also convert Progressions into patterns.
+They are more flexible to be handled with (e.g. exporting, combining)
+*/
+addChordProgression("Progression1","I IV V I");
+saveAsPattern("Progression1"); // You will see the progression also under 'Patterns'
+play("Progression1_c"); // c for '_converted'
+showMusic();

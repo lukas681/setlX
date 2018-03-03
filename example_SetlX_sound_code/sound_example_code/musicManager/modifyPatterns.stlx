@@ -1,0 +1,14 @@
+/*
+This method is not recommended. But if you need to change
+your pattern after creation, use this one.
+The problem is, that the framework, that is used differs between
+"V1 [your tones]" and ("[your tones]").method, a strange behaviour.
+*/
+addPattern("Voice3","C D E F G A B C");
+
+play("Voice3");
+modifyPatternProperty("Voice3","VOICE",3);
+modifyPatternProperty("Voice3","TEMPO",250);
+showMusic();
+play("Voice3");
+

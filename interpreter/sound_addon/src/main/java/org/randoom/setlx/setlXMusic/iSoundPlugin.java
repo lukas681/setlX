@@ -10,8 +10,8 @@ import org.randoom.setlx.setlXMusic.factories.patternFactory.iPatternFactory;
 import org.randoom.setlx.setlXMusic.factories.rhythmFactory.iRhythmFactory;
 
 /**
- * provides access to every components of the sound plugin
- * It is central entrypoint for all functionalities
+ * Provides access to every component of the soundplugin.
+ * It is the central entrypoint for all functionalities, that can be used by setlX.
  */
 public interface iSoundPlugin {
 

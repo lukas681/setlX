@@ -12,6 +12,10 @@ import org.randoom.setlx.setlXMusic.factories.noteFactory.*;
 import org.randoom.setlx.setlXMusic.factories.patternFactory.*;
 import org.randoom.setlx.setlXMusic.factories.rhythmFactory.*;
 
+/**
+ * This is the main class for the SetlX Soundplugin.
+ * It is a singleton on which every SetlX Pre-Defined function has access to.
+ */
 public class SoundPlugin implements iSoundPlugin {
 
     private static SoundPlugin setlxSoundPlugin;
@@ -32,7 +36,7 @@ public class SoundPlugin implements iSoundPlugin {
     }
 
     /**
-     * Initializes all components: Instantiates the factories, Players and storages
+     * Initializes all components: Instantiates the factories, Players and storage
      */
     private void initializeComponents() throws MidiNotAvailableException {
 
@@ -89,12 +93,17 @@ public class SoundPlugin implements iSoundPlugin {
         return rhythmFactory;
     }
 
-    public static SoundPlugin getInstance() {
+    /**
+     * This static method creates exactly one instance of this {@link SoundPlugin}.
+     *
+     * @return the only instance of {@link SoundPlugin}
+     */
+    public static SoundPlugin getInstance() throws MidiNotAvailableException {
         if (setlxSoundPlugin == null) { //Singleton
             try {
                 setlxSoundPlugin = new SoundPlugin();
             } catch (MidiNotAvailableException e) {
-                e.printStackTrace();
+                throw new MidiNotAvailableException();
             }
         }
         return setlxSoundPlugin;

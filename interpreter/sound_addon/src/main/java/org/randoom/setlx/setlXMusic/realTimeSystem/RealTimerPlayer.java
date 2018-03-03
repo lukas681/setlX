@@ -17,7 +17,6 @@ import javax.sound.midi.MidiUnavailableException;
 public class RealTimerPlayer implements iRealTimePlayer {
 
     RealtimePlayer rtplayer;
-    int noteDuration = 1;
     iNoteFactory noteFac;
     iAtomFactory atomFac;
 
@@ -75,21 +74,6 @@ public class RealTimerPlayer implements iRealTimePlayer {
 
     }
 
-    @Override
-    public void changeInstrument(int instrument) throws NegativeArgumentException {
-        if (instrument <= 0) {
-            throw new NegativeArgumentException();
-        }
-        rtplayer.changeInstrument(instrument);
-    }
-
-    @Override
-    public void setNoteDuration(int duration) throws NegativeArgumentException {
-        if (duration <= 0) {
-            throw new NegativeArgumentException();
-        }
-        this.noteDuration = duration;
-    }
 
     /**
      * Returns true, if one of the input values is zero or negative

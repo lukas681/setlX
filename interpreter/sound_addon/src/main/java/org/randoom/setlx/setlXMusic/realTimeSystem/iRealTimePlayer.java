@@ -7,14 +7,15 @@ import org.randoom.setlx.setlXMusic.realTimeSystem.Exceptions.NegativeArgumentEx
 import org.randoom.setlx.setlXMusic.realTimeSystem.Exceptions.MidiNotAvailableException;
 
 /**
- * This players allows playing tones in Real Time without any preprocessing.
+ * This players allows playing tones in real time without any pre-processing.
+ * You do not have to create persistent instances in order to play a few notes in real time.
  */
 
 public interface iRealTimePlayer {
 
 
     /**
-     * Stops all current queued notes. Immediately stops the playback.
+     * Stops all current queued notes and immediately stops the playback.
      */
     void stopNotes() throws MidiNotAvailableException;
 
@@ -33,9 +34,5 @@ public interface iRealTimePlayer {
     void play(byte voice, byte layer, byte instrument, int value, double durationRelative) throws NegativeArgumentException;
 
     void play(byte voice, byte layer, byte instrument, int value, int durationBPM) throws NegativeArgumentException;
-
-    void changeInstrument(int instrument) throws NegativeArgumentException;
-
-    void setNoteDuration(int duration) throws NegativeArgumentException;
 
 }

@@ -1,7 +1,0 @@
-for(x in [30..100]){
-	playTone(x, 0.5,1);
-}
-for(x in [30..100]){
-	playTone(x, 0.5, 10, 2);
-}
-playTone(50, 2.0);

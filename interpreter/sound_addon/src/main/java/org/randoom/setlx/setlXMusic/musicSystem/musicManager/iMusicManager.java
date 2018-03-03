@@ -33,7 +33,7 @@ public interface iMusicManager {
     void add(String name, PatternProducer pattern) throws NullArgumentsException, ProducerNotSupportedException, KeyAlreadyInUseException;
 
     /**
-     * Can be used to add notes to an existing pattern
+     * Can be used to add notes to an existing pattern.
      *
      * @param patternName
      * @param notePattern
@@ -75,7 +75,7 @@ public interface iMusicManager {
     void addNotesToPattern(String patternName, String notePattern, int repetitions) throws PatternNotFoundException;
 
     /**
-     * Modifies a porperty of a pattern.
+     * Modifies a property of a pattern.
      *
      * @param patternName
      * @param param

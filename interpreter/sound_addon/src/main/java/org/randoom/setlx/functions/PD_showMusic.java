@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Shows a list of all content, that is stored in the {@link sun.security.krb5.internal.rcache.DflCache.Storage}s
+ */
 public class PD_showMusic extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_showMusic();
@@ -34,26 +37,13 @@ public class PD_showMusic extends PreDefinedProcedure {
         HashMap<String, Rhythm> allRhythms = root.getMusicManager().getAllRhythms();
         HashMap<String, ChordProgression> allProgressions = root.getMusicManager().getAllChordProgressions();
 
-        int i = 0;
-        Iterator it = allPatterns.entrySet().iterator();
-        for (int y = 0; y < 3; y++) { //In order to save redundance
-            if (y == 1) { //Iterating over Rhythms
-                print(state, "\n~~~~~~RHYTHMS~~~~~\n");
-                i = 0;
-                it = allRhythms.entrySet().iterator();
-            }
-            if (y == 2) { //Iterating over Chord Progressions
-                i = 0;
-                print(state, "\n~~~~~Progressions~~~~~\n");
-                it = allProgressions.entrySet().iterator();
-            }
-            while (it.hasNext()) { //Patterns
-                Map.Entry pair = (Map.Entry) it.next();
-                print(state, ++i + ".)" + pair.getKey() + " " + pair.getValue() + "\n");
-            }
-        }
-        return SetlBoolean.TRUE;
+        allPatterns.forEach((x, y) -> print(state, "|] " + x.toString() + " " + y + "\n"));
+        print(state, "\n~~~~~~RHYTHMS~~~~~\n");
+        allRhythms.forEach((x, y) -> print(state, "|] " + x.toString() + " " + y + "\n"));
+        print(state, "\n~~~~~Progressions~~~~~\n");
+        allProgressions.forEach((x, y) -> print(state, "|> " + x.toString() + " " + y + "\n"));
 
+        return SetlBoolean.TRUE;
     }
 
     /**

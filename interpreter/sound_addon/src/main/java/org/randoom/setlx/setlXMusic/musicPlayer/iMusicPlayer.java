@@ -9,9 +9,9 @@ import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExcep
 public interface iMusicPlayer { //TODO Maybe a own song system
     /**
      * Plays the music elements with that name.
+     *
      * IMPORTANT: If you want to play more than one pattern at one, be aware, that the TEMPO of the first argument
-     * will be used, if there are more different temppos given.
-     * It does not make any sense, to allow different tempos at once.
+     * will be used, if there are more different tempos given. But for other possible collisions, just try it out :)
      *
      * @param patternNames
      * @throws PatternNotFoundException

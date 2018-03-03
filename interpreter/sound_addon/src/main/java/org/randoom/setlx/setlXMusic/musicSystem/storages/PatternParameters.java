@@ -7,5 +7,5 @@ package org.randoom.setlx.setlXMusic.musicSystem.storages;
 public enum PatternParameters {
     INSTRUMENT,
     TEMPO,
-    VOICE;
+    VOICE
 }

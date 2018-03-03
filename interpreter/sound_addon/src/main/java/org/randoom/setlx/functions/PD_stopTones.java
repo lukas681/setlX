@@ -10,6 +10,10 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
+/**
+ * Stops the playback of {@link org.randoom.setlx.setlXMusic.realTimeSystem.RealTimerPlayer}-tones.
+ * If there are tones left in the queue, then they will be removed.
+ */
 public class PD_stopTones extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_stopTones();

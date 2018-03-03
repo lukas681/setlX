@@ -98,12 +98,12 @@ public class SoundPlugin implements iSoundPlugin {
      *
      * @return the only instance of {@link SoundPlugin}
      */
-    public static SoundPlugin getInstance() throws MidiNotAvailableException {
+    public static SoundPlugin getInstance() {
         if (setlxSoundPlugin == null) { //Singleton
             try {
                 setlxSoundPlugin = new SoundPlugin();
             } catch (MidiNotAvailableException e) {
-                throw new MidiNotAvailableException();
+                e.printStackTrace();
             }
         }
         return setlxSoundPlugin;

@@ -11,8 +11,8 @@ import org.randoom.setlx.utilities.State;
 import java.util.HashMap;
 
 /**
- * Exports an existing pattern to the filesystem.
- * It will be saved as an *.mid file, which can then be played in various other programs, that support midi-codec
+ * Saves an existing pattern to the filesystem.
+ * It will be saved as an *.mid file, which can then be played in various other programs, that support midi-codec.
  */
 public class PD_saveAsMidi extends PreDefinedProcedure {
 

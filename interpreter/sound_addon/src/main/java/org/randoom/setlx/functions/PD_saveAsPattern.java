@@ -9,6 +9,11 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
+/**
+ * Converts a {@link org.jfugue.theory.ChordProgression} or a {@link org.jfugue.rhythm.Rhythm} into a normal pattern.
+ * This will be saved with a '_c' postfix.
+ * For example, a ChordProgression "cp1" will become "cp1_c" in Patterns.
+ */
 public class PD_saveAsPattern extends PreDefinedProcedure {
 
     private final static ParameterDefinition ELEMENT_NAME = createParameter("patternName");

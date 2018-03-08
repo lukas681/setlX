@@ -10,8 +10,8 @@ import org.randoom.setlx.utilities.State;
 import java.util.HashMap;
 
 /**
- * Allows to set the base key for an existing chord progression
- * Can be useful, when tonality must be changed or was set wrong at instantiation
+ * Allows to set the base key for an existing chord progression.
+ * Can be useful, when tonality must be changed or was set wrong at instantiation.
  */
 public class PD_setKeyForChordProgression extends PreDefinedProcedure {
 

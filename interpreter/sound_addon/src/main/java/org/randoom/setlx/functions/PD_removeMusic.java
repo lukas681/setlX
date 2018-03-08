@@ -9,6 +9,9 @@ import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
 
+/**
+ * Deletes an element from the music list
+ */
 public class PD_removeMusic extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");

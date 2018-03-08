@@ -1,4 +1,4 @@
-package org.randoom.setlx.setlXMusic.Patterns;
+package org.randoom.setlx.setlXMusic.patterns;
 
 import org.jfugue.pattern.Pattern;
 import org.junit.Before;

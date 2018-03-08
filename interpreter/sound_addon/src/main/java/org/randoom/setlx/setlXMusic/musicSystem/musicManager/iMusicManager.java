@@ -25,7 +25,7 @@ import java.util.HashMap;
 public interface iMusicManager {
 
     /**
-     * Adds a new pattern to this Music Manager. Patterns can then be e. g. played or modified.
+     * Adds a new pattern to this Music Manager. patterns can then be e. g. played or modified.
      *
      * @param name
      * @param pattern
@@ -159,6 +159,13 @@ public interface iMusicManager {
      */
     ChordProgression allChordsAs(String chordprogressionName, String sequence) throws PatternNotFoundException;
 
+    /**
+     * Saves a Rhythm Progression or a Chord Progression as a Pattern
+     * @param elementName
+     * @throws PatternNotFoundException
+     * @throws NullArgumentsException
+     * @throws CanNotConvertException
+     */
     void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException;
 
     /**
@@ -178,7 +185,7 @@ public interface iMusicManager {
     void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions.InvalidMidiDataException;
 
     /**
-     * Checks, weather all Patterns, that are given in an array of String-names does already exist in the
+     * Checks, weather all patterns, that are given in an array of String-names does already exist in the
      * storage.
      * @param patternNames
      * @return false iff at least one pattern does not exist with the given patternnames

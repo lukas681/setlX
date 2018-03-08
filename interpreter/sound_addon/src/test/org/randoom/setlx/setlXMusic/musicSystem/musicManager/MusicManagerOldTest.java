@@ -1,4 +1,4 @@
-package org.randoom.setlx.setlXMusic.Patterns.MusicManagerTest;
+package org.randoom.setlx.setlXMusic.musicSystem.musicManager;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.rhythm.Rhythm;
@@ -10,7 +10,7 @@ import org.randoom.setlx.setlXMusic.musicSystem.musicManager.MusicManager;
 
 import static org.junit.Assert.*;
 
-public class MusicManagerTest {
+public class MusicManagerOldTest {
 
     MusicManager mgr;
     MusicPlayer pl;

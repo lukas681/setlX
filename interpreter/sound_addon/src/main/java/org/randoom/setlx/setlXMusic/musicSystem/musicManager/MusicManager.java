@@ -156,7 +156,7 @@ public class MusicManager implements iMusicManager {
         }
         //Unfortunately, the Pattern Class does not implement
         //the Clonable or Serializable interface making it impossible to (deep)
-        //copy an instance. The trick is, that we just copy the information, that are stored in
+        //copy an instance. The trick is, that we just copy the information, that is stored in
         //a staccato string via the toString-method
         try {
             add(newName, copy);
@@ -229,7 +229,7 @@ public class MusicManager implements iMusicManager {
     public void saveAsPattern(String elementName) throws PatternNotFoundException, NullArgumentsException, CanNotConvertException {
         switch (getStorageWhereKeyIsUsed(elementName)) {
             case PATTERN_STORAGE:
-                break; //Already in Patterns...
+                break; //Already in patterns...
             case CHORD_PROGRESSION_STORAGE:
                 patternStorage.addElement(elementName + "_c", chordProgressionStorage.getElement(elementName).getPattern());
                 break;

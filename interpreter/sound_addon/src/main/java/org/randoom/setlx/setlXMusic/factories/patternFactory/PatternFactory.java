@@ -52,10 +52,8 @@ public class PatternFactory implements iPatternFactory {
      * @return if they are allowed
      */
     private boolean checkConstraints(int instrument, int tempo, int voice) {
-        if (tempoLb <= tempo && tempo <= tempoUb
+        return tempoLb <= tempo && tempo <= tempoUb
                 && voiceLb <= voice && voice <= voiceUb
-                && instrumentLb <= instrument && instrument <= instrumentUb)
-            return true; //Todo global configuration class
-        return false;
+                && instrumentLb <= instrument && instrument <= instrumentUb;
     }
 }

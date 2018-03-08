@@ -52,8 +52,6 @@ public class MidiManagerTest {
     public void demo() {
         Pattern song = new Pattern("C D E F G");
         Pattern p1 = new Pattern("C D E F G");
-        Pattern p2 = new Pattern("C D E F G");
-
         song.add(p1, p1);
 
     }

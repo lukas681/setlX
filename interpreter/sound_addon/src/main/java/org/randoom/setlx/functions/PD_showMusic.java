@@ -11,8 +11,6 @@ import org.randoom.setlx.types.Value;
 import org.randoom.setlx.utilities.State;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Shows a list of all content, that is stored in the {@link sun.security.krb5.internal.rcache.DflCache.Storage}s
@@ -37,11 +35,11 @@ public class PD_showMusic extends PreDefinedProcedure {
         HashMap<String, Rhythm> allRhythms = root.getMusicManager().getAllRhythms();
         HashMap<String, ChordProgression> allProgressions = root.getMusicManager().getAllChordProgressions();
 
-        allPatterns.forEach((x, y) -> print(state, "|] " + x.toString() + " " + y + "\n"));
+        allPatterns.forEach((x, y) -> print(state, "|] " + x + " " + y + "\n"));
         print(state, "\n~~~~~~RHYTHMS~~~~~\n");
-        allRhythms.forEach((x, y) -> print(state, "|] " + x.toString() + " " + y + "\n"));
+        allRhythms.forEach((x, y) -> print(state, "|] " + x + " " + y + "\n"));
         print(state, "\n~~~~~Progressions~~~~~\n");
-        allProgressions.forEach((x, y) -> print(state, "|> " + x.toString() + " " + y + "\n"));
+        allProgressions.forEach((x, y) -> print(state, "|> " + x + " " + y + "\n"));
 
         return SetlBoolean.TRUE;
     }

@@ -79,7 +79,7 @@ public class MusicManager implements iMusicManager {
 
     @Override
     public void addPatternsToPatternByName(String patternTargetName, String... patternSourceNames) throws PatternNotFoundException {
-        if(patternSourceNames==null||patternSourceNames==null||!allPatternsExists()) {
+        if(patternSourceNames == null || !allPatternsExists()) {
             throw new PatternNotFoundException();
         }
         for (String s : patternSourceNames) {

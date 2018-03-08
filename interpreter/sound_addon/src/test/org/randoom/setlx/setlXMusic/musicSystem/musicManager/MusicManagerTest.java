@@ -8,6 +8,9 @@ import org.randoom.setlx.setlXMusic.musicSystem.exceptions.NullArgumentsExceptio
 import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotFoundExceptions.PatternNotFoundException;
 import org.randoom.setlx.setlXMusic.musicSystem.exceptions.ProducerNotSupportedException;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 public class MusicManagerTest {
@@ -17,6 +20,9 @@ public class MusicManagerTest {
     @Before
     public void setUp() throws Exception {
         manager = new MusicManager();
+        manager.add("Test", new Pattern("C D E F G A B C6"));
+        manager.add("Test2", new Pattern("C D E F G A B C6"));
+        manager.add("Test3", new Pattern("C D E F G A B C6"));
     }
 
     @Test
@@ -57,7 +63,7 @@ public class MusicManagerTest {
     @Test
     public void addPatternsToStorageThatAreAllowed() throws KeyAlreadyInUseException, ProducerNotSupportedException, NullArgumentsException {
         Pattern TestPattern = new Pattern("C D E F");
-        manager.add("Test", TestPattern);
+        manager.add("Test4", TestPattern);
         manager.add("", TestPattern);
     }
 
@@ -65,15 +71,13 @@ public class MusicManagerTest {
     @Test(expected = NullArgumentsException.class)
     public void addNullPointerToStorage() throws KeyAlreadyInUseException, ProducerNotSupportedException, NullArgumentsException {
         manager.add("", null);
-        manager.add("Test", null);
-        manager.add("", new Pattern("Test"));
+        manager.add("Test4", null);
+        manager.add("", new Pattern("C D E"));
     }
 
 
     @Test
     public void addNotesToPattern() throws KeyAlreadyInUseException, ProducerNotSupportedException, NullArgumentsException {
-        manager.add("Test", new Pattern("C D E"));
-
     }
 
     @Test
@@ -153,10 +157,47 @@ public class MusicManagerTest {
     }
 
     @Test
-    public void getAllPatterns() {
+    public void getAllPatterns() throws KeyAlreadyInUseException, ProducerNotSupportedException, NullArgumentsException {
+        // Some initial tests
+        assertNotNull(manager.getAllPatterns());
+        int currentSize = manager.getAllPatterns().size();
+        manager.add("Test4",new Pattern("C D E F"));
+        assertTrue((currentSize+1)==manager.getAllPatterns().size());
+
+        // testing the correctness
+        iMusicManager tmp_mgr = new MusicManager();
+        HashMap<String, Pattern> Patterns = new HashMap();
+        Patterns.put("A", new Pattern("C D E F G"));
+        Patterns.put("B", new Pattern("C D E F G"));
+        Patterns.put("C", new Pattern("C F G C C"));
+        Patterns.put("D", new Pattern("C G B C D"));
+
+        Patterns.forEach((x,y) -> { //Inserting Patterns
+            try {
+                tmp_mgr.add(x,y);
+            } catch (NullArgumentsException e) {
+                e.printStackTrace();
+            } catch (ProducerNotSupportedException e) {
+                e.printStackTrace();
+            } catch (KeyAlreadyInUseException e) {
+                e.printStackTrace();
+            }
+        });
+        assertTrue(tmp_mgr.getAllPatterns().equals(Patterns));
+        assertTrue(new MusicManager().getAllPatterns().isEmpty()==true); // An empty Music Storage should return null
     }
 
     @Test
-    public void allPatternsExists1() {
+    public void allPatternsExists1() throws KeyAlreadyInUseException, ProducerNotSupportedException, NullArgumentsException {
+        assertTrue(manager.allPatternsExists("Test"));
+        assertTrue(manager.allPatternsExists("Test","Test2"));
+        assertTrue(manager.allPatternsExists("Test","Test3","Test2"));
+        assertTrue(manager.allPatternsExists("Test","Test","Test","Test"));
+        assertFalse(manager.allPatternsExists("Test4"));
+        assertFalse(manager.allPatternsExists("Test4","Test5"));
+        assertFalse(manager.allPatternsExists("Test4", null));
+        assertFalse(manager.allPatternsExists("Test3", null));
+        assertFalse(manager.allPatternsExists(null));
+        assertFalse(manager.allPatternsExists(null,null));
     }
 }

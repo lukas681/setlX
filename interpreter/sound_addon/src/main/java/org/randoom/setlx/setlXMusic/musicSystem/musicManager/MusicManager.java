@@ -281,6 +281,9 @@ public class MusicManager implements iMusicManager {
                 || chordProgressionStorage.checkExisting(key);
     }
     public boolean allPatternsExists(String... patternNames){
+        if(patternNames==null){
+            return false;
+        }
         long numberOfExistingPatterns = Arrays.stream(patternNames)
                 .filter(x -> patternStorage.checkExisting(x))
                 .count(); // Ensure that it is a transaction.

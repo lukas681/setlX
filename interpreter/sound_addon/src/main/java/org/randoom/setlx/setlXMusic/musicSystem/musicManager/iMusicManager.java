@@ -176,4 +176,12 @@ public interface iMusicManager {
      * @param filename
      */
     void loadMidi(String patternName, String filename) throws NullArgumentsException, SetlXIOException, org.randoom.setlx.setlXMusic.musicSystem.exceptions.MidiExceptions.InvalidMidiDataException;
+
+    /**
+     * Checks, weather all Patterns, that are given in an array of String-names does already exist in the
+     * storage.
+     * @param patternNames
+     * @return false iff at least one pattern does not exist with the given patternnames
+     */
+    boolean allPatternsExists(String... patternNames);
 }

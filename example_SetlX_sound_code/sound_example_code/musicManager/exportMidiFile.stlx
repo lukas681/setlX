@@ -11,4 +11,4 @@ saveAsPattern("acmp"); //save it as a pattern, that we can add to the song
 
 modifyPatternProperty("acmp_c","voice",2);
 addPatternsToPattern("acmp_c Melody","Song");
-saveMidi("Song","song.mid");
+saveAsMidi("Song","song.mid");

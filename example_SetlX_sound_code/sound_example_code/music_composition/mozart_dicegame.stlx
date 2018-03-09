@@ -1,0 +1,141 @@
+print("Mozart Dice Game");
+
+
+// addPattern("1","V0 F6a D6a G6a V1 F4a D4a G4a");
+addPattern("1","V0 F6i D6i G6i V1 F4i D4i G4i V2 Rq.");
+addPattern("2","V0 A5i F#5s G5s B5s G6s V1 B3q Ri V2 G4q Ri");
+addPattern("3","V0 G6i C6i E6i V1 C4q Ri V2 E4q Ri");
+addPattern("4","V0 G6i D6q V1 G3s B3s G4i B3i V2 Rq."); //TODO Triller
+
+addPattern("5","V0 GMajq Ri V1 G3i B4s G4s F#4s E4s V2 G3i G4s F4s E4s D4s");
+addPattern("6","V0 G5i C6i E6i V1 C3q Ri V2 E3q Ri");
+addPattern("7","V0 E6s C6s E6s G6s C7s G6s V1 C4q Ri V2 G4q Ri");
+addPattern("8","V0 C6q Ri V1 C4i G4i C3i V2 Rq.");
+addPattern("9","V0 E6i D6i Ri V1 C6i B6i Ri V2 G4q G3i");
+addPattern("10","V0 B5s A5s B5s C6s D6s B5s V1 G4q Ri V2 Rq.");
+
+
+addPattern("11","V0 E6s C6s B5s A5s G5s F#5s V1 C4i D4i D3i V2 Rq.");
+addPattern("12","V0 C6i C6i C6i V1 E5i E5i E5i V2 C4i C4i C4i");
+addPattern("13","V0 C6i G5i E5i V1 E4q Ri V2 G4q Ri");
+addPattern("14","V0 C6q Ri V1 C4i G3i C3i V2 Rq.");
+addPattern("15","V0 E6i G6s E6s C6i V1 G4q E4i V2 C4q C4i");
+
+addPattern("16","V0 A6i F#6i D6i V1 D4q C4i V2 F#4q F#4i");
+addPattern("17","V0 C6s G5s C6s E6s G5s C6s V1 G4q Ri V2 E4q Ri");
+addPattern("18","V0 G5i C6i E6i V1 E4q G4i V2 C4q C4i");
+addPattern("19","V0 E6s C6s E6i G6i V1 C4q C5i V2 E4q G4i");
+addPattern("20","V0 G6i B6s D7s D6i V1 B3q Ri V2 Rq.");
+
+
+addPattern("21","V0 C6s E6s G6s D6s A5s F#6s V1 C4i D4i D3i V2 Rq.");
+addPattern("22","V0 E6i C6i G5i V1 C4q Ri V2 Rq.");
+addPattern("23","V0 F6s E6s D6s E6s F6s G6s V1 F4s E4s D4s E4s F4s G4s V2 Rq.");
+addPattern("24","V0 GMajq Ri V1 G3i B4s G4s F#4s E4s V2 G3i G4s F4s E4s D4s");
+addPattern("25","V0 D5s F#5s A5s D6s F#6s A6s V1 D4q C4i V2 Rq.");
+
+addPattern("26","V0 E6i E6i E6i V1 C6i C6i C6i V2 C4s E4s G4s E4s C5s C4s");
+addPattern("27","V0 F6s E6s F6s D6s C6s B5s V1 B4q Ri V2 G4q Ri");
+addPattern("28","V0 F#6s D6s A5s A6s F#6s D6s V1 C4q Ri V2 A4q Ri");
+addPattern("29","V0 B5s D6s G6s D6s B5i V1 G4q G3i V2 Rq.");
+addPattern("30","V0 GMajq Ri V1 G3i B4s G4s F#4s E4s V2 G3i G4s F4s E4s D4s"); //Same as 24
+
+
+addPattern("31","V0 G6s C6s G5i E6i V1 G4q G4i V2 C4q C4i");
+addPattern("32","V0 G5i C6i E6i V1 C3q Ri V2 E3q Ri");
+addPattern("33","V0 GMajq Ri V1 G3i B4s G4s F#4s E4s V2 G3i G4s F4s E4s D4s"); // Same as 30
+addPattern("34","V0 E6s C6s D6s B5s G5i V1 G4q Ri V2 Rq.");
+addPattern("35","V0 A5i D6i F#6i V1 F#4q A4i V2 D4q C4i");
+
+addPattern("36","V0 A5s E6s D6s G6s F#6s A6s V1 C4i D4i D3i V2 Rq.");
+addPattern("37","V0 G6s B6s G6s D6s B5i V1 D4q Ri V2 B3q Ri");
+addPattern("38","V0 C6i G5i E6i V1 E4s G4s E4s G4s E4s G4s V2 E4s Rs E4s Rs E4s Rs");
+addPattern("39","V0 G6i G5i G5i V1 B3s D4s G4s D4s B3s G3s V2 Rq.");
+addPattern("40","V0 C6s B5s C6s E6s G5s C6s V1 E4q Ri V2 C4q Ri");
+
+addPattern("41","V0 C6s B5s C6s E6s G5i V1 E4q Ri V2 C4q Ri");
+addPattern("42","V0 B5s C6s D6s B5s A5s G5s V1 G3q Ri V2 Rq.");
+addPattern("43","V0 G6i F6s E6s D6s C6s V1 E4q Ri V2 C4q Ri");
+addPattern("44","V0 A5i F6sD6s A6s B5s V1 F4q G4i V2 Rq.");
+addPattern("45","V0 C6s B5s C6s G5s E5s C5s V1 G4q Ri V2 E4q Ri");
+
+
+addPattern("46","V0 G6i B6s G6s D6s B6s V1 D4q Ri V2 B3q Ri");
+addPattern("47","V0 G6i G6s D6s B6i V1 D4q Ri V2 B3q Ri");
+addPattern("48","V0 E6i C6s E6s G6s C7s V1 G4q E4i V2 C4q C4i");
+addPattern("49","V0 E6i C6i G5i V1 E4s G4s E4s G4s E4s G4s V2 E4s Rs E4s Rs E4s Rs");
+addPattern("50","V0 C6i E6s C6s G5i V1 G4q Ri V2 E4q Ri ");
+play("46 46 46 47 47 47 48 48 48 49 49 49 50 50 50 ");
+
+addPattern("51","V0");
+addPattern("52","V0");
+addPattern("53","V0");
+addPattern("54","V0");
+addPattern("55","V0");
+
+addPattern("56","V0");
+addPattern("57","V0");
+addPattern("58","V0");
+addPattern("59","V0");
+addPattern("60","V0");
+
+
+addPattern("61","V0");
+addPattern("62","V0");
+addPattern("63","V0");
+addPattern("64","V0");
+addPattern("65","V0");
+
+addPattern("66","V0");
+addPattern("67","V0");
+addPattern("68","V0");
+addPattern("69","V0");
+addPattern("70","V0")
+
+
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0")
+
+
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0")
+
+
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0");
+addPattern("51","V0")
+
+//play("28 2");
+addPattern("Song","T75");
+addPattern("END","V0 Rh V1");
+// addPatternsToPattern("3","Song");
+// addPatternsToPattern("6","Song");
+addPatternsToPattern("1 2 3","Song");
+showMusic();
+play("Song");

@@ -202,29 +202,27 @@ addPattern("157","V0 E6s D6s D6s G6s C7s G6s V1 C4q Ri V2 Rq.");
 addPattern("158","V0 B5i D6s B5s A5s G5s V1 G3q Ri V2 Eq.");
 addPattern("159","V0 E6s G6s D6s C6s B5s A5s V1 C4i D4i D3i V2 Rq.");
 addPattern("160","V0 C6s B5s C6s E6s G5s C6s V1 E4q E4i V2 C4q C4i");
-play("156 156 156 157 157 157 158 158 158 159 159 159 160 160 160");
 
-addPattern("161","V0");
-addPattern("162","V0");
-addPattern("163","V0");
-addPattern("164","V0");
-addPattern("165","V0");
+addPattern("161","V0 D6i D6i D6i V1 F#5i F#5i F#5i V2 C4i C4i C4i");
+addPattern("162","V0 E6s C#6s D6s F#6s A6s F#6s V1 C4q Ri V2 Rq.");
+addPattern("163","V0 G6s F#6s G6s D6s B5s G5s V1 D4q Ri V2 B3q Ri");
+addPattern("164","V0 D6i G5q V1 G4s F#4s G4s D4s B3s G3s V2 Rq.");
+addPattern("165","V0 D6i B5i G5i V1 B3q Ri V2 Rq.");
 
-addPattern("166","V0");
-addPattern("167","V0");
-addPattern("168","V0");
-addPattern("169","V0");
-addPattern("170","V0");
+addPattern("166","V0 D6s B6s G6s D6s B5i V1 B4q Ri V2 G4q Ri");
+addPattern("167","V0 C6i C6s D6s E6i V1 E4q Ri V2 C4q Ri");
+addPattern("168","V0 G6i F6s E6s D6s C6s V1 E4q G4i V2 C4q E4i");
+addPattern("169","V0 E6s G6s D6s G6s A5s F#6s V1 C4i D4i D3i V2 Rq.");
+addPattern("170","V0 C6q Ri V1 C4i G3i C3i");
 
-addPattern("171","V0");
-addPattern("172","V0");
-addPattern("173","V0");
-addPattern("174","V0");
-addPattern("175","V0");
+addPattern("171","V0 A5s C6s D6s E6s F6s D6s V1 G4q G4i V2 G3q B3i");
+addPattern("172","V0 C6q Ri V1 C4i G3i C3i V2 Rq.");
+addPattern("173","V0 F6s A6s A5i B5s D5s V1 F4q G4i V2 Rq.");
+addPattern("174","V0 G5i C5i E5i V1 E4s G4s E4s G4s E4s G4s V2 C4s Rs C4s Rs C4s Rs");
+addPattern("175","V0 E6s C6s B5s D6s G6i V1 G4i G3i Ri V2 Rq.");
 
-addPattern("176","V0");
-addPattern("177","V0");
-addPattern("178","V0");
+addPattern("176","V0 A6s G6s B6s G6s D6s G6s V1 D4q D4i V2 B3q B3i");
+play("173 173 173 174 174 174 175 175 175 176 176 176");
 
 //play("28 2");
 addPattern("Song","T75");

@@ -1,0 +1,12 @@
+/*
+This Demo file shows, how to add a new musical pattern to setlX.
+A pattern is a string, that contains musical information.
+*/
+addPattern("Song");
+addPattern("Pattern1","V1 120 C D E F");
+addPattern("Pattern2", "V2 120 E F G A"); // For more information about musical Strings
+                            // See musicStringExample.stlx
+addPattern("Pattern3","Cw Dq Eq Fq Gq Aq Bq Cw",2,200,2);
+showMusic();
+play("Pattern1 Pattern2");
+play("Pattern3");

@@ -1,3 +1,4 @@
+
 package org.randoom.setlx.functions;
 
 import org.randoom.setlx.exceptions.SetlException;

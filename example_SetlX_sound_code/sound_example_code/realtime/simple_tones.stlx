@@ -1,0 +1,19 @@
+print("Simple Demo for Real Time Music");
+playTone(40); // A single tone
+
+for(x in {40..50}){
+    playTone(x, 120); // Just a few notes; 5 Seconds
+}
+
+for(x in {40..50}){
+    playTone(x, 120,x-39); // Using different instruments; 5 Seconds
+}
+for(x in {30..90}){
+    playTone(x, 7*x); // Accelerando; 13 Seconds
+}
+for(x in {40..55}){
+    playTone(x, 120,2,1); // Two Voices at the same time; 13 Seconds
+    playTone(x+3, 180,2,2); // Playing a minor third; Polyrhythmical
+}
+sleep(23000);
+

@@ -1,0 +1,7 @@
+/*
+We import Bachs Inventio 13 into SetlX
+*/
+
+loadMidi("bach", "../example_SetlX_sound_code/sound_example_code/midi_demofiles/invent13.mid"); // Correct this path
+showMusic();
+play("bach");

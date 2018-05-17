@@ -1,7 +1,7 @@
 package org.randoom.setlx.exceptions;
 
 /**
- * Base class for Exceptions thrown when parsing incorrect code.
+ * Base class for exceptions thrown when parsing incorrect code.
  */
 public abstract class ParserException extends CatchableInSetlXException {
 

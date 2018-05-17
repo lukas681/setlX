@@ -1,6 +1,6 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
@@ -16,7 +16,7 @@ public class PD_duplicatePattern extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_duplicatePattern();
 
-    SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
+    SoundPlugin root = SoundPlugin.getInstance();
 
     protected PD_duplicatePattern() {
         super();
@@ -29,9 +29,7 @@ public class PD_duplicatePattern extends PreDefinedProcedure {
         final Value patternSource = args.get(PATTERN_SOURCE_NAME);
         final Value patternNewName = args.get(PATTERN_NEW_NAME);
 
-        System.out.println(patternSource.getUnquotedString(state));
-        System.out.println(patternNewName.getUnquotedString(state));
-        root.getSetlXPatternManager().duplicatePattern(patternSource.getUnquotedString(state), patternNewName.getUnquotedString(state));
+        root.getMusicManager().duplicatePattern(patternSource.getUnquotedString(state), patternNewName.getUnquotedString(state));
         return SetlBoolean.TRUE;
     }
 }

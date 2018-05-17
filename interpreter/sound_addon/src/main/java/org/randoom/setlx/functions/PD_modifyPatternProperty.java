@@ -1,8 +1,8 @@
 package org.randoom.setlx.functions;
 
-import org.randoom.setlx.Exceptions.ParameterNotFoundException;
-import org.randoom.setlx.SetlXMusic.Patterns.PatternParameters;
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.exceptions.ParameterNotFoundException;
+import org.randoom.setlx.setlXMusic.musicSystem.storages.PatternParameters;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
@@ -19,14 +19,13 @@ public class PD_modifyPatternProperty extends PreDefinedProcedure {
 
     public final static PreDefinedProcedure DEFINITION = new PD_modifyPatternProperty();
 
-    SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
+    SoundPlugin root = SoundPlugin.getInstance();
 
     protected PD_modifyPatternProperty() {
         super();
         addParameter(PATTERN_NAME);
         addParameter(PROPERTY);
         addParameter(VALUE);
-
     }
 
     @Override
@@ -39,7 +38,7 @@ public class PD_modifyPatternProperty extends PreDefinedProcedure {
         PatternParameters property = parseProperty(patternProperty.getUnquotedString(state)); //Parses inputpropertyinput property
 
         if (property != null) {
-            root.getSetlXPatternManager().modifyPatternProperty(patternName.getUnquotedString(state), property, patternValue.toJIntValue(state));
+            root.getMusicManager().modifyPatternProperty(patternName.getUnquotedString(state), property, patternValue.toJIntValue(state));
         } else {
             //If we can not find the pattern parameter, we throw a little exception alerting it
             throw new ParameterNotFoundException();

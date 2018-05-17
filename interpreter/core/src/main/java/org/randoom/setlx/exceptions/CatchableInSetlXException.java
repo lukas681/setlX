@@ -1,7 +1,7 @@
 package org.randoom.setlx.exceptions;
 
 /**
- * Exceptions inheriting from this class are supposed to be catchable by SetlX's
+ * exceptions inheriting from this class are supposed to be catchable by SetlX's
  * own try-catch block.
  */
 public abstract class CatchableInSetlXException extends SetlException {

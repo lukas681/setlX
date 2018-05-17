@@ -1,7 +1,7 @@
 package org.randoom.setlx.functions;
 
 import org.jfugue.tools.GetPatternStats;
-import org.randoom.setlx.SetlXMusic.SetlXSoundPlugin;
+import org.randoom.setlx.setlXMusic.SoundPlugin;
 import org.randoom.setlx.exceptions.SetlException;
 import org.randoom.setlx.parameters.ParameterDefinition;
 import org.randoom.setlx.types.SetlBoolean;
@@ -12,13 +12,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Prints some interesting statistics about a musical pattern.
+ */
 public class PD_getPatternStats extends PreDefinedProcedure {
 
     private final static ParameterDefinition PATTERN_NAME = createParameter("patternName");
 
     public final static PreDefinedProcedure DEFINITION = new PD_getPatternStats();
 
-    SetlXSoundPlugin root = SetlXSoundPlugin.getInstance();
+    SoundPlugin root = SoundPlugin.getInstance();
 
     protected PD_getPatternStats() {
         super();
@@ -28,8 +31,8 @@ public class PD_getPatternStats extends PreDefinedProcedure {
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException {
         final Value patternName = args.get(PATTERN_NAME);
-        HashMap<String, GetPatternStats.Stats> detailStats = root.getSetlXPatternManager().getDetailPatternStats(patternName.getUnquotedString(state));
-        int[] generalStats = root.getSetlXPatternManager().getGeneralPatternStats(patternName.getUnquotedString(state));
+        HashMap<String, GetPatternStats.Stats> detailStats = root.getMusicManager().getDetailPatternStats(patternName.getUnquotedString(state));
+        int[] generalStats = root.getMusicManager().getGeneralPatternStats(patternName.getUnquotedString(state));
         print(state, "Statistics for Pattern '" + patternName.getUnquotedString(state) + "'" //prints the stats
                 + "\n~~~~~~~~~~GENERAL~~~~~~~~~~" +
                 "\nNumber of notes: " + generalStats[0] +

@@ -1,0 +1,19 @@
+/*
+Make a song is pretty simple.
+Just use patterns for this and build the song with them.
+*/
+
+addPattern("Song");
+addPattern("Part1");
+
+addPattern("Motive1","V1 C E G C");
+addPattern("Motive2","V1 G B D G");
+addPattern("Rest","V1 Rw");
+
+addPattern("Part2");
+
+addPatternsToPattern("Motive1 Motive2","Part1");
+addPatternsToPattern("Motive2 Motive1","Part2");
+addPatternsToPattern("Part1 Rest Part2", "Song");
+
+play("Song");
